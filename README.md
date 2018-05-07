@@ -11,7 +11,7 @@ This framework supports the development of iOS 8.0+ in ARC.
 ## CocoaPods
 To integrate JCNavigator into your iOS project, specify it in your Podfile:
 
-pod 'JCNavigator'
+    pod 'JCNavigator'
 
 ## Contacts
 If you have any questions or suggestions about the framework, please E-mail to contact me.
