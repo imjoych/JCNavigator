@@ -22,9 +22,10 @@
     JCCommonView *view = [JCCommonView viewWithPushBlock:^{
         [[JCNavigator sharedNavigator] openScheme:@protocol(JC_thirdLevel)];
     } presentBlock:^{
-        [[JCNavigator sharedNavigator] openScheme:@protocol(JC_contentDetail) settingBlock:^(UIViewController<JC_contentDetail> *willOpenedViewController) {
-            willOpenedViewController.currentIndex = @"2";
-        } presented:YES];
+        [self showAlert];
+//        [[JCNavigator sharedNavigator] openScheme:@protocol(JC_contentDetail) settingBlock:^(UIViewController<JC_contentDetail> *willOpenedViewController) {
+//            willOpenedViewController.currentIndex = @"2";
+//        } presented:YES];
     }];
     [self.view addSubview:view];
     view.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64);
@@ -36,6 +37,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+- (void)showAlert
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Tips" message:@"Open content detail view controller 2 ?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[JCNavigator sharedNavigator] openScheme:@protocol(JC_contentDetail) settingBlock:^(UIViewController<JC_contentDetail> *willOpenedViewController) {
+            willOpenedViewController.currentIndex = @"2";
+        } presented:YES];
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:confirmAction];
+    [self.parentViewController presentViewController:alertController animated:YES completion:nil];
+}
 
 @end
