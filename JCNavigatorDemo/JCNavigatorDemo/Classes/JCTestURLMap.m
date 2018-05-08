@@ -34,7 +34,7 @@
 
 - (NSDictionary<NSString *,NSDictionary *> *)propertiesMapOfURLQueryForClasses
 {
-    return @{NSStringFromClass([JCContentDetailViewController class]): @{@"currentindex": @"currentIndex"}};
+    return @{NSStringFromClass([JCContentDetailViewController class]): @{@"pageindex": @"currentIndex"}};
 }
 
 @end
