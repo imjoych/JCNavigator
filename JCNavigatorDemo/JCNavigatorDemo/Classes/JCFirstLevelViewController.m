@@ -23,7 +23,7 @@
 //        [[JCNavigator sharedNavigator] openScheme:@protocol(JC_secondLevel)];
         [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/secondlevel"];
     } presentBlock:^{
-        [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/contentdetail?currentindex=1"];
+        [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.jcnavigatordemo/contentdetail?currentindex=1"];
 //        [[JCNavigator sharedNavigator] openScheme:@protocol(JC_contentDetail) settingBlock:^(UIViewController<JC_contentDetail> *willOpenedViewController) {
 //            willOpenedViewController.currentIndex = @"1";
 //        } presented:YES];
