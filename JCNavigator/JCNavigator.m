@@ -47,11 +47,11 @@
 
 - (void)addURLScheme:(NSString *)scheme hostList:(NSArray<NSString *> *)hostList
 {
-    if (![scheme isKindOfClass:[NSString class]]
-        || ![hostList isKindOfClass:[NSArray class]]) {
-        return;
+    NSMutableArray *lowercaseHostList = [NSMutableArray arrayWithCapacity:hostList.count];
+    for (NSString *host in hostList) {
+        [lowercaseHostList addObject:[host lowercaseString]];
     }
-    self.hostListForScheme[scheme] = hostList;
+    self.hostListForScheme[[scheme lowercaseString]] = [lowercaseHostList copy];
 }
 
 - (void)addURLMap:(JCURLMap *)URLMap
@@ -129,13 +129,15 @@
         [self callbackWithURL:nil options:nil message:@"Invalid URL!" completionHandler:completionHandler];
         return;
     }
-    if (![self.hostListForScheme.allKeys containsObject:URL.scheme]) {
-        [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"URL scheme %@ is not found !", URL.scheme] completionHandler:completionHandler];
+    NSString *lowercaseScheme = [URL.scheme lowercaseString];
+    if (![self.hostListForScheme.allKeys containsObject:lowercaseScheme]) {
+        [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"URL scheme %@ is not found !", lowercaseScheme] completionHandler:completionHandler];
         return;
     }
-    NSArray *hostList = self.hostListForScheme[URL.scheme];
-    if (![hostList containsObject:URL.host]) {
-        [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"URL host %@ for URL scheme %@ is not found !", URL.host, URL.scheme] completionHandler:completionHandler];
+    NSArray *hostList = self.hostListForScheme[lowercaseScheme];
+    NSString *lowercaseHost = [URL.host lowercaseString];
+    if (![hostList containsObject:lowercaseHost]) {
+        [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"URL host %@ for URL scheme %@ is not found !", lowercaseHost, lowercaseScheme] completionHandler:completionHandler];
         return;
     }
     JCURLMap *URLMap = [self URLMapForURL:URL];
