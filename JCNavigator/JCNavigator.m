@@ -56,9 +56,6 @@
 
 - (void)addURLMap:(JCURLMap *)URLMap
 {
-    if (![URLMap isKindOfClass:[JCURLMap class]]) {
-        return;
-    }
     [self.URLMaps addObject:URLMap];
 }
 
