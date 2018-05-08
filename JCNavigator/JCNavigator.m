@@ -193,10 +193,7 @@
         }];
         return;
     }
-    BOOL success = NO;
-    if ([[UIApplication sharedApplication] canOpenURL:URL]) {
-        success = [[UIApplication sharedApplication] openURL:URL];
-    }
+    BOOL success = [[UIApplication sharedApplication] openURL:URL];
     if (completionHandler) {
         completionHandler(success);
     }
