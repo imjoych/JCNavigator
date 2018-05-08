@@ -407,7 +407,8 @@
             self.dismissButtonBlock(viewController);
         }
         UINavigationController *navigationController = [[self.navigationControllerClass alloc] initWithRootViewController:viewController];
-        [self.visibleViewController presentViewController:navigationController animated:animated completion:nil];
+        UIViewController *vc = self.visibleViewController.parentViewController ?: self.visibleViewController;
+        [vc presentViewController:navigationController animated:animated completion:nil];
         return;
     }
     if (self.popButtonBlock) {
