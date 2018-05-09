@@ -27,6 +27,8 @@
     [[JCNavigator sharedNavigator] addURLScheme:@"joych" hostList:@[@"com.joych.JCNavigatorDemo"]];
     [[JCNavigator sharedNavigator] addURLMap:[JCRootURLMap new]];
     [[JCNavigator sharedNavigator] addURLMap:[JCTestURLMap new]];
+    [JCURLMap setProtocolPrefix:@"JC"];
+    
     [[JCNavigator sharedNavigator] popButtonSettingBlock:^(UIViewController *willOpenedViewController) {
         [willOpenedViewController jc_setupLeftBackBarButtonItem];
     }];
@@ -34,7 +36,6 @@
         [willOpenedViewController jc_setupLeftCloseBarButtonItem];
     }];
     [[JCNavigator sharedNavigator] setNavigationControllerClass:[JCNavigationController class]];
-    [JCURLMap setProtocolPrefix:@"JC"];
 }
 
 - (void)setNavigationBarAppearance
