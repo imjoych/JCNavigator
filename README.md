@@ -10,19 +10,19 @@ This framework supports the development of iOS 8.0+ in ARC.
 
 ### JCNavigator configs
 
-Set URL jump rules with hostList for scheme.
+Set URL jump rules with hostList for scheme
 ```objective-c
 [[JCNavigator sharedNavigator] addURLScheme:@"joych" hostList:@[@"com.joych.JCNavigatorDemo"]];
 ```
 
-URL maps configs.
+URL maps configs
 ```objective-c
 [[JCNavigator sharedNavigator] addURLMap:[JCRootURLMap new]];
 [[JCNavigator sharedNavigator] addURLMap:[JCTestURLMap new]];
 [JCURLMap setProtocolPrefix:@"JC"];
 ```
 
-Navigation configs.
+Navigation configs
 ```objective-c
 [[JCNavigator sharedNavigator] popButtonSettingBlock:^(UIViewController *willOpenedViewController) {
     [willOpenedViewController jc_setupLeftBackBarButtonItem];
@@ -33,7 +33,7 @@ Navigation configs.
 [[JCNavigator sharedNavigator] setNavigationControllerClass:[JCNavigationController class]];
 ```
 
-Set rootViewController.
+Set rootViewController
 ```objective-c
 ViewController *vc = [[ViewController alloc] init];
 [[JCNavigator sharedNavigator] setRootViewController:vc];
@@ -41,7 +41,7 @@ ViewController *vc = [[ViewController alloc] init];
 
 ### Implement URL maps for modules
 
-JCRootURLMap class.
+JCRootURLMap class
 ```objective-c
 @implementation JCRootURLMap
 
@@ -53,7 +53,7 @@ JCRootURLMap class.
 @end
 ```
 
-JCTestURLMap class.
+JCTestURLMap class
 ```objective-c
 @implementation JCTestURLMap
 
@@ -79,7 +79,7 @@ JCTestURLMap class.
 @end
 ```
 
-JC_contentDetail protocol.
+JC_contentDetail protocol
 ```objective-c
 @protocol JC_contentDetail <NSObject>
 
@@ -90,7 +90,7 @@ JC_contentDetail protocol.
 
 ### Page jumps with method open scheme or open URL.
 
-Open scheme.
+Open scheme
 ```objective-c
 [[JCNavigator sharedNavigator] openScheme:@protocol(JC_firstLevel)];
 
@@ -99,7 +99,7 @@ Open scheme.
 } presented:YES];
 ```
 
-Open URL.
+Open URL
 ```objective-c
 [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/secondlevel"];
 
