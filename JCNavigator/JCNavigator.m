@@ -242,34 +242,34 @@
     return parameters;
 }
 
-#pragma mark - Open scheme operation
+#pragma mark - Open protocol operation
 
-- (void)openScheme:(Protocol *)scheme
+- (void)openProtocol:(Protocol *)protocol
 {
-    [self openScheme:scheme settingBlock:nil];
+    [self openProtocol:protocol settingBlock:nil];
 }
 
-- (void)openScheme:(Protocol *)scheme settingBlock:(JCNavigatorSettingBlock)block
+- (void)openProtocol:(Protocol *)protocol settingBlock:(JCNavigatorSettingBlock)block
 {
-    [self openScheme:scheme settingBlock:block presented:NO];
+    [self openProtocol:protocol settingBlock:block presented:NO];
 }
 
-- (void)openScheme:(Protocol *)scheme settingBlock:(JCNavigatorSettingBlock)block presented:(BOOL)presented
+- (void)openProtocol:(Protocol *)protocol settingBlock:(JCNavigatorSettingBlock)block presented:(BOOL)presented
 {
-    [self openScheme:scheme settingBlock:block presented:presented animated:YES];
+    [self openProtocol:protocol settingBlock:block presented:presented animated:YES];
 }
 
-- (void)openScheme:(Protocol *)scheme settingBlock:(JCNavigatorSettingBlock)block presented:(BOOL)presented animated:(BOOL)animated
+- (void)openProtocol:(Protocol *)protocol settingBlock:(JCNavigatorSettingBlock)block presented:(BOOL)presented animated:(BOOL)animated
 {
-    JCURLMap *URLMap = [self URLMapForProtocol:scheme];
+    JCURLMap *URLMap = [self URLMapForProtocol:protocol];
     if (!URLMap) {
 #ifdef DEBUG
-        NSLog(@"Protocol %@ not found! Please implement the mapping relation of protocol and view controller in the subclass of JCURLMap, which should be added to JCNavigator with addURLMap: method.", NSStringFromProtocol(scheme));
+        NSLog(@"Protocol %@ not found! Please implement the mapping relation of protocol and view controller in the subclass of JCURLMap, which should be added to JCNavigator with addURLMap: method.", NSStringFromProtocol(protocol));
 #endif
         return;
     }
     UIViewController *viewController = nil;
-    Class viewControllerClass = [URLMap viewControllerClassForProtocol:scheme];
+    Class viewControllerClass = [URLMap viewControllerClassForProtocol:protocol];
     if ([[URLMap reuseViewControllerClasses] containsObject:viewControllerClass]) {
         viewController = [self existedViewControllerForClass:viewControllerClass];
         if (viewController) {

@@ -22,9 +22,9 @@
     self.title = [NSString stringWithFormat:@"%@_%@", NSStringFromClass([self class]), self.currentIndex];
     Protocol *protocol = [self nextOpenProtocolWithIndex:self.currentIndex];
     JCCommonView *view = [JCCommonView viewWithPushBlock:^{
-        [[JCNavigator sharedNavigator] openScheme:protocol];
+        [[JCNavigator sharedNavigator] openProtocol:protocol];
     } presentBlock:^{
-        [[JCNavigator sharedNavigator] openScheme:protocol settingBlock:^(UIViewController *willOpenedViewController) {
+        [[JCNavigator sharedNavigator] openProtocol:protocol settingBlock:^(UIViewController *willOpenedViewController) {
             NSLog(@"%@", NSStringFromClass([willOpenedViewController class]));
         } presented:YES];
     }];

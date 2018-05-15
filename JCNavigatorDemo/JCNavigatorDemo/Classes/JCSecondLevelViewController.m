@@ -20,10 +20,10 @@
     // Do any additional setup after loading the view.
     self.title = NSStringFromClass([self class]);
     JCCommonView *view = [JCCommonView viewWithPushBlock:^{
-        [[JCNavigator sharedNavigator] openScheme:@protocol(JC_thirdLevel)];
+        [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_thirdLevel)];
     } presentBlock:^{
         [self showAlert];
-//        [[JCNavigator sharedNavigator] openScheme:@protocol(JC_contentDetail) settingBlock:^(UIViewController<JC_contentDetail> *willOpenedViewController) {
+//        [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) settingBlock:^(UIViewController<JC_contentDetail> *willOpenedViewController) {
 //            willOpenedViewController.currentIndex = @"2";
 //        } presented:YES];
     }];
@@ -42,7 +42,7 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Tips" message:@"Open content detail view controller 2 ?" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[JCNavigator sharedNavigator] openScheme:@protocol(JC_contentDetail) settingBlock:^(UIViewController<JC_contentDetail> *willOpenedViewController) {
+        [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) settingBlock:^(UIViewController<JC_contentDetail> *willOpenedViewController) {
             willOpenedViewController.currentIndex = @"2";
         } presented:YES];
     }];

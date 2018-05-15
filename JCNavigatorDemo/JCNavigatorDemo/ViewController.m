@@ -20,9 +20,9 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.title = NSStringFromClass([self class]);
     JCCommonView *view = [JCCommonView viewWithPushBlock:^{
-        [[JCNavigator sharedNavigator] openScheme:@protocol(JC_firstLevel)];
+        [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_firstLevel)];
     } presentBlock:^{
-        [[JCNavigator sharedNavigator] openScheme:@protocol(JC_contentDetail) settingBlock:^(UIViewController<JC_contentDetail> *willOpenedViewController) {
+        [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) settingBlock:^(UIViewController<JC_contentDetail> *willOpenedViewController) {
             willOpenedViewController.currentIndex = @"0";
         } presented:YES];
     }];

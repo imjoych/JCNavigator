@@ -86,12 +86,12 @@ typedef void (^JCNavigatorSettingBlock)(UIViewController *willOpenedViewControll
 - (void)openURL:(NSURL *)URL completionHandler:(void(^)(BOOL success))completionHandler;
 - (void)openURL:(NSURL *)URL options:(NSDictionary *)options completionHandler:(void (^)(BOOL success))completionHandler;
 
-#pragma mark - Open scheme operation
+#pragma mark - Open protocol operation
 
-- (void)openScheme:(Protocol *)scheme;
-- (void)openScheme:(Protocol *)scheme settingBlock:(JCNavigatorSettingBlock)block;
-- (void)openScheme:(Protocol *)scheme settingBlock:(JCNavigatorSettingBlock)block presented:(BOOL)presented;
-- (void)openScheme:(Protocol *)scheme settingBlock:(JCNavigatorSettingBlock)block presented:(BOOL)presented animated:(BOOL)animated;
+- (void)openProtocol:(Protocol *)protocol;
+- (void)openProtocol:(Protocol *)protocol settingBlock:(JCNavigatorSettingBlock)block;
+- (void)openProtocol:(Protocol *)protocol settingBlock:(JCNavigatorSettingBlock)block presented:(BOOL)presented;
+- (void)openProtocol:(Protocol *)protocol settingBlock:(JCNavigatorSettingBlock)block presented:(BOOL)presented animated:(BOOL)animated;
 
 #pragma mark - Pop view controller operation
 
