@@ -28,6 +28,16 @@ static NSString *JCProtocolPrefix = @"JC";
     return nil;
 }
 
+- (BOOL)presentedForClass:(Class)viewControllerClass
+{
+    return NO;
+}
+
+- (BOOL)animatedForClass:(Class)viewControllerClass
+{
+    return YES;
+}
+
 - (NSArray *)reuseViewControllerClasses
 {
     return nil;

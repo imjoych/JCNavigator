@@ -145,13 +145,15 @@
     UIViewController *viewController = nil;
     Class viewControllerClass = [URLMap viewControllerClassForURL:URL];
     NSDictionary *parameters = [self parseURLQuery:URL.query];
+    BOOL presented = [URLMap presentedForClass:viewControllerClass];
+    BOOL animated = [URLMap animatedForClass:viewControllerClass];
     if ([[URLMap reuseViewControllerClasses] containsObject:viewControllerClass]) {
         viewController = [self existedViewControllerForClass:viewControllerClass];
         if (viewController) {
             [self setViewController:viewController URLMap:URLMap params:parameters];
             [self openPreviousVCOfWillOpenedVC:viewController completion:^(BOOL success) {
                 if (success) {
-                    [self openViewController:viewController presented:NO animated:YES];
+                    [self openViewController:viewController presented:presented animated:animated];
                 }
                 if (completionHandler) {
                     completionHandler(YES);
@@ -164,7 +166,7 @@
         viewController = [[viewControllerClass alloc] init];
     }
     [self setViewController:viewController URLMap:URLMap params:parameters];
-    [self openViewController:viewController presented:NO animated:YES];
+    [self openViewController:viewController presented:presented animated:animated];
     if (completionHandler) {
         completionHandler(YES);
     }

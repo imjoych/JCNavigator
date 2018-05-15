@@ -40,6 +40,16 @@
 - (NSDictionary<NSString *,Class> *)classesForProtocols;
 
 /**
+ * Returns presented or not with opening view controller.
+ */
+- (BOOL)presentedForClass:(Class)viewControllerClass;
+
+/**
+ * Returns animated or not with opening view controller.
+ */
+- (BOOL)animatedForClass:(Class)viewControllerClass;
+
+/**
  * Returns array of reuse view controller classes.
  * @note The view controllers of classes will be reused if existed in window, otherwise new view controllers will be created.
  */
