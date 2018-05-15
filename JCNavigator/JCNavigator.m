@@ -144,10 +144,11 @@
     }
     UIViewController *viewController = nil;
     Class viewControllerClass = [URLMap viewControllerClassForURL:URL];
+    NSDictionary *parameters = [self parseURLQuery:URL.query];
     if ([[URLMap reuseViewControllerClasses] containsObject:viewControllerClass]) {
         viewController = [self existedViewControllerForClass:viewControllerClass];
         if (viewController) {
-            [self setViewController:viewController URLMap:URLMap URLQuery:URL.query];
+            [self setViewController:viewController URLMap:URLMap params:parameters];
             [self openPreviousVCOfWillOpenedVC:viewController completion:^(BOOL success) {
                 if (success) {
                     [self openViewController:viewController presented:NO animated:YES];
@@ -162,7 +163,7 @@
     if (!viewController) {
         viewController = [[viewControllerClass alloc] init];
     }
-    [self setViewController:viewController URLMap:URLMap URLQuery:URL.query];
+    [self setViewController:viewController URLMap:URLMap params:parameters];
     [self openViewController:viewController presented:NO animated:YES];
     if (completionHandler) {
         completionHandler(YES);
@@ -199,12 +200,11 @@
     }
 }
 
-- (void)setViewController:(UIViewController *)viewController URLMap:(JCURLMap *)URLMap URLQuery:(NSString *)URLQuery
+- (void)setViewController:(UIViewController *)viewController URLMap:(JCURLMap *)URLMap params:(NSDictionary *)params
 {
-    NSDictionary *parameters = [self parseURLQuery:URLQuery];
     NSDictionary *mapForClasses = [URLMap propertiesMapOfURLQueryForClasses];
     NSDictionary *propertiesMap = mapForClasses[NSStringFromClass([viewController class])];
-    [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+    [params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSString *realKey = nil;
         if (propertiesMap) {
             realKey = propertiesMap[key];
