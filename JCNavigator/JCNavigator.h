@@ -77,6 +77,10 @@ typedef void (^JCNavigatorSettingBlock)(UIViewController *willOpenedViewControll
 
 #pragma mark - Open URL operation
 
+/**
+ * Open URL methods.
+ * @note URL string format 'scheme://host/path?paramA=xxx&paramB=yyy'
+ */
 - (void)openURLString:(NSString *)URLString;
 - (void)openURL:(NSURL *)URL;
 - (void)openURL:(NSURL *)URL completionHandler:(void(^)(BOOL success))completionHandler;
