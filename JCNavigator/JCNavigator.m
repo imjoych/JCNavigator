@@ -162,9 +162,8 @@
             return;
         }
     }
-    if (!viewController) {
-        viewController = [[viewControllerClass alloc] init];
-    }
+    
+    viewController = [URLMap instanceForClass:viewControllerClass];
     [self setViewController:viewController URLMap:URLMap params:parameters];
     [self openViewController:viewController presented:presented animated:animated];
     if (completionHandler) {
@@ -286,9 +285,8 @@
             return;
         }
     }
-    if (!viewController) {
-        viewController = [[viewControllerClass alloc] init];
-    }
+    
+    viewController = [URLMap instanceForClass:viewControllerClass];
     if (block) {
         block(viewController);
     }

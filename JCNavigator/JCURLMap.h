@@ -40,6 +40,11 @@
 - (NSDictionary<NSString *,Class> *)classesForProtocols;
 
 /**
+ * Returns instance of view controller class.
+ */
+- (id)instanceForClass:(Class)viewControllerClass;
+
+/**
  * Returns presented or not with opening view controller.
  */
 - (BOOL)presentedForClass:(Class)viewControllerClass;
