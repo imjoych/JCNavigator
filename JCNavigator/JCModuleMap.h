@@ -40,17 +40,17 @@
 - (NSDictionary<NSString *,Class> *)classesForProtocols;
 
 /**
- * Returns instance of view controller class.
+ * Returns instance of view controller class, default [[viewControllerClass alloc] init].
  */
 - (id)instanceForClass:(Class)viewControllerClass;
 
 /**
- * Returns default settings of will opened view controllers which presented or not.
+ * Presented or not settings while opening the view controllers, default NO.
  */
 - (BOOL)presentedForClass:(Class)viewControllerClass;
 
 /**
- * Returns default settings of will opened view controllers which animated or not.
+ * Animated or not settings while opening the view controllers, default YES.
  */
 - (BOOL)animatedForClass:(Class)viewControllerClass;
 
