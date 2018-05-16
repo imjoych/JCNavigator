@@ -18,7 +18,5 @@
 #import "JC_contentDetail.h"
 
 #import "JCCommonView.h"
-#import "JCNavigationController.h"
-#import "UIViewController+JCNavigationItem.h"
 
 #endif /* JCCommonHeader_h */
