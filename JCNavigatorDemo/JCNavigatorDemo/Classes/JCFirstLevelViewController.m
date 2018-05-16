@@ -21,7 +21,7 @@
     self.title = NSStringFromClass([self class]);
     JCCommonView *view = [JCCommonView viewWithPushBlock:^{
 //        [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_secondLevel)];
-        [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/secondlevel"];
+        [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/secondlevel"]];
     } presentBlock:^{
         [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.jcnavigatordemo/contentdetail?pageindex=1"];
 //        [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) propertiesBlock:^NSDictionary *{
