@@ -107,6 +107,12 @@ Open URL
 
 [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.jcnavigatordemo/contentdetail?pageindex=1"];
 ```
+```objective-c
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
+{
+    return [[JCNavigator sharedNavigator] openURL:url options:options];
+}
+```
 
 ## CocoaPods
 To integrate JCNavigator into your iOS project, specify it in your Podfile:
