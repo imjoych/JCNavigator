@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "JCTestHeader.h"
+#import "JCNavigator.h"
+#import "JCTestView.h"
 
 @interface ViewController ()
 
@@ -20,9 +21,9 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.title = NSStringFromClass([self class]);
     JCTestView *view = [JCTestView viewWithPushBlock:^{
-        [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_firstLevel)];
+        [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_firstLevel")];
     } presentBlock:^{
-        [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) propertiesBlock:^NSDictionary *{
+        [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_contentDetail") propertiesBlock:^NSDictionary *{
             return @{@"currentIndex": @"0"};
         } presented:YES];
     }];

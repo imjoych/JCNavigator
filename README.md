@@ -107,7 +107,7 @@ Open URL
 
 Open protocol
 ```objective-c
-[[JCNavigator sharedNavigator] openProtocol:@protocol(JC_firstLevel)];
+[[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_firstLevel")];
 
 [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) propertiesBlock:^NSDictionary *{
     return @{@"currentIndex": @"3"};
