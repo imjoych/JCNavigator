@@ -23,7 +23,7 @@
 @end
 
 /**
- * Class of URL map for pages jump.
+ * Class of module map for pages jump.
  */
 @interface JCModuleMap : NSObject <JCModuleMap>
 
