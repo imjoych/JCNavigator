@@ -28,7 +28,7 @@
 //            return @{@"currentIndex": @"1"};
 //        } presented:YES];
     }];
-    [view resetPresentTitle:@"PushDetailViewController"];
+//    [view resetPresentTitle:@"PushDetailViewController"];
     [self.view addSubview:view];
     view.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64);
     self.view.backgroundColor = [UIColor whiteColor];

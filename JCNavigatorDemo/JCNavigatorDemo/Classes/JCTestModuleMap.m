@@ -19,6 +19,14 @@
              };
 }
 
+- (BOOL)presentedForClass:(Class)viewControllerClass
+{
+    if ([viewControllerClass isEqual:NSClassFromString(@"JCContentDetailViewController")]) {
+        return YES;
+    }
+    return NO;
+}
+
 - (NSArray *)reuseViewControllerClasses
 {
     return @[NSClassFromString(@"JCFirstLevelViewController")];
