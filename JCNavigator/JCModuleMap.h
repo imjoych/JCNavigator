@@ -45,12 +45,12 @@
 - (id)instanceForClass:(Class)viewControllerClass;
 
 /**
- * Returns presented or not with opening view controller.
+ * Returns default settings of will opened view controllers which presented or not.
  */
 - (BOOL)presentedForClass:(Class)viewControllerClass;
 
 /**
- * Returns animated or not with opening view controller.
+ * Returns default settings of will opened view controllers which animated or not.
  */
 - (BOOL)animatedForClass:(Class)viewControllerClass;
 
