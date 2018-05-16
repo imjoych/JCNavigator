@@ -90,16 +90,7 @@ JC_contentDetail protocol
 @end
 ```
 
-### Page jumps with method open scheme or open URL.
-
-Open scheme
-```objective-c
-[[JCNavigator sharedNavigator] openScheme:@protocol(JC_firstLevel)];
-
-[[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) propertiesBlock:^NSDictionary *{
-    return @{@"currentIndex": @"3"};
-} presented:YES];
-```
+### Page jumps with method openURL: or openProtocol:
 
 Open URL
 ```objective-c
@@ -112,6 +103,15 @@ Open URL
 {
     return [[JCNavigator sharedNavigator] openURL:url options:options];
 }
+```
+
+Open protocol
+```objective-c
+[[JCNavigator sharedNavigator] openProtocol:@protocol(JC_firstLevel)];
+
+[[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) propertiesBlock:^NSDictionary *{
+    return @{@"currentIndex": @"3"};
+} presented:YES];
 ```
 
 ## CocoaPods
