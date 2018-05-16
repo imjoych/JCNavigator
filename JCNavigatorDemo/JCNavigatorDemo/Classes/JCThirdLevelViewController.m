@@ -22,8 +22,8 @@
     JCCommonView *view = [JCCommonView viewWithPushBlock:^{
         [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_firstLevel)];
     } presentBlock:^{
-        [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) settingBlock:^(UIViewController<JC_contentDetail> *willOpenedViewController) {
-            willOpenedViewController.currentIndex = @"3";
+        [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) propertiesBlock:^NSDictionary *{
+            return @{@"currentIndex": @"3"};
         } presented:YES];
     }];
     [self.view addSubview:view];

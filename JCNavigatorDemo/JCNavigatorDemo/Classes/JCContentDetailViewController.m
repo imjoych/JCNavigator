@@ -24,9 +24,7 @@
     JCCommonView *view = [JCCommonView viewWithPushBlock:^{
         [[JCNavigator sharedNavigator] openProtocol:protocol];
     } presentBlock:^{
-        [[JCNavigator sharedNavigator] openProtocol:protocol settingBlock:^(UIViewController *willOpenedViewController) {
-            NSLog(@"%@", NSStringFromClass([willOpenedViewController class]));
-        } presented:YES];
+        [[JCNavigator sharedNavigator] openProtocol:protocol propertiesBlock:nil presented:YES];
     }];
     [self.view addSubview:view];
     view.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64);

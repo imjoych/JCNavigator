@@ -12,9 +12,9 @@
 @class JCURLMap;
 
 /**
- * Block of settings for will opened view controller.
+ * Values for properties will be setted for will opened view controller with this block.
  */
-typedef void (^JCNavigatorSettingBlock)(UIViewController *willOpenedViewController);
+typedef NSDictionary *(^JCNavigatorPropertiesBlock)(void);
 
 /**
  * Class of navigation manager.
@@ -79,9 +79,9 @@ typedef void (^JCNavigatorSettingBlock)(UIViewController *willOpenedViewControll
 #pragma mark - Open protocol operation
 
 - (void)openProtocol:(Protocol *)protocol;
-- (void)openProtocol:(Protocol *)protocol settingBlock:(JCNavigatorSettingBlock)block;
-- (void)openProtocol:(Protocol *)protocol settingBlock:(JCNavigatorSettingBlock)block presented:(BOOL)presented;
-- (void)openProtocol:(Protocol *)protocol settingBlock:(JCNavigatorSettingBlock)block presented:(BOOL)presented animated:(BOOL)animated;
+- (void)openProtocol:(Protocol *)protocol propertiesBlock:(JCNavigatorPropertiesBlock)block;
+- (void)openProtocol:(Protocol *)protocol propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented;
+- (void)openProtocol:(Protocol *)protocol propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented animated:(BOOL)animated;
 
 #pragma mark - Pop view controller operation
 

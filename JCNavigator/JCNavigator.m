@@ -191,6 +191,9 @@
 
 - (void)setViewController:(UIViewController *)viewController URLMap:(JCURLMap *)URLMap params:(NSDictionary *)params
 {
+    if (![params isKindOfClass:[NSDictionary class]] || params.count < 1) {
+        return;
+    }
     NSDictionary *mapForClasses = [URLMap propertiesMapOfURLQueryForClasses];
     NSDictionary *propertiesMap = mapForClasses[NSStringFromClass([viewController class])];
     [params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -235,20 +238,20 @@
 
 - (void)openProtocol:(Protocol *)protocol
 {
-    [self openProtocol:protocol settingBlock:nil];
+    [self openProtocol:protocol propertiesBlock:nil];
 }
 
-- (void)openProtocol:(Protocol *)protocol settingBlock:(JCNavigatorSettingBlock)block
+- (void)openProtocol:(Protocol *)protocol propertiesBlock:(JCNavigatorPropertiesBlock)block
 {
-    [self openProtocol:protocol settingBlock:block presented:NO];
+    [self openProtocol:protocol propertiesBlock:block presented:NO];
 }
 
-- (void)openProtocol:(Protocol *)protocol settingBlock:(JCNavigatorSettingBlock)block presented:(BOOL)presented
+- (void)openProtocol:(Protocol *)protocol propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented
 {
-    [self openProtocol:protocol settingBlock:block presented:presented animated:YES];
+    [self openProtocol:protocol propertiesBlock:block presented:presented animated:YES];
 }
 
-- (void)openProtocol:(Protocol *)protocol settingBlock:(JCNavigatorSettingBlock)block presented:(BOOL)presented animated:(BOOL)animated
+- (void)openProtocol:(Protocol *)protocol propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented animated:(BOOL)animated
 {
     JCURLMap *URLMap = [self URLMapForProtocol:protocol];
     if (!URLMap) {
@@ -263,7 +266,7 @@
         viewController = [self existedViewControllerForClass:viewControllerClass];
         if (viewController) {
             if (block) {
-                block(viewController);
+                [self setViewController:viewController URLMap:URLMap params:block()];
             }
             [self openPreviousVCOfWillOpenedVC:viewController completion:^(BOOL success) {
                 if (success) {
@@ -276,7 +279,7 @@
     
     viewController = [URLMap instanceForClass:viewControllerClass];
     if (block) {
-        block(viewController);
+        [self setViewController:viewController URLMap:URLMap params:block()];
     }
     [self openViewController:viewController presented:presented animated:animated];
 }
