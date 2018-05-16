@@ -105,24 +105,24 @@
 
 - (BOOL)openURL:(NSURL *)URL options:(NSDictionary *)options
 {
-    if (![URL isKindOfClass:[NSURL class]] || !URL.scheme || !URL.host) {
-        return [self callbackWithURL:nil options:nil message:@"Invalid URL!"];
+    if (![URL isKindOfClass:[NSURL class]] || !URL.scheme) { // Invalid URL.
+        return NO;
     }
     
     NSString *lowercaseScheme = [URL.scheme lowercaseString];
-    if (![self.hostListForScheme.allKeys containsObject:lowercaseScheme]) {
-        return [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"URL scheme %@ is not found !", lowercaseScheme]];
+    if (![self.hostListForScheme.allKeys containsObject:lowercaseScheme] || !URL.host) { // URL scheme not found or URL host not exist.
+        return [self openSpecifiedURL:URL options:options];
     }
     
     NSArray *hostList = self.hostListForScheme[lowercaseScheme];
     NSString *lowercaseHost = [URL.host lowercaseString];
-    if (![hostList containsObject:lowercaseHost]) {
-        return [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"URL host %@ for URL scheme %@ is not found !", lowercaseHost, lowercaseScheme]];
+    if (![hostList containsObject:lowercaseHost]) { // URL host not found.
+        return [self openSpecifiedURL:URL options:options];
     }
     
     JCModuleMap *moduleMap = [self moduleMapForURL:URL];
-    if (!moduleMap) {
-        return [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"The corresponding moduleMap for %@ is not found !", URL.absoluteString]];
+    if (!moduleMap) { // The corresponding moduleMap not found.
+        return [self openSpecifiedURL:URL options:options];
     }
     
     UIViewController *viewController = nil;
@@ -149,19 +149,11 @@
     return YES;
 }
 
-- (BOOL)callbackWithURL:(NSURL *)URL options:(NSDictionary *)options message:(NSString *)message
-{
-    if ([URL isKindOfClass:[NSURL class]] && [[UIApplication sharedApplication] canOpenURL:URL]) {
-        return [self openSpecifiedURL:URL options:options];
-    }
-#ifdef DEBUG
-    NSLog(@"%@", message);
-#endif
-    return NO;
-}
-
 - (BOOL)openSpecifiedURL:(NSURL *)URL options:(NSDictionary *)options
 {
+    if (![URL isKindOfClass:[NSURL class]] || ![[UIApplication sharedApplication] canOpenURL:URL]) {
+        return NO;
+    }
     if (@available(iOS 10.0, *)) {
         [[UIApplication sharedApplication] openURL:URL options:options completionHandler:nil];
         return YES;
