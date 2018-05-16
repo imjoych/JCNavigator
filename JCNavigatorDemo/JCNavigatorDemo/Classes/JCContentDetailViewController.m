@@ -14,7 +14,7 @@
 @end
 
 @implementation JCContentDetailViewController
-@synthesize currentIndex;
+@synthesize currentIndex, testArray, testClass;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -23,7 +23,12 @@
         [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_firstLevel)];
     } presentBlock:^{
         [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) propertiesBlock:^NSDictionary *{
-            return @{@"currentIndex": @"3"};
+            JCTestClass *testClass = [JCTestClass new];
+            testClass.testId = @"hahaha111";
+            return @{@"currentIndex": @"3",
+                     @"testArray": [NSNull null],
+                     @"testClass": testClass,
+                     };
         } presented:YES];
     }];
     [self.view addSubview:view];

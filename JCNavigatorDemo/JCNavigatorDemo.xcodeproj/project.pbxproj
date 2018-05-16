@@ -23,6 +23,7 @@
 		23F2F5462081B33800FC3ED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F2F5402081B33800FC3ED4 /* Assets.xcassets */; };
 		23F2F54B2081B35400FC3ED4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F2F5472081B35400FC3ED4 /* Main.storyboard */; };
 		23F2F54C2081B35400FC3ED4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F2F5492081B35400FC3ED4 /* LaunchScreen.storyboard */; };
+		B6625D9020AC111400A7D910 /* JCTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625D8F20AC111400A7D910 /* JCTestClass.m */; };
 		B670FC87209B02A7004D5B5E /* UIViewController+JCNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B670FC86209B02A7004D5B5E /* UIViewController+JCNavigationItem.m */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,8 @@
 		23F2F5402081B33800FC3ED4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23F2F5482081B35400FC3ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23F2F54A2081B35400FC3ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B6625D8E20AC111400A7D910 /* JCTestClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCTestClass.h; sourceTree = "<group>"; };
+		B6625D8F20AC111400A7D910 /* JCTestClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCTestClass.m; sourceTree = "<group>"; };
 		B670FC84209AF032004D5B5E /* JCCommonHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCCommonHeader.h; sourceTree = "<group>"; };
 		B670FC85209B02A7004D5B5E /* UIViewController+JCNavigationItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JCNavigationItem.h"; sourceTree = "<group>"; };
 		B670FC86209B02A7004D5B5E /* UIViewController+JCNavigationItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JCNavigationItem.m"; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 				B670FC84209AF032004D5B5E /* JCCommonHeader.h */,
 				B670FC85209B02A7004D5B5E /* UIViewController+JCNavigationItem.h */,
 				B670FC86209B02A7004D5B5E /* UIViewController+JCNavigationItem.m */,
+				B6625D8E20AC111400A7D910 /* JCTestClass.h */,
+				B6625D8F20AC111400A7D910 /* JCTestClass.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -236,6 +241,7 @@
 			files = (
 				23F2F5262081921700FC3ED4 /* JCNavigator.m in Sources */,
 				23F2F5112081919B00FC3ED4 /* ViewController.m in Sources */,
+				B6625D9020AC111400A7D910 /* JCTestClass.m in Sources */,
 				23F2F5342081B2E400FC3ED4 /* JCRootModuleMap.m in Sources */,
 				23153E5C209D530500A09D46 /* JCNavigationController.m in Sources */,
 				23AEAABD208CD1C500230B1C /* JCTestModuleMap.m in Sources */,
