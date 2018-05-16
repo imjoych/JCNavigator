@@ -6,7 +6,7 @@ This framework supports the development of iOS 8.0+ in ARC.
 
 * JCNavigator configs.
 * Implement module maps.
-* Page jumps with method openURL: or openProtocol:.
+* Jump operations with method openURL: or openProtocol:.
 
 ### JCNavigator configs
 
@@ -90,13 +90,15 @@ JC_contentDetail protocol
 @end
 ```
 
-### Page jumps with method openURL: or openProtocol:
+### Jump operations with method openURL: or openProtocol:
 
-Open URL
+Open URL between modules or apps
 ```objective-c
 [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/secondlevel"]];
 
 [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.jcnavigatordemo/contentdetail?pageindex=1"];
+
+[[JCNavigator sharedNavigator] openURLString:UIApplicationOpenSettingsURLString];
 ```
 ```objective-c
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
@@ -105,7 +107,7 @@ Open URL
 }
 ```
 
-Open protocol
+Open protocol between modules
 ```objective-c
 [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_firstLevel")];
 

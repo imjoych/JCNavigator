@@ -36,9 +36,11 @@
 
 - (void)showAlert
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Tips" message:@"Open content detail view controller 2 ?" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Tips" message:@"Open ApplicationSettings or contentDetailViewController_2 ?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Settings" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [[JCNavigator sharedNavigator] openURLString:UIApplicationOpenSettingsURLString];
+    }];
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Detail" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) propertiesBlock:^NSDictionary *{
             return @{@"currentIndex": @"2"};
         } presented:YES];
