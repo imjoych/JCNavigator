@@ -1,5 +1,5 @@
 # JCNavigator
-A useful navigator framework of page jumps between modules for iOS development.
+A decoupled navigator framework of jumps between modules or apps for iOS development. 
 
 ## Features
 This framework supports the development of iOS 8.0+ in ARC.
