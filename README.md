@@ -5,8 +5,8 @@ A useful navigator framework of page jumps between modules for iOS development.
 This framework supports the development of iOS 8.0+ in ARC.
 
 * JCNavigator configs.
-* Implement URL maps for modules.
-* Page jumps with method openURL: or openScheme.
+* Implement module maps.
+* Page jumps with method openURL: or openProtocol:.
 
 ### JCNavigator configs
 
@@ -15,21 +15,15 @@ Set URL jump rules with hostList for scheme
 [[JCNavigator sharedNavigator] addURLScheme:@"joych" hostList:@[@"com.joych.JCNavigatorDemo"]];
 ```
 
-URL maps configs
+Module maps configs
 ```objective-c
-[[JCNavigator sharedNavigator] addURLMap:[JCRootURLMap new]];
-[[JCNavigator sharedNavigator] addURLMap:[JCTestURLMap new]];
+[[JCNavigator sharedNavigator] addModuleMap:[JCRootModuleMap new]];
+[[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
 [JCURLMap setProtocolPrefix:@"JC"];
 ```
 
 Navigation configs
 ```objective-c
-[[JCNavigator sharedNavigator] popButtonSettingBlock:^(UIViewController *willOpenedViewController) {
-    [willOpenedViewController jc_setupLeftBackBarButtonItem];
-}];
-[[JCNavigator sharedNavigator] dismissButtonSettingBlock:^(UIViewController *willOpenedViewController) {
-    [willOpenedViewController jc_setupLeftCloseBarButtonItem];
-}];
 [[JCNavigator sharedNavigator] setNavigationControllerClass:[JCNavigationController class]];
 ```
 
@@ -39,41 +33,49 @@ ViewController *vc = [[ViewController alloc] init];
 [[JCNavigator sharedNavigator] setRootViewController:vc];
 ```
 
-### Implement URL maps for modules
+### Implement module maps
 
-JCRootURLMap class
+JCRootModuleMap class
 ```objective-c
-@implementation JCRootURLMap
+@implementation JCRootModuleMap
 
 - (NSDictionary<NSString *,Class> *)classesForProtocols
 {
-    return @{NSStringFromProtocol(@protocol(JC_root)): [ViewController class]};
+    return @{@"JC_root": NSClassFromString(@"ViewController")};
 }
 
 @end
 ```
 
-JCTestURLMap class
+JCTestModuleMap class
 ```objective-c
-@implementation JCTestURLMap
+@implementation JCTestModuleMap
 
 - (NSDictionary<NSString *,Class> *)classesForProtocols
 {
-    return @{NSStringFromProtocol(@protocol(JC_firstLevel)): [JCFirstLevelViewController class],
-            NSStringFromProtocol(@protocol(JC_secondLevel)): [JCSecondLevelViewController class],
-            NSStringFromProtocol(@protocol(JC_thirdLevel)): [JCThirdLevelViewController class],
-            NSStringFromProtocol(@protocol(JC_contentDetail)): [JCContentDetailViewController class],
+    return @{@"JC_firstLevel": NSClassFromString(@"JCFirstLevelViewController"),
+            @"JC_secondLevel": NSClassFromString(@"JCSecondLevelViewController"),
+            @"JC_thirdLevel": NSClassFromString(@"JCThirdLevelViewController"),
+            @"JC_contentDetail": NSClassFromString(@"JCContentDetailViewController"),
             };
+}
+
+- (BOOL)presentedForClass:(Class)viewControllerClass
+{
+    if ([viewControllerClass isEqual:NSClassFromString(@"JCContentDetailViewController")]) {
+        return YES;
+    }
+    return NO;
 }
 
 - (NSArray *)reuseViewControllerClasses
 {
-    return @[[JCFirstLevelViewController class]];
+    return @[NSClassFromString(@"JCFirstLevelViewController")];
 }
 
 - (NSDictionary<NSString *,NSDictionary *> *)propertiesMapOfURLQueryForClasses
 {
-    return @{NSStringFromClass([JCContentDetailViewController class]): @{@"pageindex": @"currentIndex"}};
+    return @{@"JCContentDetailViewController": @{@"pageindex": @"currentIndex"}};
 }
 
 @end
@@ -94,8 +96,8 @@ Open scheme
 ```objective-c
 [[JCNavigator sharedNavigator] openScheme:@protocol(JC_firstLevel)];
 
-[[JCNavigator sharedNavigator] openScheme:@protocol(JC_contentDetail) settingBlock:^(UIViewController<JC_contentDetail> *willOpenedViewController) {
-    willOpenedViewController.currentIndex = @"2";
+[[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) propertiesBlock:^NSDictionary *{
+    return @{@"currentIndex": @"3"};
 } presented:YES];
 ```
 
