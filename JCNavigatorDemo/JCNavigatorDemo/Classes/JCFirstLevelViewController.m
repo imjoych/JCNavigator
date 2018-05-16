@@ -7,7 +7,7 @@
 //
 
 #import "JCFirstLevelViewController.h"
-#import "JCCommonHeader.h"
+#import "JCTestHeader.h"
 
 @interface JCFirstLevelViewController ()
 
@@ -19,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = NSStringFromClass([self class]);
-    JCCommonView *view = [JCCommonView viewWithPushBlock:^{
+    JCTestView *view = [JCTestView viewWithPushBlock:^{
 //        [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_secondLevel)];
         [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/secondlevel"]];
     } presentBlock:^{

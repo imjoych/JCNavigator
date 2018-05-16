@@ -7,7 +7,7 @@
 //
 
 #import "JCContentDetailViewController.h"
-#import "JCCommonHeader.h"
+#import "JCTestHeader.h"
 
 @interface JCContentDetailViewController ()
 
@@ -21,7 +21,7 @@
     // Do any additional setup after loading the view.
     self.title = [NSString stringWithFormat:@"%@_%@", NSStringFromClass([self class]), self.currentIndex];
     Protocol *protocol = [self nextOpenProtocolWithIndex:self.currentIndex];
-    JCCommonView *view = [JCCommonView viewWithPushBlock:^{
+    JCTestView *view = [JCTestView viewWithPushBlock:^{
         [[JCNavigator sharedNavigator] openProtocol:protocol];
     } presentBlock:^{
         [[JCNavigator sharedNavigator] openProtocol:protocol propertiesBlock:nil presented:YES];

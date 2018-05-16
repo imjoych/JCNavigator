@@ -1,14 +1,14 @@
 //
-//  JCCommonView.m
+//  JCTestView.m
 //  JCNavigatorDemo
 //
 //  Created by ChenJianjun on 2018/5/5.
 //  Copyright © 2018 Joych<https://github.com/imjoych>. All rights reserved.
 //
 
-#import "JCCommonView.h"
+#import "JCTestView.h"
 
-@interface JCCommonView ()
+@interface JCTestView ()
 
 @property (nonatomic, strong) UIButton *pushButton;
 @property (nonatomic, strong) UIButton *presentButton;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation JCCommonView
+@implementation JCTestView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -70,7 +70,7 @@
 
 + (instancetype)viewWithPushBlock:(void (^)(void))pushBlock presentBlock:(void (^)(void))presentBlock
 {
-    JCCommonView *view = [JCCommonView new];
+    JCTestView *view = [JCTestView new];
     view.pushBlock = ^{
         if (pushBlock) {
             pushBlock();

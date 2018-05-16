@@ -12,7 +12,7 @@
 		23AEAAB7208CD16C00230B1C /* JCSecondLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AEAAB6208CD16C00230B1C /* JCSecondLevelViewController.m */; };
 		23AEAABA208CD18000230B1C /* JCThirdLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AEAAB9208CD18000230B1C /* JCThirdLevelViewController.m */; };
 		23AEAABD208CD1C500230B1C /* JCTestModuleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AEAABC208CD1C500230B1C /* JCTestModuleMap.m */; };
-		23AEAAC1208CD34D00230B1C /* JCCommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AEAAC0208CD34D00230B1C /* JCCommonView.m */; };
+		23AEAAC1208CD34D00230B1C /* JCTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AEAAC0208CD34D00230B1C /* JCTestView.m */; };
 		23AEAAC7208CD4D300230B1C /* JCContentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AEAAC6208CD4D300230B1C /* JCContentDetailViewController.m */; };
 		23F2F50E2081919B00FC3ED4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F2F50D2081919B00FC3ED4 /* AppDelegate.m */; };
 		23F2F5112081919B00FC3ED4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F2F5102081919B00FC3ED4 /* ViewController.m */; };
@@ -39,8 +39,8 @@
 		23AEAABB208CD1C500230B1C /* JCTestModuleMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCTestModuleMap.h; sourceTree = "<group>"; };
 		23AEAABC208CD1C500230B1C /* JCTestModuleMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCTestModuleMap.m; sourceTree = "<group>"; };
 		23AEAABE208CD25E00230B1C /* JC_root.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JC_root.h; sourceTree = "<group>"; };
-		23AEAABF208CD34D00230B1C /* JCCommonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCCommonView.h; sourceTree = "<group>"; };
-		23AEAAC0208CD34D00230B1C /* JCCommonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCCommonView.m; sourceTree = "<group>"; };
+		23AEAABF208CD34D00230B1C /* JCTestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCTestView.h; sourceTree = "<group>"; };
+		23AEAAC0208CD34D00230B1C /* JCTestView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCTestView.m; sourceTree = "<group>"; };
 		23AEAAC2208CD36D00230B1C /* JC_firstLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JC_firstLevel.h; sourceTree = "<group>"; };
 		23AEAAC3208CD38100230B1C /* JC_secondLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JC_secondLevel.h; sourceTree = "<group>"; };
 		23AEAAC4208CD39500230B1C /* JC_thirdLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JC_thirdLevel.h; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		23F2F54A2081B35400FC3ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6625D8E20AC111400A7D910 /* JCTestClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCTestClass.h; sourceTree = "<group>"; };
 		B6625D8F20AC111400A7D910 /* JCTestClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCTestClass.m; sourceTree = "<group>"; };
-		B670FC84209AF032004D5B5E /* JCCommonHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCCommonHeader.h; sourceTree = "<group>"; };
+		B670FC84209AF032004D5B5E /* JCTestHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCTestHeader.h; sourceTree = "<group>"; };
 		B670FC85209B02A7004D5B5E /* UIViewController+JCNavigationItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JCNavigationItem.h"; sourceTree = "<group>"; };
 		B670FC86209B02A7004D5B5E /* UIViewController+JCNavigationItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JCNavigationItem.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,9 +145,9 @@
 				23AEAAB9208CD18000230B1C /* JCThirdLevelViewController.m */,
 				23AEAAC5208CD4D300230B1C /* JCContentDetailViewController.h */,
 				23AEAAC6208CD4D300230B1C /* JCContentDetailViewController.m */,
-				23AEAABF208CD34D00230B1C /* JCCommonView.h */,
-				23AEAAC0208CD34D00230B1C /* JCCommonView.m */,
-				B670FC84209AF032004D5B5E /* JCCommonHeader.h */,
+				23AEAABF208CD34D00230B1C /* JCTestView.h */,
+				23AEAAC0208CD34D00230B1C /* JCTestView.m */,
+				B670FC84209AF032004D5B5E /* JCTestHeader.h */,
 				B670FC85209B02A7004D5B5E /* UIViewController+JCNavigationItem.h */,
 				B670FC86209B02A7004D5B5E /* UIViewController+JCNavigationItem.m */,
 				B6625D8E20AC111400A7D910 /* JCTestClass.h */,
@@ -248,7 +248,7 @@
 				23AEAAB4208CD15400230B1C /* JCFirstLevelViewController.m in Sources */,
 				23AEAAC7208CD4D300230B1C /* JCContentDetailViewController.m in Sources */,
 				23AEAABA208CD18000230B1C /* JCThirdLevelViewController.m in Sources */,
-				23AEAAC1208CD34D00230B1C /* JCCommonView.m in Sources */,
+				23AEAAC1208CD34D00230B1C /* JCTestView.m in Sources */,
 				B670FC87209B02A7004D5B5E /* UIViewController+JCNavigationItem.m in Sources */,
 				23F2F52C2081A8BD00FC3ED4 /* JCModuleMap.m in Sources */,
 				23F2F5432081B33800FC3ED4 /* main.m in Sources */,

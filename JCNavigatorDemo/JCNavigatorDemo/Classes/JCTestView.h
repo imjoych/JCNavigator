@@ -1,5 +1,5 @@
 //
-//  JCCommonView.h
+//  JCTestView.h
 //  JCNavigatorDemo
 //
 //  Created by ChenJianjun on 2018/5/5.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JCCommonView : UIView
+@interface JCTestView : UIView
 
 + (instancetype)viewWithPushBlock:(void(^)(void))pushBlock
                      presentBlock:(void(^)(void))presentBlock;

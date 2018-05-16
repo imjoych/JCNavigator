@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "JCCommonHeader.h"
+#import "JCTestHeader.h"
 
 @interface ViewController ()
 
@@ -19,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.title = NSStringFromClass([self class]);
-    JCCommonView *view = [JCCommonView viewWithPushBlock:^{
+    JCTestView *view = [JCTestView viewWithPushBlock:^{
         [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_firstLevel)];
     } presentBlock:^{
         [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) propertiesBlock:^NSDictionary *{

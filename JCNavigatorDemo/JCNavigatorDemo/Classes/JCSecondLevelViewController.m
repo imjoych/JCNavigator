@@ -7,7 +7,7 @@
 //
 
 #import "JCSecondLevelViewController.h"
-#import "JCCommonHeader.h"
+#import "JCTestHeader.h"
 
 @interface JCSecondLevelViewController ()
 
@@ -19,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = NSStringFromClass([self class]);
-    JCCommonView *view = [JCCommonView viewWithPushBlock:^{
+    JCTestView *view = [JCTestView viewWithPushBlock:^{
         [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_thirdLevel)];
     } presentBlock:^{
         [self showAlert];
