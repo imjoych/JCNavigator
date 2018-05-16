@@ -9,8 +9,8 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "JCNavigator.h"
-#import "JCRootURLMap.h"
-#import "JCTestURLMap.h"
+#import "JCRootModuleMap.h"
+#import "JCTestModuleMap.h"
 #import "JCNavigationController.h"
 
 @interface AppDelegate ()
@@ -24,9 +24,9 @@
 - (void)navigatorConfigs
 {
     [[JCNavigator sharedNavigator] addURLScheme:@"joych" hostList:@[@"com.joych.JCNavigatorDemo"]];
-    [[JCNavigator sharedNavigator] addURLMap:[JCRootURLMap new]];
-    [[JCNavigator sharedNavigator] addURLMap:[JCTestURLMap new]];
-    [JCURLMap setProtocolPrefix:@"JC"];
+    [[JCNavigator sharedNavigator] addModuleMap:[JCRootModuleMap new]];
+    [[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
+    [JCModuleMap setProtocolPrefix:@"JC"];
     [[JCNavigator sharedNavigator] setNavigationControllerClass:[JCNavigationController class]];
 }
 

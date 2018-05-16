@@ -1,5 +1,5 @@
 //
-//  JCURLMap.h
+//  JCModuleMap.h
 //  JCNavigator
 //
 //  Created by ChenJianjun on 2018/5/5.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol JCURLMap <NSObject>
+@protocol JCModuleMap <NSObject>
 
 /**
  * Returns view controller class which conforms to the protocol.
@@ -25,7 +25,7 @@
 /**
  * Class of URL map for pages jump.
  */
-@interface JCURLMap : NSObject <JCURLMap>
+@interface JCModuleMap : NSObject <JCModuleMap>
 
 /**
  * Global setting of protocol prefix, such as JC.

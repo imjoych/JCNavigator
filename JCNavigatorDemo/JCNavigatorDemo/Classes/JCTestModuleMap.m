@@ -1,12 +1,12 @@
 //
-//  JCTestURLMap.m
+//  JCTestModuleMap.m
 //  JCNavigatorDemo
 //
 //  Created by ChenJianjun on 2018/5/5.
 //  Copyright © 2018 Joych<https://github.com/imjoych>. All rights reserved.
 //
 
-#import "JCTestURLMap.h"
+#import "JCTestModuleMap.h"
 #import "JC_firstLevel.h"
 #import "JC_secondLevel.h"
 #import "JC_thirdLevel.h"
@@ -16,7 +16,7 @@
 #import "JCThirdLevelViewController.h"
 #import "JCContentDetailViewController.h"
 
-@implementation JCTestURLMap
+@implementation JCTestModuleMap
 
 - (NSDictionary<NSString *,Class> *)classesForProtocols
 {

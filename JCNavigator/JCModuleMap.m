@@ -1,22 +1,22 @@
 //
-//  JCURLMap.m
+//  JCModuleMap.m
 //  JCNavigator
 //
 //  Created by ChenJianjun on 2018/5/5.
 //  Copyright © 2018 Joych<https://github.com/imjoych>. All rights reserved.
 //
 
-#import "JCURLMap.h"
+#import "JCModuleMap.h"
 
 static NSString *JCProtocolPrefix = @"JC";
 
-@interface JCURLMap ()
+@interface JCModuleMap ()
 
 @property (nonatomic, strong) NSDictionary *lowercaseStringMaps;
 
 @end
 
-@implementation JCURLMap
+@implementation JCModuleMap
 
 + (void)setProtocolPrefix:(NSString *)protocolPrefix
 {
@@ -69,7 +69,7 @@ static NSString *JCProtocolPrefix = @"JC";
     return _lowercaseStringMaps;
 }
 
-#pragma mark - JCURLMap protocol
+#pragma mark - JCModuleMap protocol
 
 - (Class)viewControllerClassForProtocol:(Protocol *)protocol
 {

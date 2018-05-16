@@ -1,13 +1,13 @@
 //
-//  JCRootURLMap.h
+//  JCTestModuleMap.h
 //  JCNavigatorDemo
 //
 //  Created by ChenJianjun on 2018/5/5.
 //  Copyright © 2018 Joych<https://github.com/imjoych>. All rights reserved.
 //
 
-#import "JCURLMap.h"
+#import "JCModuleMap.h"
 
-@interface JCRootURLMap : JCURLMap
+@interface JCTestModuleMap : JCModuleMap
 
 @end

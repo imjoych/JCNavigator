@@ -7,11 +7,11 @@
 //
 
 #import "JCNavigator.h"
-#import "JCURLMap.h"
+#import "JCModuleMap.h"
 
 @interface JCNavigator ()
 
-@property (nonatomic, strong) NSMutableSet *URLMaps;
+@property (nonatomic, strong) NSMutableSet *moduleMaps;
 @property (nonatomic, strong) NSMutableDictionary *hostListForScheme;
 @property (nonatomic, strong) Class navigationControllerClass;
 @property (nonatomic, strong) UIViewController *rootViewController;
@@ -24,7 +24,7 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        _URLMaps = [NSMutableSet set];
+        _moduleMaps = [NSMutableSet set];
         _hostListForScheme = [NSMutableDictionary dictionary];
         _navigationControllerClass = [UINavigationController class];
     }
@@ -52,9 +52,9 @@
     self.hostListForScheme[[scheme lowercaseString]] = [lowercaseHostList copy];
 }
 
-- (void)addURLMap:(JCURLMap *)URLMap
+- (void)addModuleMap:(JCModuleMap *)moduleMap
 {
-    [self.URLMaps addObject:URLMap];
+    [self.moduleMaps addObject:moduleMap];
 }
 
 - (void)setNavigationControllerClass:(Class)navigationControllerClass
@@ -125,20 +125,20 @@
         [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"URL host %@ for URL scheme %@ is not found !", lowercaseHost, lowercaseScheme] completionHandler:completionHandler];
         return;
     }
-    JCURLMap *URLMap = [self URLMapForURL:URL];
-    if (!URLMap) {
-        [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"The corresponding URLMap for %@ is not found !", URL.absoluteString] completionHandler:completionHandler];
+    JCModuleMap *moduleMap = [self moduleMapForURL:URL];
+    if (!moduleMap) {
+        [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"The corresponding moduleMap for %@ is not found !", URL.absoluteString] completionHandler:completionHandler];
         return;
     }
     UIViewController *viewController = nil;
-    Class viewControllerClass = [URLMap viewControllerClassForURL:URL];
+    Class viewControllerClass = [moduleMap viewControllerClassForURL:URL];
     NSDictionary *parameters = [self parseURLQuery:URL.query];
-    BOOL presented = [URLMap presentedForClass:viewControllerClass];
-    BOOL animated = [URLMap animatedForClass:viewControllerClass];
-    if ([[URLMap reuseViewControllerClasses] containsObject:viewControllerClass]) {
+    BOOL presented = [moduleMap presentedForClass:viewControllerClass];
+    BOOL animated = [moduleMap animatedForClass:viewControllerClass];
+    if ([[moduleMap reuseViewControllerClasses] containsObject:viewControllerClass]) {
         viewController = [self existedViewControllerForClass:viewControllerClass];
         if (viewController) {
-            [self setViewController:viewController URLMap:URLMap params:parameters];
+            [self setViewController:viewController moduleMap:moduleMap params:parameters];
             [self openPreviousVCOfWillOpenedVC:viewController completion:^(BOOL success) {
                 if (success) {
                     [self openViewController:viewController presented:presented animated:animated];
@@ -151,8 +151,8 @@
         }
     }
     
-    viewController = [URLMap instanceForClass:viewControllerClass];
-    [self setViewController:viewController URLMap:URLMap params:parameters];
+    viewController = [moduleMap instanceForClass:viewControllerClass];
+    [self setViewController:viewController moduleMap:moduleMap params:parameters];
     [self openViewController:viewController presented:presented animated:animated];
     if (completionHandler) {
         completionHandler(YES);
@@ -189,12 +189,12 @@
     }
 }
 
-- (void)setViewController:(UIViewController *)viewController URLMap:(JCURLMap *)URLMap params:(NSDictionary *)params
+- (void)setViewController:(UIViewController *)viewController moduleMap:(JCModuleMap *)moduleMap params:(NSDictionary *)params
 {
     if (![params isKindOfClass:[NSDictionary class]] || params.count < 1) {
         return;
     }
-    NSDictionary *mapForClasses = [URLMap propertiesMapOfURLQueryForClasses];
+    NSDictionary *mapForClasses = [moduleMap propertiesMapOfURLQueryForClasses];
     NSDictionary *propertiesMap = mapForClasses[NSStringFromClass([viewController class])];
     [params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSString *realKey = nil;
@@ -253,20 +253,20 @@
 
 - (void)openProtocol:(Protocol *)protocol propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented animated:(BOOL)animated
 {
-    JCURLMap *URLMap = [self URLMapForProtocol:protocol];
-    if (!URLMap) {
+    JCModuleMap *moduleMap = [self moduleMapForProtocol:protocol];
+    if (!moduleMap) {
 #ifdef DEBUG
-        NSLog(@"Protocol %@ not found! Please implement the mapping relation of protocol and view controller in the subclass of JCURLMap, which should be added to JCNavigator with addURLMap: method.", NSStringFromProtocol(protocol));
+        NSLog(@"Protocol %@ not found! Please implement the mapping relation of protocol and view controller in the subclass of JCModuleMap, which should be added to JCNavigator with addModuleMap: method.", NSStringFromProtocol(protocol));
 #endif
         return;
     }
     UIViewController *viewController = nil;
-    Class viewControllerClass = [URLMap viewControllerClassForProtocol:protocol];
-    if ([[URLMap reuseViewControllerClasses] containsObject:viewControllerClass]) {
+    Class viewControllerClass = [moduleMap viewControllerClassForProtocol:protocol];
+    if ([[moduleMap reuseViewControllerClasses] containsObject:viewControllerClass]) {
         viewController = [self existedViewControllerForClass:viewControllerClass];
         if (viewController) {
             if (block) {
-                [self setViewController:viewController URLMap:URLMap params:block()];
+                [self setViewController:viewController moduleMap:moduleMap params:block()];
             }
             [self openPreviousVCOfWillOpenedVC:viewController completion:^(BOOL success) {
                 if (success) {
@@ -277,9 +277,9 @@
         }
     }
     
-    viewController = [URLMap instanceForClass:viewControllerClass];
+    viewController = [moduleMap instanceForClass:viewControllerClass];
     if (block) {
-        [self setViewController:viewController URLMap:URLMap params:block()];
+        [self setViewController:viewController moduleMap:moduleMap params:block()];
     }
     [self openViewController:viewController presented:presented animated:animated];
 }
@@ -402,30 +402,30 @@
     [self.visibleViewController.navigationController pushViewController:viewController animated:animated];
 }
 
-#pragma mark - URLMap
+#pragma mark - ModuleMap
 
-- (JCURLMap *)URLMapForProtocol:(Protocol *)protocol
+- (JCModuleMap *)moduleMapForProtocol:(Protocol *)protocol
 {
-    __block JCURLMap *URLMap = nil;
-    [self.URLMaps enumerateObjectsUsingBlock:^(JCURLMap *map, BOOL *stop) {
+    __block JCModuleMap *moduleMap = nil;
+    [self.moduleMaps enumerateObjectsUsingBlock:^(JCModuleMap *map, BOOL *stop) {
         if ([map viewControllerClassForProtocol:protocol]) {
-            URLMap = map;
+            moduleMap = map;
             *stop = YES;
         }
     }];
-    return URLMap;
+    return moduleMap;
 }
 
-- (JCURLMap *)URLMapForURL:(NSURL *)URL
+- (JCModuleMap *)moduleMapForURL:(NSURL *)URL
 {
-    __block JCURLMap *URLMap = nil;
-    [self.URLMaps enumerateObjectsUsingBlock:^(JCURLMap *map, BOOL *stop) {
+    __block JCModuleMap *moduleMap = nil;
+    [self.moduleMaps enumerateObjectsUsingBlock:^(JCModuleMap *map, BOOL *stop) {
         if ([map viewControllerClassForURL:URL]) {
-            URLMap = map;
+            moduleMap = map;
             *stop = YES;
         }
     }];
-    return URLMap;
+    return moduleMap;
 }
 
 @end

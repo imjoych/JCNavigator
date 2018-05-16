@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class JCURLMap;
+@class JCModuleMap;
 
 /**
  * Values for properties will be setted for will opened view controller with this block.
@@ -34,9 +34,9 @@ typedef NSDictionary *(^JCNavigatorPropertiesBlock)(void);
 - (void)addURLScheme:(NSString *)scheme hostList:(NSArray<NSString *> *)hostList;
 
 /**
- * Add several modules of URL maps which subclassing from JCURLMap.
+ * Add several modules of maps which subclassing from JCModuleMap.
  */
-- (void)addURLMap:(JCURLMap *)URLMap;
+- (void)addModuleMap:(JCModuleMap *)moduleMap;
 
 /**
  * Set class of navigation controller which subclassing from UINavigationController.
