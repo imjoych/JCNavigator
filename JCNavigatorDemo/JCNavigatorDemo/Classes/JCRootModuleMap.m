@@ -7,14 +7,12 @@
 //
 
 #import "JCRootModuleMap.h"
-#import "JC_root.h"
-#import "ViewController.h"
 
 @implementation JCRootModuleMap
 
 - (NSDictionary<NSString *,Class> *)classesForProtocols
 {
-    return @{NSStringFromProtocol(@protocol(JC_root)): [ViewController class]};
+    return @{@"JC_root": NSClassFromString(@"ViewController")};
 }
 
 @end
