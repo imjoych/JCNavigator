@@ -168,7 +168,7 @@
     }
     NSDictionary *mapForClasses = [moduleMap propertiesMapOfURLQueryForClasses];
     NSDictionary *propertiesMap = mapForClasses[NSStringFromClass([viewController class])];
-    [params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+    [params enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         NSString *realKey = nil;
         if (propertiesMap) {
             realKey = propertiesMap[key];
@@ -176,14 +176,8 @@
         if (!realKey) {
             realKey = key;
         }
-        if ([viewController respondsToSelector:NSSelectorFromString(realKey)]) {
-            @try {
-                [viewController setValue:obj forKey:realKey];
-            } @catch (NSException *exception) {
-#ifdef DEBUG
-                NSLog(@"%@", exception);
-#endif
-            }
+        if (![obj isKindOfClass:[NSNull class]] && [viewController respondsToSelector:NSSelectorFromString(realKey)]) {
+            [viewController setValue:obj forKey:realKey];
         }
     }];
 }
