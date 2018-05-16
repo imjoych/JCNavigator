@@ -7,6 +7,7 @@
 //
 
 #import "JCNavigationController.h"
+#import "UIViewController+JCNavigationItem.h"
 
 @interface JCNavigationController ()<UIGestureRecognizerDelegate, UINavigationControllerDelegate>
 
@@ -31,8 +32,17 @@
 {
     if (self.viewControllers.count >= 1) {
         viewController.hidesBottomBarWhenPushed = YES;
+        [viewController jc_setupLeftBackBarButtonItem];
     }
     [super pushViewController:viewController animated:animated];
+}
+
+- (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion
+{
+    if ([viewControllerToPresent isKindOfClass:[UINavigationController class]]) {
+        [[(UINavigationController *)viewControllerToPresent visibleViewController] jc_setupLeftCloseBarButtonItem];
+    }
+    [super presentViewController:viewControllerToPresent animated:flag completion:completion];
 }
 
 - (BOOL)shouldAutorotate

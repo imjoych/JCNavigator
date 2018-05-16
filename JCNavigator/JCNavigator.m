@@ -16,8 +16,6 @@
 @property (nonatomic, strong) Class navigationControllerClass;
 @property (nonatomic, strong) UIViewController *rootViewController;
 @property (nonatomic, strong) UINavigationController *rootNavigationController;
-@property (nonatomic, copy) JCNavigatorSettingBlock popButtonBlock;
-@property (nonatomic, copy) JCNavigatorSettingBlock dismissButtonBlock;
 
 @end
 
@@ -57,16 +55,6 @@
 - (void)addURLMap:(JCURLMap *)URLMap
 {
     [self.URLMaps addObject:URLMap];
-}
-
-- (void)popButtonSettingBlock:(JCNavigatorSettingBlock)block
-{
-    _popButtonBlock = block;
-}
-
-- (void)dismissButtonSettingBlock:(JCNavigatorSettingBlock)block
-{
-    _dismissButtonBlock = block;
 }
 
 - (void)setNavigationControllerClass:(Class)navigationControllerClass
@@ -403,16 +391,10 @@
 - (void)openViewController:(UIViewController *)viewController presented:(BOOL)presented animated:(BOOL)animated
 {
     if (presented) {
-        if (self.dismissButtonBlock) {
-            self.dismissButtonBlock(viewController);
-        }
         UINavigationController *navigationController = [[self.navigationControllerClass alloc] initWithRootViewController:viewController];
         UIViewController *vc = self.visibleViewController.parentViewController ?: self.visibleViewController;
         [vc presentViewController:navigationController animated:animated completion:nil];
         return;
-    }
-    if (self.popButtonBlock) {
-        self.popButtonBlock(viewController);
     }
     [self.visibleViewController.navigationController pushViewController:viewController animated:animated];
 }

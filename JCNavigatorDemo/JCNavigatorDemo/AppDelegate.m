@@ -11,7 +11,6 @@
 #import "JCNavigator.h"
 #import "JCRootURLMap.h"
 #import "JCTestURLMap.h"
-#import "UIViewController+JCNavigationItem.h"
 #import "JCNavigationController.h"
 
 @interface AppDelegate ()
@@ -28,13 +27,6 @@
     [[JCNavigator sharedNavigator] addURLMap:[JCRootURLMap new]];
     [[JCNavigator sharedNavigator] addURLMap:[JCTestURLMap new]];
     [JCURLMap setProtocolPrefix:@"JC"];
-    
-    [[JCNavigator sharedNavigator] popButtonSettingBlock:^(UIViewController *willOpenedViewController) {
-        [willOpenedViewController jc_setupLeftBackBarButtonItem];
-    }];
-    [[JCNavigator sharedNavigator] dismissButtonSettingBlock:^(UIViewController *willOpenedViewController) {
-        [willOpenedViewController jc_setupLeftCloseBarButtonItem];
-    }];
     [[JCNavigator sharedNavigator] setNavigationControllerClass:[JCNavigationController class]];
 }
 

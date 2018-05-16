@@ -39,16 +39,6 @@ typedef void (^JCNavigatorSettingBlock)(UIViewController *willOpenedViewControll
 - (void)addURLMap:(JCURLMap *)URLMap;
 
 /**
- * Global setting of pop button with block.
- */
-- (void)popButtonSettingBlock:(JCNavigatorSettingBlock)block;
-
-/**
- * Global setting of dismiss button with block.
- */
-- (void)dismissButtonSettingBlock:(JCNavigatorSettingBlock)block;
-
-/**
  * Set class of navigation controller which subclassing from UINavigationController.
  */
 - (void)setNavigationControllerClass:(Class)navigationControllerClass;
