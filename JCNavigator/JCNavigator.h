@@ -71,10 +71,9 @@ typedef NSDictionary *(^JCNavigatorPropertiesBlock)(void);
  * Open URL methods.
  * @note URL string format 'scheme://host/path?paramA=xxx&paramB=yyy'
  */
-- (void)openURLString:(NSString *)URLString;
-- (void)openURL:(NSURL *)URL;
-- (void)openURL:(NSURL *)URL completionHandler:(void(^)(BOOL success))completionHandler;
-- (void)openURL:(NSURL *)URL options:(NSDictionary *)options completionHandler:(void (^)(BOOL success))completionHandler;
+- (BOOL)openURLString:(NSString *)URLString;
+- (BOOL)openURL:(NSURL *)URL;
+- (BOOL)openURL:(NSURL *)URL options:(NSDictionary *)options;
 
 #pragma mark - Open protocol operation
 

@@ -90,46 +90,41 @@
 
 #pragma mark - Open URL operation
 
-- (void)openURLString:(NSString *)URLString
+- (BOOL)openURLString:(NSString *)URLString
 {
     if (![URLString isKindOfClass:[NSString class]]) {
-        return;
+        return NO;
     }
-    [self openURL:[NSURL URLWithString:URLString]];
+    return [self openURL:[NSURL URLWithString:URLString]];
 }
 
-- (void)openURL:(NSURL *)URL 
+- (BOOL)openURL:(NSURL *)URL
 {
-    [self openURL:URL completionHandler:nil];
+    return [self openURL:URL options:nil];
 }
 
-- (void)openURL:(NSURL *)URL completionHandler:(void (^)(BOOL))completionHandler
-{
-    [self openURL:URL options:nil completionHandler:completionHandler];
-}
-
-- (void)openURL:(NSURL *)URL options:(NSDictionary *)options completionHandler:(void (^)(BOOL))completionHandler
+- (BOOL)openURL:(NSURL *)URL options:(NSDictionary *)options
 {
     if (![URL isKindOfClass:[NSURL class]] || !URL.scheme || !URL.host) {
-        [self callbackWithURL:nil options:nil message:@"Invalid URL!" completionHandler:completionHandler];
-        return;
+        return [self callbackWithURL:nil options:nil message:@"Invalid URL!"];
     }
+    
     NSString *lowercaseScheme = [URL.scheme lowercaseString];
     if (![self.hostListForScheme.allKeys containsObject:lowercaseScheme]) {
-        [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"URL scheme %@ is not found !", lowercaseScheme] completionHandler:completionHandler];
-        return;
+        return [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"URL scheme %@ is not found !", lowercaseScheme]];
     }
+    
     NSArray *hostList = self.hostListForScheme[lowercaseScheme];
     NSString *lowercaseHost = [URL.host lowercaseString];
     if (![hostList containsObject:lowercaseHost]) {
-        [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"URL host %@ for URL scheme %@ is not found !", lowercaseHost, lowercaseScheme] completionHandler:completionHandler];
-        return;
+        return [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"URL host %@ for URL scheme %@ is not found !", lowercaseHost, lowercaseScheme]];
     }
+    
     JCModuleMap *moduleMap = [self moduleMapForURL:URL];
     if (!moduleMap) {
-        [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"The corresponding moduleMap for %@ is not found !", URL.absoluteString] completionHandler:completionHandler];
-        return;
+        return [self callbackWithURL:URL options:options message:[NSString stringWithFormat:@"The corresponding moduleMap for %@ is not found !", URL.absoluteString]];
     }
+    
     UIViewController *viewController = nil;
     Class viewControllerClass = [moduleMap viewControllerClassForURL:URL];
     NSDictionary *parameters = [self parseURLQuery:URL.query];
@@ -143,50 +138,35 @@
                 if (success) {
                     [self openViewController:viewController presented:presented animated:animated];
                 }
-                if (completionHandler) {
-                    completionHandler(YES);
-                }
             }];
-            return;
+            return YES;
         }
     }
     
     viewController = [moduleMap instanceForClass:viewControllerClass];
     [self setViewController:viewController moduleMap:moduleMap params:parameters];
     [self openViewController:viewController presented:presented animated:animated];
-    if (completionHandler) {
-        completionHandler(YES);
-    }
+    return YES;
 }
 
-- (void)callbackWithURL:(NSURL *)URL options:(NSDictionary *)options message:(NSString *)message completionHandler:(void (^)(BOOL))completionHandler
+- (BOOL)callbackWithURL:(NSURL *)URL options:(NSDictionary *)options message:(NSString *)message
 {
     if ([URL isKindOfClass:[NSURL class]] && [[UIApplication sharedApplication] canOpenURL:URL]) {
-        [self openSpecifiedURL:URL options:options completionHandler:completionHandler];
-        return;
-    }
-    if (completionHandler) {
-        completionHandler(NO);
+        return [self openSpecifiedURL:URL options:options];
     }
 #ifdef DEBUG
     NSLog(@"%@", message);
 #endif
+    return NO;
 }
 
-- (void)openSpecifiedURL:(NSURL *)URL options:(NSDictionary *)options completionHandler:(void (^)(BOOL))completionHandler
+- (BOOL)openSpecifiedURL:(NSURL *)URL options:(NSDictionary *)options
 {
     if (@available(iOS 10.0, *)) {
-        [[UIApplication sharedApplication] openURL:URL options:options completionHandler:^(BOOL success) {
-            if (completionHandler) {
-                completionHandler(success);
-            }
-        }];
-        return;
+        [[UIApplication sharedApplication] openURL:URL options:options completionHandler:nil];
+        return YES;
     }
-    BOOL success = [[UIApplication sharedApplication] openURL:URL];
-    if (completionHandler) {
-        completionHandler(success);
-    }
+    return [[UIApplication sharedApplication] openURL:URL];
 }
 
 - (void)setViewController:(UIViewController *)viewController moduleMap:(JCModuleMap *)moduleMap params:(NSDictionary *)params
