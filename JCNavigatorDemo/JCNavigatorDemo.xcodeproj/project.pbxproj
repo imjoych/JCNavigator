@@ -7,46 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23153E5C209D530500A09D46 /* JCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23153E5B209D530500A09D46 /* JCNavigationController.m */; };
-		23AEAAB4208CD15400230B1C /* JCFirstLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AEAAB3208CD15400230B1C /* JCFirstLevelViewController.m */; };
-		23AEAAB7208CD16C00230B1C /* JCSecondLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AEAAB6208CD16C00230B1C /* JCSecondLevelViewController.m */; };
-		23AEAABA208CD18000230B1C /* JCThirdLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AEAAB9208CD18000230B1C /* JCThirdLevelViewController.m */; };
-		23AEAABD208CD1C500230B1C /* JCTestModuleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AEAABC208CD1C500230B1C /* JCTestModuleMap.m */; };
-		23AEAAC1208CD34D00230B1C /* JCTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AEAAC0208CD34D00230B1C /* JCTestView.m */; };
-		23AEAAC7208CD4D300230B1C /* JCContentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AEAAC6208CD4D300230B1C /* JCContentDetailViewController.m */; };
 		23F2F50E2081919B00FC3ED4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F2F50D2081919B00FC3ED4 /* AppDelegate.m */; };
 		23F2F5112081919B00FC3ED4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F2F5102081919B00FC3ED4 /* ViewController.m */; };
 		23F2F5262081921700FC3ED4 /* JCNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F2F5252081921700FC3ED4 /* JCNavigator.m */; };
 		23F2F52C2081A8BD00FC3ED4 /* JCModuleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F2F52B2081A8BD00FC3ED4 /* JCModuleMap.m */; };
-		23F2F5342081B2E400FC3ED4 /* JCRootModuleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F2F5332081B2E400FC3ED4 /* JCRootModuleMap.m */; };
 		23F2F5432081B33800FC3ED4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F2F53A2081B33800FC3ED4 /* main.m */; };
 		23F2F5462081B33800FC3ED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F2F5402081B33800FC3ED4 /* Assets.xcassets */; };
 		23F2F54B2081B35400FC3ED4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F2F5472081B35400FC3ED4 /* Main.storyboard */; };
 		23F2F54C2081B35400FC3ED4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F2F5492081B35400FC3ED4 /* LaunchScreen.storyboard */; };
-		B6625D9020AC111400A7D910 /* JCTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625D8F20AC111400A7D910 /* JCTestClass.m */; };
-		B670FC87209B02A7004D5B5E /* UIViewController+JCNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B670FC86209B02A7004D5B5E /* UIViewController+JCNavigationItem.m */; };
+		B6625DB520AC1C9B00A7D910 /* JCRootModuleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DB420AC1C9A00A7D910 /* JCRootModuleMap.m */; };
+		B6625DCD20AC1CB300A7D910 /* UIViewController+JCNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DB720AC1CB200A7D910 /* UIViewController+JCNavigationItem.m */; };
+		B6625DCE20AC1CB300A7D910 /* JCSecondLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DB920AC1CB200A7D910 /* JCSecondLevelViewController.m */; };
+		B6625DCF20AC1CB300A7D910 /* JCTestModuleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DBE20AC1CB300A7D910 /* JCTestModuleMap.m */; };
+		B6625DD020AC1CB300A7D910 /* JCFirstLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DC320AC1CB300A7D910 /* JCFirstLevelViewController.m */; };
+		B6625DD120AC1CB300A7D910 /* JCTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DC620AC1CB300A7D910 /* JCTestView.m */; };
+		B6625DD220AC1CB300A7D910 /* JCContentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DC720AC1CB300A7D910 /* JCContentDetailViewController.m */; };
+		B6625DD320AC1CB300A7D910 /* JCThirdLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DC820AC1CB300A7D910 /* JCThirdLevelViewController.m */; };
+		B6625DD420AC1CB300A7D910 /* JCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DCB20AC1CB300A7D910 /* JCNavigationController.m */; };
+		B6625DD520AC1CB300A7D910 /* JCTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DCC20AC1CB300A7D910 /* JCTestClass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		23153E5A209D530500A09D46 /* JCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNavigationController.h; sourceTree = "<group>"; };
-		23153E5B209D530500A09D46 /* JCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNavigationController.m; sourceTree = "<group>"; };
-		23AEAAB2208CD15400230B1C /* JCFirstLevelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCFirstLevelViewController.h; sourceTree = "<group>"; };
-		23AEAAB3208CD15400230B1C /* JCFirstLevelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCFirstLevelViewController.m; sourceTree = "<group>"; };
-		23AEAAB5208CD16C00230B1C /* JCSecondLevelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCSecondLevelViewController.h; sourceTree = "<group>"; };
-		23AEAAB6208CD16C00230B1C /* JCSecondLevelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCSecondLevelViewController.m; sourceTree = "<group>"; };
-		23AEAAB8208CD18000230B1C /* JCThirdLevelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCThirdLevelViewController.h; sourceTree = "<group>"; };
-		23AEAAB9208CD18000230B1C /* JCThirdLevelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCThirdLevelViewController.m; sourceTree = "<group>"; };
-		23AEAABB208CD1C500230B1C /* JCTestModuleMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCTestModuleMap.h; sourceTree = "<group>"; };
-		23AEAABC208CD1C500230B1C /* JCTestModuleMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCTestModuleMap.m; sourceTree = "<group>"; };
-		23AEAABE208CD25E00230B1C /* JC_root.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JC_root.h; sourceTree = "<group>"; };
-		23AEAABF208CD34D00230B1C /* JCTestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCTestView.h; sourceTree = "<group>"; };
-		23AEAAC0208CD34D00230B1C /* JCTestView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCTestView.m; sourceTree = "<group>"; };
-		23AEAAC2208CD36D00230B1C /* JC_firstLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JC_firstLevel.h; sourceTree = "<group>"; };
-		23AEAAC3208CD38100230B1C /* JC_secondLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JC_secondLevel.h; sourceTree = "<group>"; };
-		23AEAAC4208CD39500230B1C /* JC_thirdLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JC_thirdLevel.h; sourceTree = "<group>"; };
-		23AEAAC5208CD4D300230B1C /* JCContentDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCContentDetailViewController.h; sourceTree = "<group>"; };
-		23AEAAC6208CD4D300230B1C /* JCContentDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCContentDetailViewController.m; sourceTree = "<group>"; };
-		23AEAAC8208CD4EF00230B1C /* JC_contentDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JC_contentDetail.h; sourceTree = "<group>"; };
 		23F2F5092081919B00FC3ED4 /* JCNavigatorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JCNavigatorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F2F50C2081919B00FC3ED4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		23F2F50D2081919B00FC3ED4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -56,18 +37,37 @@
 		23F2F5252081921700FC3ED4 /* JCNavigator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCNavigator.m; sourceTree = "<group>"; };
 		23F2F52A2081A8BD00FC3ED4 /* JCModuleMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCModuleMap.h; sourceTree = "<group>"; };
 		23F2F52B2081A8BD00FC3ED4 /* JCModuleMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCModuleMap.m; sourceTree = "<group>"; };
-		23F2F5322081B2E400FC3ED4 /* JCRootModuleMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCRootModuleMap.h; sourceTree = "<group>"; };
-		23F2F5332081B2E400FC3ED4 /* JCRootModuleMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCRootModuleMap.m; sourceTree = "<group>"; };
 		23F2F5392081B33800FC3ED4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23F2F53A2081B33800FC3ED4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		23F2F5402081B33800FC3ED4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23F2F5482081B35400FC3ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23F2F54A2081B35400FC3ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B6625D8E20AC111400A7D910 /* JCTestClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCTestClass.h; sourceTree = "<group>"; };
-		B6625D8F20AC111400A7D910 /* JCTestClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCTestClass.m; sourceTree = "<group>"; };
-		B670FC84209AF032004D5B5E /* JCTestHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCTestHeader.h; sourceTree = "<group>"; };
-		B670FC85209B02A7004D5B5E /* UIViewController+JCNavigationItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JCNavigationItem.h"; sourceTree = "<group>"; };
-		B670FC86209B02A7004D5B5E /* UIViewController+JCNavigationItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JCNavigationItem.m"; sourceTree = "<group>"; };
+		B6625DB220AC1C9A00A7D910 /* JCRootModuleMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCRootModuleMap.h; sourceTree = "<group>"; };
+		B6625DB320AC1C9A00A7D910 /* JC_root.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JC_root.h; sourceTree = "<group>"; };
+		B6625DB420AC1C9A00A7D910 /* JCRootModuleMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCRootModuleMap.m; sourceTree = "<group>"; };
+		B6625DB620AC1CB200A7D910 /* JCTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTestView.h; sourceTree = "<group>"; };
+		B6625DB720AC1CB200A7D910 /* UIViewController+JCNavigationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JCNavigationItem.m"; sourceTree = "<group>"; };
+		B6625DB820AC1CB200A7D910 /* JCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNavigationController.h; sourceTree = "<group>"; };
+		B6625DB920AC1CB200A7D910 /* JCSecondLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCSecondLevelViewController.m; sourceTree = "<group>"; };
+		B6625DBA20AC1CB200A7D910 /* JCTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTestClass.h; sourceTree = "<group>"; };
+		B6625DBB20AC1CB200A7D910 /* JCTestHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTestHeader.h; sourceTree = "<group>"; };
+		B6625DBC20AC1CB200A7D910 /* JC_contentDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JC_contentDetail.h; sourceTree = "<group>"; };
+		B6625DBD20AC1CB200A7D910 /* JC_firstLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JC_firstLevel.h; sourceTree = "<group>"; };
+		B6625DBE20AC1CB300A7D910 /* JCTestModuleMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTestModuleMap.m; sourceTree = "<group>"; };
+		B6625DBF20AC1CB300A7D910 /* JCThirdLevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCThirdLevelViewController.h; sourceTree = "<group>"; };
+		B6625DC020AC1CB300A7D910 /* JCFirstLevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCFirstLevelViewController.h; sourceTree = "<group>"; };
+		B6625DC120AC1CB300A7D910 /* JCContentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCContentDetailViewController.h; sourceTree = "<group>"; };
+		B6625DC220AC1CB300A7D910 /* JCSecondLevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCSecondLevelViewController.h; sourceTree = "<group>"; };
+		B6625DC320AC1CB300A7D910 /* JCFirstLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCFirstLevelViewController.m; sourceTree = "<group>"; };
+		B6625DC420AC1CB300A7D910 /* JC_secondLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JC_secondLevel.h; sourceTree = "<group>"; };
+		B6625DC520AC1CB300A7D910 /* JC_thirdLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JC_thirdLevel.h; sourceTree = "<group>"; };
+		B6625DC620AC1CB300A7D910 /* JCTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTestView.m; sourceTree = "<group>"; };
+		B6625DC720AC1CB300A7D910 /* JCContentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCContentDetailViewController.m; sourceTree = "<group>"; };
+		B6625DC820AC1CB300A7D910 /* JCThirdLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCThirdLevelViewController.m; sourceTree = "<group>"; };
+		B6625DC920AC1CB300A7D910 /* UIViewController+JCNavigationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JCNavigationItem.h"; sourceTree = "<group>"; };
+		B6625DCA20AC1CB300A7D910 /* JCTestModuleMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTestModuleMap.h; sourceTree = "<group>"; };
+		B6625DCB20AC1CB300A7D910 /* JCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNavigationController.m; sourceTree = "<group>"; };
+		B6625DCC20AC1CB300A7D910 /* JCTestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTestClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +101,15 @@
 		23F2F50B2081919B00FC3ED4 /* JCNavigatorDemo */ = {
 			isa = PBXGroup;
 			children = (
-				23F2F5312081B2E400FC3ED4 /* Classes */,
+				B6625D9120AC1C8600A7D910 /* TestModule */,
 				23F2F5352081B32900FC3ED4 /* Support Files */,
 				23F2F50C2081919B00FC3ED4 /* AppDelegate.h */,
 				23F2F50D2081919B00FC3ED4 /* AppDelegate.m */,
 				23F2F50F2081919B00FC3ED4 /* ViewController.h */,
 				23F2F5102081919B00FC3ED4 /* ViewController.m */,
+				B6625DB320AC1C9A00A7D910 /* JC_root.h */,
+				B6625DB220AC1C9A00A7D910 /* JCRootModuleMap.h */,
+				B6625DB420AC1C9A00A7D910 /* JCRootModuleMap.m */,
 			);
 			path = JCNavigatorDemo;
 			sourceTree = "<group>";
@@ -123,39 +126,6 @@
 			path = ../JCNavigator;
 			sourceTree = "<group>";
 		};
-		23F2F5312081B2E400FC3ED4 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				23F2F5322081B2E400FC3ED4 /* JCRootModuleMap.h */,
-				23F2F5332081B2E400FC3ED4 /* JCRootModuleMap.m */,
-				23AEAABB208CD1C500230B1C /* JCTestModuleMap.h */,
-				23AEAABC208CD1C500230B1C /* JCTestModuleMap.m */,
-				23AEAABE208CD25E00230B1C /* JC_root.h */,
-				23AEAAC2208CD36D00230B1C /* JC_firstLevel.h */,
-				23AEAAC3208CD38100230B1C /* JC_secondLevel.h */,
-				23AEAAC4208CD39500230B1C /* JC_thirdLevel.h */,
-				23AEAAC8208CD4EF00230B1C /* JC_contentDetail.h */,
-				23153E5A209D530500A09D46 /* JCNavigationController.h */,
-				23153E5B209D530500A09D46 /* JCNavigationController.m */,
-				23AEAAB2208CD15400230B1C /* JCFirstLevelViewController.h */,
-				23AEAAB3208CD15400230B1C /* JCFirstLevelViewController.m */,
-				23AEAAB5208CD16C00230B1C /* JCSecondLevelViewController.h */,
-				23AEAAB6208CD16C00230B1C /* JCSecondLevelViewController.m */,
-				23AEAAB8208CD18000230B1C /* JCThirdLevelViewController.h */,
-				23AEAAB9208CD18000230B1C /* JCThirdLevelViewController.m */,
-				23AEAAC5208CD4D300230B1C /* JCContentDetailViewController.h */,
-				23AEAAC6208CD4D300230B1C /* JCContentDetailViewController.m */,
-				23AEAABF208CD34D00230B1C /* JCTestView.h */,
-				23AEAAC0208CD34D00230B1C /* JCTestView.m */,
-				B670FC84209AF032004D5B5E /* JCTestHeader.h */,
-				B670FC85209B02A7004D5B5E /* UIViewController+JCNavigationItem.h */,
-				B670FC86209B02A7004D5B5E /* UIViewController+JCNavigationItem.m */,
-				B6625D8E20AC111400A7D910 /* JCTestClass.h */,
-				B6625D8F20AC111400A7D910 /* JCTestClass.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		23F2F5352081B32900FC3ED4 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +136,36 @@
 				23F2F53A2081B33800FC3ED4 /* main.m */,
 			);
 			name = "Support Files";
+			sourceTree = "<group>";
+		};
+		B6625D9120AC1C8600A7D910 /* TestModule */ = {
+			isa = PBXGroup;
+			children = (
+				B6625DBC20AC1CB200A7D910 /* JC_contentDetail.h */,
+				B6625DBD20AC1CB200A7D910 /* JC_firstLevel.h */,
+				B6625DC420AC1CB300A7D910 /* JC_secondLevel.h */,
+				B6625DC520AC1CB300A7D910 /* JC_thirdLevel.h */,
+				B6625DC120AC1CB300A7D910 /* JCContentDetailViewController.h */,
+				B6625DC720AC1CB300A7D910 /* JCContentDetailViewController.m */,
+				B6625DC020AC1CB300A7D910 /* JCFirstLevelViewController.h */,
+				B6625DC320AC1CB300A7D910 /* JCFirstLevelViewController.m */,
+				B6625DB820AC1CB200A7D910 /* JCNavigationController.h */,
+				B6625DCB20AC1CB300A7D910 /* JCNavigationController.m */,
+				B6625DC220AC1CB300A7D910 /* JCSecondLevelViewController.h */,
+				B6625DB920AC1CB200A7D910 /* JCSecondLevelViewController.m */,
+				B6625DBA20AC1CB200A7D910 /* JCTestClass.h */,
+				B6625DCC20AC1CB300A7D910 /* JCTestClass.m */,
+				B6625DBB20AC1CB200A7D910 /* JCTestHeader.h */,
+				B6625DCA20AC1CB300A7D910 /* JCTestModuleMap.h */,
+				B6625DBE20AC1CB300A7D910 /* JCTestModuleMap.m */,
+				B6625DB620AC1CB200A7D910 /* JCTestView.h */,
+				B6625DC620AC1CB300A7D910 /* JCTestView.m */,
+				B6625DBF20AC1CB300A7D910 /* JCThirdLevelViewController.h */,
+				B6625DC820AC1CB300A7D910 /* JCThirdLevelViewController.m */,
+				B6625DC920AC1CB300A7D910 /* UIViewController+JCNavigationItem.h */,
+				B6625DB720AC1CB200A7D910 /* UIViewController+JCNavigationItem.m */,
+			);
+			path = TestModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,21 +239,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6625DD220AC1CB300A7D910 /* JCContentDetailViewController.m in Sources */,
+				B6625DCE20AC1CB300A7D910 /* JCSecondLevelViewController.m in Sources */,
+				B6625DD520AC1CB300A7D910 /* JCTestClass.m in Sources */,
+				B6625DCD20AC1CB300A7D910 /* UIViewController+JCNavigationItem.m in Sources */,
 				23F2F5262081921700FC3ED4 /* JCNavigator.m in Sources */,
+				B6625DD420AC1CB300A7D910 /* JCNavigationController.m in Sources */,
 				23F2F5112081919B00FC3ED4 /* ViewController.m in Sources */,
-				B6625D9020AC111400A7D910 /* JCTestClass.m in Sources */,
-				23F2F5342081B2E400FC3ED4 /* JCRootModuleMap.m in Sources */,
-				23153E5C209D530500A09D46 /* JCNavigationController.m in Sources */,
-				23AEAABD208CD1C500230B1C /* JCTestModuleMap.m in Sources */,
-				23AEAAB4208CD15400230B1C /* JCFirstLevelViewController.m in Sources */,
-				23AEAAC7208CD4D300230B1C /* JCContentDetailViewController.m in Sources */,
-				23AEAABA208CD18000230B1C /* JCThirdLevelViewController.m in Sources */,
-				23AEAAC1208CD34D00230B1C /* JCTestView.m in Sources */,
-				B670FC87209B02A7004D5B5E /* UIViewController+JCNavigationItem.m in Sources */,
+				B6625DB520AC1C9B00A7D910 /* JCRootModuleMap.m in Sources */,
+				B6625DD320AC1CB300A7D910 /* JCThirdLevelViewController.m in Sources */,
 				23F2F52C2081A8BD00FC3ED4 /* JCModuleMap.m in Sources */,
 				23F2F5432081B33800FC3ED4 /* main.m in Sources */,
+				B6625DD020AC1CB300A7D910 /* JCFirstLevelViewController.m in Sources */,
+				B6625DD120AC1CB300A7D910 /* JCTestView.m in Sources */,
 				23F2F50E2081919B00FC3ED4 /* AppDelegate.m in Sources */,
-				23AEAAB7208CD16C00230B1C /* JCSecondLevelViewController.m in Sources */,
+				B6625DCF20AC1CB300A7D910 /* JCTestModuleMap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
