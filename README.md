@@ -19,7 +19,7 @@ Module maps configs
 ```objective-c
 [[JCNavigator sharedNavigator] addModuleMap:[JCRootModuleMap new]];
 [[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
-[JCURLMap setProtocolPrefix:@"JC"];
+[JCModuleMap setProtocolPrefix:@"JC"];
 ```
 
 Navigation configs
