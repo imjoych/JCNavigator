@@ -82,10 +82,14 @@ JCTestModuleMap class
 ```
 
 JC_contentDetail protocol
+* Properties are suggested to be declared as NSString class because openURL: method only supports this data type.
+* Properties also can be declared as NSArray / NSDictionary / NSSet / UIImage and so on data types, which can be used for openProtocol: method. For decoupling between modules, although you can use a custom object, it is not recommended.
 ```objective-c
 @protocol JC_contentDetail <NSObject>
 
 @property (nonatomic, strong) NSString *currentIndex;
+@property (nonatomic, strong) NSString *testId;
+@property (nonatomic, strong) NSArray *testArray;
 
 @end
 ```
