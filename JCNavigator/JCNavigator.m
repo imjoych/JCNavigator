@@ -125,27 +125,15 @@
         return [self openSpecifiedURL:URL options:options];
     }
     
-    UIViewController *viewController = nil;
     Class viewControllerClass = [moduleMap viewControllerClassForURL:URL];
     NSDictionary *parameters = [self parseURLQuery:URL.query];
     BOOL presented = [moduleMap presentedForClass:viewControllerClass];
     BOOL animated = [moduleMap animatedForClass:viewControllerClass];
-    if ([[moduleMap reuseViewControllerClasses] containsObject:viewControllerClass]) {
-        viewController = [self existedViewControllerForClass:viewControllerClass];
-        if (viewController) {
-            [self setViewController:viewController moduleMap:moduleMap params:parameters];
-            [self openPreviousVCOfWillOpenedVC:viewController completion:^(BOOL success) {
-                if (success) {
-                    [self openViewController:viewController presented:presented animated:animated];
-                }
-            }];
-            return YES;
-        }
-    }
-    
-    viewController = [moduleMap instanceForClass:viewControllerClass];
-    [self setViewController:viewController moduleMap:moduleMap params:parameters];
-    [self openViewController:viewController presented:presented animated:animated];
+    [self openViewControllerWithClass:viewControllerClass
+                            moduleMap:moduleMap
+                               params:parameters
+                            presented:presented
+                             animated:animated];
     return YES;
 }
 
@@ -226,28 +214,13 @@
 #endif
         return;
     }
-    UIViewController *viewController = nil;
     Class viewControllerClass = [moduleMap viewControllerClassForProtocol:protocol];
-    if ([[moduleMap reuseViewControllerClasses] containsObject:viewControllerClass]) {
-        viewController = [self existedViewControllerForClass:viewControllerClass];
-        if (viewController) {
-            if (block) {
-                [self setViewController:viewController moduleMap:moduleMap params:block()];
-            }
-            [self openPreviousVCOfWillOpenedVC:viewController completion:^(BOOL success) {
-                if (success) {
-                    [self openViewController:viewController presented:presented animated:animated];
-                }
-            }];
-            return;
-        }
-    }
-    
-    viewController = [moduleMap instanceForClass:viewControllerClass];
-    if (block) {
-        [self setViewController:viewController moduleMap:moduleMap params:block()];
-    }
-    [self openViewController:viewController presented:presented animated:animated];
+    NSDictionary *parameters = block ? block(): nil;
+    [self openViewControllerWithClass:viewControllerClass
+                            moduleMap:moduleMap
+                               params:parameters
+                            presented:presented
+                             animated:animated];
 }
 
 #pragma mark - Pop view controller operation
@@ -283,7 +256,28 @@
     }];
 }
 
-#pragma mark - View controller getter and page jumps
+#pragma mark - Open view controller
+
+- (void)openViewControllerWithClass:(Class)viewControllerClass moduleMap:(JCModuleMap *)moduleMap params:(NSDictionary *)params presented:(BOOL)presented animated:(BOOL)animated
+{
+    UIViewController *viewController = nil;
+    if ([[moduleMap reuseViewControllerClasses] containsObject:viewControllerClass]) {
+        viewController = [self existedViewControllerForClass:viewControllerClass];
+        if (viewController) {
+            [self setViewController:viewController moduleMap:moduleMap params:params];
+            [self openPreviousVCOfWillOpenedVC:viewController completion:^(BOOL success) {
+                if (success) {
+                    [self openViewController:viewController presented:presented animated:animated];
+                }
+            }];
+            return;
+        }
+    }
+    
+    viewController = [moduleMap instanceForClass:viewControllerClass];
+    [self setViewController:viewController moduleMap:moduleMap params:params];
+    [self openViewController:viewController presented:presented animated:animated];
+}
 
 - (UIViewController *)existedViewControllerForClass:(Class)class
 {
