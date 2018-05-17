@@ -11,6 +11,8 @@
 
 @interface JCSecondLevelViewController ()
 
+@property (nonatomic, strong) UIImage *navigationBarBGImage;
+
 @end
 
 @implementation JCSecondLevelViewController
@@ -34,6 +36,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationBarBGImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
+    UIImage *image = [self createImageWithColor:[[UIColor blueColor] colorWithAlphaComponent:0.6]];
+    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:self.navigationBarBGImage forBarMetrics:UIBarMetricsDefault];
+}
+
 - (void)showAlert
 {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Tips" message:@"Open ApplicationSettings or contentDetailViewController_2 ?" preferredStyle:UIAlertControllerStyleAlert];
@@ -48,6 +64,18 @@
     [alertController addAction:cancelAction];
     [alertController addAction:confirmAction];
     [self.parentViewController presentViewController:alertController animated:YES completion:nil];
+}
+
+- (UIImage *)createImageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0, 0, 1.f, 1.f);
+    UIGraphicsBeginImageContextWithOptions(rect.size, YES, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 
 @end
