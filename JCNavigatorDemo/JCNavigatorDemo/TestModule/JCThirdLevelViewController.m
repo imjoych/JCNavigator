@@ -27,7 +27,7 @@
         [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) propertiesBlock:^NSDictionary *{
             return @{@"currentIndex": @"3",
                      @"testId": @"hahaha666",
-                     @"testArray": @[@"hello", @"world"],
+                     @"testArray": @[@"hello", @"world", @"!"],
                      };
         } presented:YES];
     }];

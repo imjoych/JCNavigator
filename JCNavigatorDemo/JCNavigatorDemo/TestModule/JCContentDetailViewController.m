@@ -29,6 +29,7 @@
     } presentBlock:^{
         [[JCNavigator sharedNavigator] openProtocol:protocol propertiesBlock:nil presented:YES];
     }];
+    [view setTestObject:[self testObject]];
     [self.view addSubview:view];
 }
 

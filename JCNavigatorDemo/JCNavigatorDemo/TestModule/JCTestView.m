@@ -7,6 +7,7 @@
 //
 
 #import "JCTestView.h"
+#import "JCTestClass.h"
 
 @interface JCTestView ()
 
@@ -14,6 +15,7 @@
 @property (nonatomic, strong) UIButton *presentButton;
 @property (nonatomic, copy) void (^pushBlock)(void);
 @property (nonatomic, copy) void (^presentBlock)(void);
+@property (nonatomic, strong) UILabel *testLabel;
 
 @end
 
@@ -73,7 +75,26 @@
 
 - (void)setTestObject:(JCTestClass *)testObject
 {
-    
+    if (!testObject) {
+        return;
+    }
+    NSString *text = testObject.testId ?:@"";
+    for (NSString *string in testObject.testArray) {
+        text = [NSString stringWithFormat:@"%@ %@", text, string];
+    }
+    self.testLabel.text = text;
+}
+
+- (UILabel *)testLabel
+{
+    if (!_testLabel) {
+        _testLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 32, CGRectGetWidth(self.bounds) - 32, 64)];
+        _testLabel.textColor = [[UIColor blueColor] colorWithAlphaComponent:0.9];
+        _testLabel.font = [UIFont boldSystemFontOfSize:18];
+        _testLabel.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:_testLabel];
+    }
+    return _testLabel;
 }
 
 @end
