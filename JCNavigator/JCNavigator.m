@@ -305,7 +305,7 @@
 }
 
 /// Pop to the previous view controller of viewController,
-/// Or dismiss to the previous navigation level of viewController.
+/// or dismiss to the previous navigation level of viewController.
 - (void)openPreviousVCOfWillOpenedVC:(UIViewController *)viewController completion:(void(^)(BOOL success))completion
 {
     if (!viewController) {
