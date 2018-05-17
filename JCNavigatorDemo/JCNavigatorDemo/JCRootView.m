@@ -1,14 +1,14 @@
 //
-//  JCTestView.m
+//  JCRootView.m
 //  JCNavigatorDemo
 //
-//  Created by ChenJianjun on 2018/5/5.
+//  Created by jianjun16 on 2018/5/17.
 //  Copyright © 2018 Joych<https://github.com/imjoych>. All rights reserved.
 //
 
-#import "JCTestView.h"
+#import "JCRootView.h"
 
-@interface JCTestView ()
+@interface JCRootView ()
 
 @property (nonatomic, strong) UIButton *pushButton;
 @property (nonatomic, strong) UIButton *presentButton;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation JCTestView
+@implementation JCRootView
 
 - (instancetype)initWithFrame:(CGRect)frame pushBlock:(void (^)(void))pushBlock presentBlock:(void (^)(void))presentBlock
 {
@@ -69,11 +69,6 @@
     if (self.presentBlock) {
         self.presentBlock();
     }
-}
-
-- (void)setTestObject:(JCTestClass *)testObject
-{
-    
 }
 
 @end

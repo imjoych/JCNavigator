@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "JCNavigator.h"
-#import "JCTestView.h"
+#import "JCRootView.h"
 
 @interface ViewController ()
 
@@ -20,7 +20,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.title = NSStringFromClass([self class]);
-    JCTestView *view = [JCTestView viewWithPushBlock:^{
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    JCRootView *view = [[JCRootView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
         [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_firstLevel")];
     } presentBlock:^{
         [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_contentDetail") propertiesBlock:^NSDictionary *{
@@ -28,8 +30,6 @@
         } presented:YES];
     }];
     [self.view addSubview:view];
-    view.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64);
-    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 

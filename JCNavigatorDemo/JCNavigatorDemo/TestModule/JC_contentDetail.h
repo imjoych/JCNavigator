@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "JCTestClass.h"
 
 @protocol JC_contentDetail <NSObject>
 
 @property (nonatomic, strong) NSString *currentIndex;
+@property (nonatomic, strong) NSString *testId;
 @property (nonatomic, strong) NSArray *testArray;
-@property (nonatomic, strong) JCTestClass *testClass;
 
 @end

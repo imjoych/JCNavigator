@@ -25,6 +25,7 @@
 		B6625DD520AC1CB300A7D910 /* JCTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DCC20AC1CB300A7D910 /* JCTestClass.m */; };
 		B6625DDA20AC1F6D00A7D910 /* UIViewController+JCNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DD620AC1F6C00A7D910 /* UIViewController+JCNavigationItem.m */; };
 		B6625DDB20AC1F6D00A7D910 /* JCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DD920AC1F6D00A7D910 /* JCNavigationController.m */; };
+		B69230AF20AD631900802608 /* JCRootView.m in Sources */ = {isa = PBXBuildFile; fileRef = B69230AE20AD631800802608 /* JCRootView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,8 @@
 		B6625DD720AC1F6C00A7D910 /* JCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNavigationController.h; sourceTree = "<group>"; };
 		B6625DD820AC1F6C00A7D910 /* UIViewController+JCNavigationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JCNavigationItem.h"; sourceTree = "<group>"; };
 		B6625DD920AC1F6D00A7D910 /* JCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNavigationController.m; sourceTree = "<group>"; };
+		B69230AD20AD631800802608 /* JCRootView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCRootView.h; sourceTree = "<group>"; };
+		B69230AE20AD631800802608 /* JCRootView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCRootView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,8 @@
 				23F2F50D2081919B00FC3ED4 /* AppDelegate.m */,
 				23F2F50F2081919B00FC3ED4 /* ViewController.h */,
 				23F2F5102081919B00FC3ED4 /* ViewController.m */,
+				B69230AD20AD631800802608 /* JCRootView.h */,
+				B69230AE20AD631800802608 /* JCRootView.m */,
 				B6625DB320AC1C9A00A7D910 /* JC_root.h */,
 				B6625DB220AC1C9A00A7D910 /* JCRootModuleMap.h */,
 				B6625DB420AC1C9A00A7D910 /* JCRootModuleMap.m */,
@@ -242,6 +247,7 @@
 				B6625DDA20AC1F6D00A7D910 /* UIViewController+JCNavigationItem.m in Sources */,
 				B6625DD220AC1CB300A7D910 /* JCContentDetailViewController.m in Sources */,
 				B6625DCE20AC1CB300A7D910 /* JCSecondLevelViewController.m in Sources */,
+				B69230AF20AD631900802608 /* JCRootView.m in Sources */,
 				B6625DDB20AC1F6D00A7D910 /* JCNavigationController.m in Sources */,
 				B6625DD520AC1CB300A7D910 /* JCTestClass.m in Sources */,
 				23F2F5262081921700FC3ED4 /* JCNavigator.m in Sources */,

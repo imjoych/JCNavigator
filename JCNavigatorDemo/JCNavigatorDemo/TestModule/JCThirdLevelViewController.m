@@ -19,21 +19,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = NSStringFromClass([self class]);
-    JCTestView *view = [JCTestView viewWithPushBlock:^{
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    JCTestView *view = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
         [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_firstLevel)];
     } presentBlock:^{
         [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) propertiesBlock:^NSDictionary *{
-            JCTestClass *testClass = [JCTestClass new];
-            testClass.testId = @"hahaha111";
             return @{@"currentIndex": @"3",
-                     @"testArray": [NSNull null],
-                     @"testClass": testClass,
+                     @"testId": @"hahaha666",
+                     @"testArray": @[@"hello", @"world"],
                      };
         } presented:YES];
     }];
     [self.view addSubview:view];
-    view.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64);
-    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning {
