@@ -149,27 +149,6 @@
     return [[UIApplication sharedApplication] openURL:URL];
 }
 
-- (void)setViewController:(UIViewController *)viewController moduleMap:(JCModuleMap *)moduleMap params:(NSDictionary *)params
-{
-    if (![params isKindOfClass:[NSDictionary class]] || params.count < 1) {
-        return;
-    }
-    NSDictionary *mapForClasses = [moduleMap propertiesMapOfURLQueryForClasses];
-    NSDictionary *propertiesMap = mapForClasses[NSStringFromClass([viewController class])];
-    [params enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        NSString *realKey = nil;
-        if (propertiesMap) {
-            realKey = propertiesMap[key];
-        }
-        if (!realKey) {
-            realKey = key;
-        }
-        if (![obj isKindOfClass:[NSNull class]] && [viewController respondsToSelector:NSSelectorFromString(realKey)]) {
-            [viewController setValue:obj forKey:realKey];
-        }
-    }];
-}
-
 - (NSDictionary *)parseURLQuery:(NSString *)query
 {
     if (![query isKindOfClass:[NSString class]] || query.length < 1) {
@@ -302,6 +281,27 @@
         }
     }
     return viewController;
+}
+
+- (void)setViewController:(UIViewController *)viewController moduleMap:(JCModuleMap *)moduleMap params:(NSDictionary *)params
+{
+    if (![params isKindOfClass:[NSDictionary class]] || params.count < 1) {
+        return;
+    }
+    NSDictionary *mapForClasses = [moduleMap propertiesMapOfURLQueryForClasses];
+    NSDictionary *propertiesMap = mapForClasses[NSStringFromClass([viewController class])];
+    [params enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        NSString *realKey = nil;
+        if (propertiesMap) {
+            realKey = propertiesMap[key];
+        }
+        if (!realKey) {
+            realKey = key;
+        }
+        if (![obj isKindOfClass:[NSNull class]] && [viewController respondsToSelector:NSSelectorFromString(realKey)]) {
+            [viewController setValue:obj forKey:realKey];
+        }
+    }];
 }
 
 /// Pop to the previous view controller of viewController,
