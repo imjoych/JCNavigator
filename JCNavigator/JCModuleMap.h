@@ -40,11 +40,6 @@
 - (NSDictionary<NSString *,Class> *)classesForProtocols;
 
 /**
- * Returns instance of view controller class, default [[viewControllerClass alloc] init].
- */
-- (id)instanceForClass:(Class)viewControllerClass;
-
-/**
  * Presented or not settings while opening the view controllers, default NO.
  */
 - (BOOL)presentedForClass:(Class)viewControllerClass;

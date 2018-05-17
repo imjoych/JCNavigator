@@ -253,7 +253,7 @@
         }
     }
     
-    viewController = [moduleMap instanceForClass:viewControllerClass];
+    viewController = [[viewControllerClass alloc] init];
     [self setViewController:viewController moduleMap:moduleMap params:params];
     [self openViewController:viewController presented:presented animated:animated];
 }
