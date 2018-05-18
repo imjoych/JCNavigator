@@ -48,6 +48,7 @@ JCRootModuleMap class
 ```
 
 JCTestModuleMap class
+* Once the protocol which the view controller class conforms to has changed, the JCModuleMap of subclassing and the associated calling code needs to be updated in a timely manner. 
 ```objective-c
 @implementation JCTestModuleMap
 
