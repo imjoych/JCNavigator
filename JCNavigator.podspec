@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = 'JCNavigator'
-s.version      = '0.1.0'
+s.version      = '0.1.2'
 s.summary      = 'A decoupled navigator framework of jumping between modules or apps for iOS development.'
 s.homepage     = 'https://github.com/imjoych/JCNavigator'
 s.author       = { 'ChenJianjun' => 'imjoych@gmail.com' }
