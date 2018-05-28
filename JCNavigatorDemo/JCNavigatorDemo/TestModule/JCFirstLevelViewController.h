@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JCFirstLevelViewController : UIViewController
+@protocol JC_firstLevel <NSObject>
+
+@end
+
+@interface JCFirstLevelViewController : UIViewController <JC_firstLevel>
 
 @end

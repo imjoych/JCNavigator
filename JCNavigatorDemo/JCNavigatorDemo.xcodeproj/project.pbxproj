@@ -51,16 +51,12 @@
 		B6625DB920AC1CB200A7D910 /* JCSecondLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCSecondLevelViewController.m; sourceTree = "<group>"; };
 		B6625DBA20AC1CB200A7D910 /* JCTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTestClass.h; sourceTree = "<group>"; };
 		B6625DBB20AC1CB200A7D910 /* JCTestHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTestHeader.h; sourceTree = "<group>"; };
-		B6625DBC20AC1CB200A7D910 /* JC_contentDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JC_contentDetail.h; sourceTree = "<group>"; };
-		B6625DBD20AC1CB200A7D910 /* JC_firstLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JC_firstLevel.h; sourceTree = "<group>"; };
 		B6625DBE20AC1CB300A7D910 /* JCTestModuleMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTestModuleMap.m; sourceTree = "<group>"; };
 		B6625DBF20AC1CB300A7D910 /* JCThirdLevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCThirdLevelViewController.h; sourceTree = "<group>"; };
 		B6625DC020AC1CB300A7D910 /* JCFirstLevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCFirstLevelViewController.h; sourceTree = "<group>"; };
 		B6625DC120AC1CB300A7D910 /* JCContentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCContentDetailViewController.h; sourceTree = "<group>"; };
 		B6625DC220AC1CB300A7D910 /* JCSecondLevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCSecondLevelViewController.h; sourceTree = "<group>"; };
 		B6625DC320AC1CB300A7D910 /* JCFirstLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCFirstLevelViewController.m; sourceTree = "<group>"; };
-		B6625DC420AC1CB300A7D910 /* JC_secondLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JC_secondLevel.h; sourceTree = "<group>"; };
-		B6625DC520AC1CB300A7D910 /* JC_thirdLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JC_thirdLevel.h; sourceTree = "<group>"; };
 		B6625DC620AC1CB300A7D910 /* JCTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTestView.m; sourceTree = "<group>"; };
 		B6625DC720AC1CB300A7D910 /* JCContentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCContentDetailViewController.m; sourceTree = "<group>"; };
 		B6625DC820AC1CB300A7D910 /* JCThirdLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCThirdLevelViewController.m; sourceTree = "<group>"; };
@@ -153,10 +149,6 @@
 		B6625D9120AC1C8600A7D910 /* TestModule */ = {
 			isa = PBXGroup;
 			children = (
-				B6625DBC20AC1CB200A7D910 /* JC_contentDetail.h */,
-				B6625DBD20AC1CB200A7D910 /* JC_firstLevel.h */,
-				B6625DC420AC1CB300A7D910 /* JC_secondLevel.h */,
-				B6625DC520AC1CB300A7D910 /* JC_thirdLevel.h */,
 				B6625DC120AC1CB300A7D910 /* JCContentDetailViewController.h */,
 				B6625DC720AC1CB300A7D910 /* JCContentDetailViewController.m */,
 				B6625DC020AC1CB300A7D910 /* JCFirstLevelViewController.h */,

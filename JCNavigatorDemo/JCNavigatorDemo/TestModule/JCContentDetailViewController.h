@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JC_contentDetail.h"
+
+@protocol JC_contentDetail <NSObject>
+
+@property (nonatomic, strong) NSString *currentIndex;
+@property (nonatomic, strong) NSString *testId;
+@property (nonatomic, strong) NSArray *testArray;
+
+@end
 
 @interface JCContentDetailViewController : UIViewController<JC_contentDetail>
 
