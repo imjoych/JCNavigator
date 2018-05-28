@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol JC_secondLevel <NSObject>
-
-@end
-
-@interface JCSecondLevelViewController : UIViewController <JC_secondLevel>
+@interface JCSecondLevelViewController : UIViewController
 
 @end

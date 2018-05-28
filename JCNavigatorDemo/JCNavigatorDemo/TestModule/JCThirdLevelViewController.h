@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol JC_thirdLevel <NSObject>
-
-@end
-
-@interface JCThirdLevelViewController : UIViewController <JC_thirdLevel>
+@interface JCThirdLevelViewController : UIViewController
 
 @end
