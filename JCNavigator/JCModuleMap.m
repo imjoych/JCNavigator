@@ -8,8 +8,6 @@
 
 #import "JCModuleMap.h"
 
-static NSString *JCMapKeyPrefix = @"JC";
-
 @interface JCModuleMap ()
 
 @property (nonatomic, strong) NSDictionary *lowercaseStringMaps;
@@ -18,9 +16,9 @@ static NSString *JCMapKeyPrefix = @"JC";
 
 @implementation JCModuleMap
 
-+ (void)setMapKeyPrefix:(NSString *)mapKeyPrefix
+- (NSString *)mapKeyPrefix
 {
-    JCMapKeyPrefix = mapKeyPrefix;
+    return @"JC";
 }
 
 - (NSDictionary<NSString *,Class> *)classesForMapKeys
@@ -84,7 +82,7 @@ static NSString *JCMapKeyPrefix = @"JC";
     if (![URL isKindOfClass:[NSURL class]]) {
         return nil;
     }
-    NSString *lowercaseKey = [NSString stringWithFormat:@"%@_%@", JCMapKeyPrefix, [URL lastPathComponent]];
+    NSString *lowercaseKey = [NSString stringWithFormat:@"%@_%@", [self mapKeyPrefix], [URL lastPathComponent]];
     return [self viewControllerClassForMapKey:lowercaseKey];
 }
 

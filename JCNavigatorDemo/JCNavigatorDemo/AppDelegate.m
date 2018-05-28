@@ -26,7 +26,6 @@
     [[JCNavigator sharedNavigator] addURLScheme:@"joych" hostList:@[@"com.joych.JCNavigatorDemo"]];
     [[JCNavigator sharedNavigator] addModuleMap:[JCRootModuleMap new]];
     [[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
-    [JCModuleMap setMapKeyPrefix:@"JC"];
     [[JCNavigator sharedNavigator] setNavigationControllerClass:[JCNavigationController class]];
 }
 

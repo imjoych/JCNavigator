@@ -27,12 +27,12 @@
  */
 @interface JCModuleMap : NSObject <JCModuleMap>
 
-/**
- * Global setting of map key prefix, such as JC.
- */
-+ (void)setMapKeyPrefix:(NSString *)mapKeyPrefix;
-
 #pragma mark - Implemented by subclass
+
+/**
+ * Returns module map key prefix, default JC.
+ */
+- (NSString *)mapKeyPrefix;
 
 /**
  * Returns dictionary with the map of classes for mapKeys.
