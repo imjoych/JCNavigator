@@ -8,14 +8,19 @@
 
 #import "JCTestModuleMap.h"
 
+NSString *const JCFirstLevelMapKey = @"JC_firstLevel";
+NSString *const JCSecondLevelMapKey = @"JC_secondLevel";
+NSString *const JCThirdLevelMapKey = @"JC_thirdLevel";
+NSString *const JCContentDetailMapKey = @"JC_contentDetail";
+
 @implementation JCTestModuleMap
 
 - (NSDictionary<NSString *,Class> *)classesForMapKeys
 {
-    return @{@"JC_firstLevel": NSClassFromString(@"JCFirstLevelViewController"),
-             @"JC_secondLevel": NSClassFromString(@"JCSecondLevelViewController"),
-             @"JC_thirdLevel": NSClassFromString(@"JCThirdLevelViewController"),
-             @"JC_contentDetail": NSClassFromString(@"JCContentDetailViewController"),
+    return @{JCFirstLevelMapKey: NSClassFromString(@"JCFirstLevelViewController"),
+             JCSecondLevelMapKey: NSClassFromString(@"JCSecondLevelViewController"),
+             JCThirdLevelMapKey: NSClassFromString(@"JCThirdLevelViewController"),
+             JCContentDetailMapKey: NSClassFromString(@"JCContentDetailViewController"),
              };
 }
 

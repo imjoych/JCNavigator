@@ -9,6 +9,7 @@
 #import "JCContentDetailViewController.h"
 #import "JCTestHeader.h"
 #import "JCTestClass.h"
+#import "JCTestModuleMap.h"
 
 @interface JCContentDetailViewController ()
 
@@ -42,14 +43,14 @@
 {
     switch ([index integerValue]) {
         case 0:
-            return @"JC_firstLevel";
+            return JCFirstLevelMapKey;
         case 1:
-            return @"JC_secondLevel";
+            return JCSecondLevelMapKey;
         case 2:
-            return @"JC_thirdLevel";
+            return JCThirdLevelMapKey;
         case 3:
         default:
-            return @"JC_firstLevel";
+            return JCContentDetailMapKey;
     }
 }
 

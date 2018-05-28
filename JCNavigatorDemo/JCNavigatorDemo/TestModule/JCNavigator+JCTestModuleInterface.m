@@ -7,26 +7,27 @@
 //
 
 #import "JCNavigator+JCTestModuleInterface.h"
+#import "JCTestModuleMap.h"
 
 @implementation JCNavigator (JCTestModuleInterface)
 
 + (void)openFirstLevelViewController
 {
-    [[JCNavigator sharedNavigator] openWithMapKey:@"JC_firstLevel"];
+    [[JCNavigator sharedNavigator] openWithMapKey:JCFirstLevelMapKey];
 //    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/firstlevel"]];
 //    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/firstlevel"];
 }
 
 + (void)openSecondLevelViewController
 {
-//    [[JCNavigator sharedNavigator] openWithMapKey:@"JC_secondLevel"];
+//    [[JCNavigator sharedNavigator] openWithMapKey:JCSecondLevelMapKey];
     [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/secondlevel"]];
 //    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/secondlevel"];
 }
 
 + (void)openThirdLevelViewController
 {
-//    [[JCNavigator sharedNavigator] openWithMapKey:@"JC_thirdLevel"];
+//    [[JCNavigator sharedNavigator] openWithMapKey:JCThirdLevelMapKey];
 //    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/thirdlevel"]];
     [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/thirdlevel"];
 }
@@ -43,7 +44,7 @@
     if ([testArray isKindOfClass:[NSArray class]]) {
         params[@"testArray"] = testArray;
     }
-    [[JCNavigator sharedNavigator] openWithMapKey:@"JC_contentDetail" propertiesBlock:^NSDictionary *{
+    [[JCNavigator sharedNavigator] openWithMapKey:JCContentDetailMapKey propertiesBlock:^NSDictionary *{
         return params;
     } presented:YES];
 }

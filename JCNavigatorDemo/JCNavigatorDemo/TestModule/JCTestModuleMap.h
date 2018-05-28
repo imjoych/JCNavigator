@@ -8,6 +8,11 @@
 
 #import "JCModuleMap.h"
 
+FOUNDATION_EXPORT NSString *const JCFirstLevelMapKey;
+FOUNDATION_EXPORT NSString *const JCSecondLevelMapKey;
+FOUNDATION_EXPORT NSString *const JCThirdLevelMapKey;
+FOUNDATION_EXPORT NSString *const JCContentDetailMapKey;
+
 @interface JCTestModuleMap : JCModuleMap
 
 @end
