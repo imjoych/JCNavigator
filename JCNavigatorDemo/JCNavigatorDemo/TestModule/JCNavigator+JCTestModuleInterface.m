@@ -13,16 +13,22 @@
 + (void)openFirstLevelViewController
 {
     [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_firstLevel")];
+//    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/firstlevel"]];
+//    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/firstlevel"];
 }
 
 + (void)openSecondLevelViewController
 {
-    [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_secondLevel")];
+//    [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_secondLevel")];
+    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/secondlevel"]];
+//    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/secondlevel"];
 }
 
 + (void)openThirdLevelViewController
 {
-    [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_thirdLevel")];
+//    [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_thirdLevel")];
+//    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/thirdlevel"]];
+    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/thirdlevel"];
 }
 
 + (void)openContentDetailViewControllerWithCurrentIndex:(NSString *)currentIndex testId:(NSString *)testId testArray:(NSArray *)testArray
