@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "JCNavigator.h"
+#import "JCNavigator+JCTestModuleInterface.h"
 #import "JCRootView.h"
 
 @interface ViewController ()
@@ -23,11 +23,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     JCRootView *view = [[JCRootView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
-        [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_firstLevel")];
+        [JCNavigator openFirstLevelViewController];
     } presentBlock:^{
-        [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_contentDetail") propertiesBlock:^NSDictionary *{
-            return @{@"currentIndex": @"0"};
-        } presented:YES];
+        [JCNavigator openContentDetailViewControllerWithCurrentIndex:@"0" testId:nil testArray:nil];
     }];
     [self.view addSubview:view];
 }
