@@ -24,7 +24,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     JCTestView *view = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
-        [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_thirdLevel)];
+        [JCNavigator openThirdLevelViewController];
     } presentBlock:^{
         [self showAlert];
     }];
@@ -57,9 +57,7 @@
         [[JCNavigator sharedNavigator] openURLString:UIApplicationOpenSettingsURLString];
     }];
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Detail" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) propertiesBlock:^NSDictionary *{
-            return @{@"currentIndex": @"2"};
-        } presented:YES];
+        [JCNavigator openContentDetailViewControllerWithCurrentIndex:@"2" testId:nil testArray:nil];
     }];
     [alertController addAction:cancelAction];
     [alertController addAction:confirmAction];

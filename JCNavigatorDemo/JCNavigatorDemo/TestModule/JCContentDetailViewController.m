@@ -42,14 +42,14 @@
 {
     switch ([index integerValue]) {
         case 0:
-            return @protocol(JC_firstLevel);
+            return NSProtocolFromString(@"JC_firstLevel");
         case 1:
-            return @protocol(JC_secondLevel);
+            return NSProtocolFromString(@"JC_secondLevel");
         case 2:
-            return @protocol(JC_thirdLevel);
+            return NSProtocolFromString(@"JC_thirdLevel");
         case 3:
         default:
-            return @protocol(JC_firstLevel);
+            return NSProtocolFromString(@"JC_firstLevel");
     }
 }
 
