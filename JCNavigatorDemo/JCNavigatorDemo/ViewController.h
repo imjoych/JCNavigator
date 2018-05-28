@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JC_root.h"
 
-@interface ViewController : UIViewController<JC_root>
-
+@interface ViewController : UIViewController
 
 @end
 

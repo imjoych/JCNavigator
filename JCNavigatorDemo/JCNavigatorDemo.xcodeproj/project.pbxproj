@@ -45,7 +45,6 @@
 		23F2F5482081B35400FC3ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23F2F54A2081B35400FC3ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6625DB220AC1C9A00A7D910 /* JCRootModuleMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCRootModuleMap.h; sourceTree = "<group>"; };
-		B6625DB320AC1C9A00A7D910 /* JC_root.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JC_root.h; sourceTree = "<group>"; };
 		B6625DB420AC1C9A00A7D910 /* JCRootModuleMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCRootModuleMap.m; sourceTree = "<group>"; };
 		B6625DB620AC1CB200A7D910 /* JCTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTestView.h; sourceTree = "<group>"; };
 		B6625DB920AC1CB200A7D910 /* JCSecondLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCSecondLevelViewController.m; sourceTree = "<group>"; };
@@ -111,7 +110,6 @@
 				23F2F5102081919B00FC3ED4 /* ViewController.m */,
 				B69230AD20AD631800802608 /* JCRootView.h */,
 				B69230AE20AD631800802608 /* JCRootView.m */,
-				B6625DB320AC1C9A00A7D910 /* JC_root.h */,
 				B6625DB220AC1C9A00A7D910 /* JCRootModuleMap.h */,
 				B6625DB420AC1C9A00A7D910 /* JCRootModuleMap.m */,
 				B6625DD720AC1F6C00A7D910 /* JCNavigationController.h */,
