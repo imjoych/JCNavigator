@@ -50,7 +50,7 @@
             return JCThirdLevelMapKey;
         case 3:
         default:
-            return JCContentDetailMapKey;
+            return JCFirstLevelMapKey;
     }
 }
 
