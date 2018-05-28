@@ -8,7 +8,7 @@
 
 #import "JCModuleMap.h"
 
-static NSString *JCProtocolPrefix = @"JC";
+static NSString *JCMapKeyPrefix = @"JC";
 
 @interface JCModuleMap ()
 
@@ -18,12 +18,12 @@ static NSString *JCProtocolPrefix = @"JC";
 
 @implementation JCModuleMap
 
-+ (void)setProtocolPrefix:(NSString *)protocolPrefix
++ (void)setMapKeyPrefix:(NSString *)mapKeyPrefix
 {
-    JCProtocolPrefix = protocolPrefix;
+    JCMapKeyPrefix = mapKeyPrefix;
 }
 
-- (NSDictionary<NSString *,Class> *)classesForProtocols
+- (NSDictionary<NSString *,Class> *)classesForMapKeys
 {
     return nil;
 }
@@ -50,13 +50,13 @@ static NSString *JCProtocolPrefix = @"JC";
 
 - (NSDictionary *)lowercaseStringMaps
 {
-    NSDictionary *classesForProtocols = [self classesForProtocols];
-    if (!classesForProtocols || classesForProtocols.count < 1) {
+    NSDictionary *classesForMapKeys = [self classesForMapKeys];
+    if (!classesForMapKeys || classesForMapKeys.count < 1) {
         return nil;
     }
     if (!_lowercaseStringMaps) {
         NSMutableDictionary *maps = [@{} mutableCopy];
-        [classesForProtocols enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [classesForMapKeys enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             maps[[key lowercaseString]] = obj;
         }];
         _lowercaseStringMaps = [maps copy];
@@ -66,26 +66,26 @@ static NSString *JCProtocolPrefix = @"JC";
 
 #pragma mark - JCModuleMap protocol
 
-- (Class)viewControllerClassForProtocol:(Protocol *)protocol
+- (Class)viewControllerClassForMapKey:(NSString *)mapKey
 {
-    NSString *protocolName = NSStringFromProtocol(protocol);
-    protocolName = [protocolName lowercaseString];
+    if (![mapKey isKindOfClass:[NSString class]]) {
+        return nil;
+    }
+    NSString *lowercaseKey = [mapKey lowercaseString];
     NSDictionary *maps = [self lowercaseStringMaps];
-    if ([maps.allKeys containsObject:protocolName]) {
-        return maps[protocolName];
+    if ([maps.allKeys containsObject:lowercaseKey]) {
+        return maps[lowercaseKey];
     }
     return nil;
 }
 
 - (Class)viewControllerClassForURL:(NSURL *)URL
 {
-    NSString *protocolName = [NSString stringWithFormat:@"%@_%@", JCProtocolPrefix, [URL lastPathComponent]];
-    protocolName = [protocolName lowercaseString];
-    NSDictionary *maps = [self lowercaseStringMaps];
-    if ([maps.allKeys containsObject:protocolName]) {
-        return maps[protocolName];
+    if (![URL isKindOfClass:[NSURL class]]) {
+        return nil;
     }
-    return nil;
+    NSString *lowercaseKey = [NSString stringWithFormat:@"%@_%@", JCMapKeyPrefix, [URL lastPathComponent]];
+    return [self viewControllerClassForMapKey:lowercaseKey];
 }
 
 @end

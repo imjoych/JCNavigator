@@ -10,7 +10,7 @@
 
 @implementation JCRootModuleMap
 
-- (NSDictionary<NSString *,Class> *)classesForProtocols
+- (NSDictionary<NSString *,Class> *)classesForMapKeys
 {
     return @{@"JC_root": NSClassFromString(@"ViewController")};
 }

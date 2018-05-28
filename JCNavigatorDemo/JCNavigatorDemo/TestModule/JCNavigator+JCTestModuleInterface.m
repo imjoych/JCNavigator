@@ -12,21 +12,21 @@
 
 + (void)openFirstLevelViewController
 {
-    [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_firstLevel")];
+    [[JCNavigator sharedNavigator] openWithMapKey:@"JC_firstLevel"];
 //    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/firstlevel"]];
 //    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/firstlevel"];
 }
 
 + (void)openSecondLevelViewController
 {
-//    [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_secondLevel")];
+//    [[JCNavigator sharedNavigator] openWithMapKey:@"JC_secondLevel"];
     [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/secondlevel"]];
 //    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/secondlevel"];
 }
 
 + (void)openThirdLevelViewController
 {
-//    [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_thirdLevel")];
+//    [[JCNavigator sharedNavigator] openWithMapKey:@"JC_thirdLevel"];
 //    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/thirdlevel"]];
     [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/thirdlevel"];
 }
@@ -43,7 +43,7 @@
     if ([testArray isKindOfClass:[NSArray class]]) {
         params[@"testArray"] = testArray;
     }
-    [[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_contentDetail") propertiesBlock:^NSDictionary *{
+    [[JCNavigator sharedNavigator] openWithMapKey:@"JC_contentDetail" propertiesBlock:^NSDictionary *{
         return params;
     } presented:YES];
 }

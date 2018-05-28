@@ -75,12 +75,12 @@ typedef NSDictionary *(^JCNavigatorPropertiesBlock)(void);
 - (BOOL)openURL:(NSURL *)URL;
 - (BOOL)openURL:(NSURL *)URL options:(NSDictionary *)options;
 
-#pragma mark - Open protocol operation
+#pragma mark - Open with mayKey operation
 
-- (void)openProtocol:(Protocol *)protocol;
-- (void)openProtocol:(Protocol *)protocol propertiesBlock:(JCNavigatorPropertiesBlock)block;
-- (void)openProtocol:(Protocol *)protocol propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented;
-- (void)openProtocol:(Protocol *)protocol propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented animated:(BOOL)animated;
+- (void)openWithMapKey:(NSString *)mapKey;
+- (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block;
+- (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented;
+- (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented animated:(BOOL)animated;
 
 #pragma mark - Pop view controller operation
 

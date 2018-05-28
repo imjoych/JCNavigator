@@ -11,12 +11,12 @@
 @protocol JCModuleMap <NSObject>
 
 /**
- * Returns view controller class which conforms to the protocol.
+ * Returns view controller class for map key which implemented in classesForMapKeys: method.
  */
-- (Class)viewControllerClassForProtocol:(Protocol *)protocol;
+- (Class)viewControllerClassForMapKey:(NSString *)mapKey;
 
 /**
- * Returns view controller class which relating to the URL.
+ * Returns view controller class for URL which lastPathComponent relating to the map key.
  */
 - (Class)viewControllerClassForURL:(NSURL *)URL;
 
@@ -28,16 +28,16 @@
 @interface JCModuleMap : NSObject <JCModuleMap>
 
 /**
- * Global setting of protocol prefix, such as JC.
+ * Global setting of map key prefix, such as JC.
  */
-+ (void)setProtocolPrefix:(NSString *)protocolPrefix;
++ (void)setMapKeyPrefix:(NSString *)mapKeyPrefix;
 
 #pragma mark - Implemented by subclass
 
 /**
- * Returns dictionary with the map of classes and protocols.
+ * Returns dictionary with the map of classes for mapKeys.
  */
-- (NSDictionary<NSString *,Class> *)classesForProtocols;
+- (NSDictionary<NSString *,Class> *)classesForMapKeys;
 
 /**
  * Presented or not settings while opening the view controllers, default NO.

@@ -10,7 +10,7 @@
 
 @implementation JCTestModuleMap
 
-- (NSDictionary<NSString *,Class> *)classesForProtocols
+- (NSDictionary<NSString *,Class> *)classesForMapKeys
 {
     return @{@"JC_firstLevel": NSClassFromString(@"JCFirstLevelViewController"),
              @"JC_secondLevel": NSClassFromString(@"JCSecondLevelViewController"),

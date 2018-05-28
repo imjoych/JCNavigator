@@ -167,33 +167,33 @@
     return parameters;
 }
 
-#pragma mark - Open protocol operation
+#pragma mark - Open with mayKey operation
 
-- (void)openProtocol:(Protocol *)protocol
+- (void)openWithMapKey:(NSString *)mapKey
 {
-    [self openProtocol:protocol propertiesBlock:nil];
+    [self openWithMapKey:mapKey propertiesBlock:nil];
 }
 
-- (void)openProtocol:(Protocol *)protocol propertiesBlock:(JCNavigatorPropertiesBlock)block
+- (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block
 {
-    [self openProtocol:protocol propertiesBlock:block presented:NO];
+    [self openWithMapKey:mapKey propertiesBlock:block presented:NO];
 }
 
-- (void)openProtocol:(Protocol *)protocol propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented
+- (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented
 {
-    [self openProtocol:protocol propertiesBlock:block presented:presented animated:YES];
+    [self openWithMapKey:mapKey propertiesBlock:block presented:presented animated:YES];
 }
 
-- (void)openProtocol:(Protocol *)protocol propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented animated:(BOOL)animated
+- (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented animated:(BOOL)animated
 {
-    JCModuleMap *moduleMap = [self moduleMapForProtocol:protocol];
+    JCModuleMap *moduleMap = [self moduleMapForMapKey:mapKey];
     if (!moduleMap) {
 #ifdef DEBUG
-        NSLog(@"Protocol %@ not found! Please implement the mapping relation of protocol and view controller in the subclass of JCModuleMap, which should be added to JCNavigator with addModuleMap: method.", NSStringFromProtocol(protocol));
+        NSLog(@"%@ not found! Please implement the classesForMapKeys: method in the subclass of JCModuleMap, and add it's instance to JCNavigator with addModuleMap: method.", mapKey);
 #endif
         return;
     }
-    Class viewControllerClass = [moduleMap viewControllerClassForProtocol:protocol];
+    Class viewControllerClass = [moduleMap viewControllerClassForMapKey:mapKey];
     NSDictionary *parameters = block ? block(): nil;
     [self openViewControllerWithClass:viewControllerClass
                             moduleMap:moduleMap
@@ -364,11 +364,11 @@
 
 #pragma mark - ModuleMap
 
-- (JCModuleMap *)moduleMapForProtocol:(Protocol *)protocol
+- (JCModuleMap *)moduleMapForMapKey:(NSString *)mapKey
 {
     __block JCModuleMap *moduleMap = nil;
     [self.moduleMaps enumerateObjectsUsingBlock:^(JCModuleMap *map, BOOL *stop) {
-        if ([map viewControllerClassForProtocol:protocol]) {
+        if ([map viewControllerClassForMapKey:mapKey]) {
             moduleMap = map;
             *stop = YES;
         }

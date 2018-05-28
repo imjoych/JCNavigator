@@ -23,11 +23,11 @@
     self.title = [NSString stringWithFormat:@"%@_%@", NSStringFromClass([self class]), self.currentIndex];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    Protocol *protocol = [self nextOpenProtocolWithIndex:self.currentIndex];
+    NSString *mapKey = [self nextOpenMapKeyWithIndex:self.currentIndex];
     JCTestView *view = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
-        [[JCNavigator sharedNavigator] openProtocol:protocol];
+        [[JCNavigator sharedNavigator] openWithMapKey:mapKey];
     } presentBlock:^{
-        [[JCNavigator sharedNavigator] openProtocol:protocol propertiesBlock:nil presented:YES];
+        [[JCNavigator sharedNavigator] openWithMapKey:mapKey propertiesBlock:nil presented:YES];
     }];
     [view setTestObject:[self testObject]];
     [self.view addSubview:view];
@@ -38,18 +38,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (Protocol *)nextOpenProtocolWithIndex:(NSString *)index
+- (NSString *)nextOpenMapKeyWithIndex:(NSString *)index
 {
     switch ([index integerValue]) {
         case 0:
-            return NSProtocolFromString(@"JC_firstLevel");
+            return @"JC_firstLevel";
         case 1:
-            return NSProtocolFromString(@"JC_secondLevel");
+            return @"JC_secondLevel";
         case 2:
-            return NSProtocolFromString(@"JC_thirdLevel");
+            return @"JC_thirdLevel";
         case 3:
         default:
-            return NSProtocolFromString(@"JC_firstLevel");
+            return @"JC_firstLevel";
     }
 }
 
