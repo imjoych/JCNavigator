@@ -22,11 +22,6 @@ Module maps configs
 [[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
 ```
 
-Navigation configs
-```objective-c
-[[JCNavigator sharedNavigator] setNavigationControllerClass:[JCNavigationController class]];
-```
-
 Set rootViewController
 ```objective-c
 ViewController *vc = [[ViewController alloc] init];
@@ -92,15 +87,19 @@ NSString *const JCContentDetailMapKey = @"JC_contentDetail";
 
 ### Jump operations with method openURL: or openWithMapKey:
 
-Open URL between apps.
+Open URL between apps or modules.
 ```objective-c
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
 {
     return [[JCNavigator sharedNavigator] openURL:url options:options];
 }
 ```
+```objective-c
+[[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/firstlevel"]];
+[[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.jcnavigatordemo/contentdetail?pageindex=1"];
+```
 
-Category of  JCNavigator which implemented interfaces for jumps between modules.
+Category of  JCNavigator implemented interfaces which are used for jumps between modules.
 ```objective-c
 //  JCNavigator+JCTestModuleInterface.h
 
@@ -130,12 +129,12 @@ Category of  JCNavigator which implemented interfaces for jumps between modules.
 
 + (void)openSecondLevelViewController
 {
-    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/secondlevel"]];
+    [[JCNavigator sharedNavigator] openWithMapKey:JCSecondLevelMapKey];
 }
 
 + (void)openThirdLevelViewController
 {
-    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/thirdlevel"];
+    [[JCNavigator sharedNavigator] openWithMapKey:JCThirdLevelMapKey];
 }
 
 + (void)openContentDetailViewControllerWithCurrentIndex:(NSString *)currentIndex testId:(NSString *)testId testArray:(NSArray           *)testArray
