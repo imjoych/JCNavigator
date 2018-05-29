@@ -20,16 +20,16 @@
 
 + (void)openSecondLevelViewController
 {
-//    [[JCNavigator sharedNavigator] openWithMapKey:JCSecondLevelMapKey];
-    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/secondlevel"]];
+    [[JCNavigator sharedNavigator] openWithMapKey:JCSecondLevelMapKey];
+//    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/secondlevel"]];
 //    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/secondlevel"];
 }
 
 + (void)openThirdLevelViewController
 {
-//    [[JCNavigator sharedNavigator] openWithMapKey:JCThirdLevelMapKey];
+    [[JCNavigator sharedNavigator] openWithMapKey:JCThirdLevelMapKey];
 //    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/thirdlevel"]];
-    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/thirdlevel"];
+//    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/thirdlevel"];
 }
 
 + (void)openContentDetailViewControllerWithCurrentIndex:(NSString *)currentIndex testId:(NSString *)testId testArray:(NSArray *)testArray
