@@ -6,8 +6,8 @@ This framework supports the development of iOS 8.0+ in ARC.
 
 * JCNavigator configs.
 * Implement module maps.
-* Parameters passing between modules.
 * Jump operations with method openURL: or openWithMapKey:.
+* Parameters passing between modules.
 
 ### JCNavigator configs
 
@@ -35,7 +35,7 @@ ViewController *vc = [[ViewController alloc] init];
 
 ### Implement module maps
 
-JCTestModuleMap class
+JCTestModuleMap class is declared as the subclass of JCModuleMap.
 * Map key should be defined with the same prefix and appended with "_".
 * Map key will be used in the category of JCNavigator which associated with this module.
 ```objective-c
@@ -90,28 +90,15 @@ NSString *const JCContentDetailMapKey = @"JC_contentDetail";
 @end
 ```
 
-### Parameters passing between modules
-
-Parameters passing between modules is realized by properties assignment.
-* Properties are suggested to be declared as NSString class because openURL: method only supports this data type.
-* Properties also can be declared as NSArray / NSDictionary / NSSet / UIImage and so on data types, which can be used for openWithMapKey:propertiesBlock: method. For decoupling between modules, although you can use a custom object, it is not recommended.
-```objective-c
-//  JCContentDetailViewController.h
-
-@protocol JC_contentDetail <NSObject>
-
-@property (nonatomic, strong) NSString *currentIndex;
-@property (nonatomic, strong) NSString *testId;
-@property (nonatomic, strong) NSArray *testArray;
-
-@end
-
-@interface JCContentDetailViewController : UIViewController<JC_contentDetail>
-
-@end
-```
-
 ### Jump operations with method openURL: or openWithMapKey:
+
+Open URL between apps.
+```objective-c
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
+{
+    return [[JCNavigator sharedNavigator] openURL:url options:options];
+}
+```
 
 Category of  JCNavigator which implemented interfaces for jumps between modules.
 ```objective-c
@@ -171,12 +158,25 @@ Category of  JCNavigator which implemented interfaces for jumps between modules.
 @end
 ```
 
-Open URL between apps or modules
+### Parameters passing between modules
+
+Parameters passing between modules is realized by properties assignment.
+* Properties are suggested to be declared as NSString class because openURL: method only supports this data type.
+* Properties also can be declared as NSArray / NSDictionary / NSSet / UIImage and so on data types, which can be used for openWithMapKey:propertiesBlock: method. For decoupling between modules, although you can use a custom object, it is not recommended.
 ```objective-c
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
-{
-    return [[JCNavigator sharedNavigator] openURL:url options:options];
-}
+//  JCContentDetailViewController.h
+
+@protocol JC_contentDetail <NSObject>
+
+@property (nonatomic, strong) NSString *currentIndex;
+@property (nonatomic, strong) NSString *testId;
+@property (nonatomic, strong) NSArray *testArray;
+
+@end
+
+@interface JCContentDetailViewController : UIViewController<JC_contentDetail>
+
+@end
 ```
 
 ## CocoaPods
