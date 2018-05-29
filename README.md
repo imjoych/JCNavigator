@@ -6,7 +6,8 @@ This framework supports the development of iOS 8.0+ in ARC.
 
 * JCNavigator configs.
 * Implement module maps.
-* Jump operations with method openURL: or openProtocol:.
+* Parameters passing between modules.
+* Jump operations with method openURL: or openWithMapKey:.
 
 ### JCNavigator configs
 
@@ -19,7 +20,6 @@ Module maps configs
 ```objective-c
 [[JCNavigator sharedNavigator] addModuleMap:[JCRootModuleMap new]];
 [[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
-[JCModuleMap setProtocolPrefix:@"JC"];
 ```
 
 Navigation configs
@@ -35,30 +35,38 @@ ViewController *vc = [[ViewController alloc] init];
 
 ### Implement module maps
 
-JCRootModuleMap class
+JCTestModuleMap class
+* Map key should be defined with the same prefix and appended with "_".
+* Map key will be used in the category of JCNavigator which associated with this module.
 ```objective-c
-@implementation JCRootModuleMap
+//  JCTestModuleMap.h
 
-- (NSDictionary<NSString *,Class> *)classesForProtocols
-{
-    return @{@"JC_root": NSClassFromString(@"ViewController")};
-}
+FOUNDATION_EXPORT NSString *const JCFirstLevelMapKey;
+FOUNDATION_EXPORT NSString *const JCSecondLevelMapKey;
+FOUNDATION_EXPORT NSString *const JCThirdLevelMapKey;
+FOUNDATION_EXPORT NSString *const JCContentDetailMapKey;
+
+@interface JCTestModuleMap : JCModuleMap
 
 @end
 ```
-
-JCTestModuleMap class
-* Once the protocol which the view controller class conforms to has changed, the JCModuleMap of subclassing and the associated calling code needs to be updated in a timely manner. 
 ```objective-c
+//  JCTestModuleMap.m
+
+NSString *const JCFirstLevelMapKey = @"JC_firstLevel";
+NSString *const JCSecondLevelMapKey = @"JC_secondLevel";
+NSString *const JCThirdLevelMapKey = @"JC_thirdLevel";
+NSString *const JCContentDetailMapKey = @"JC_contentDetail";
+
 @implementation JCTestModuleMap
 
-- (NSDictionary<NSString *,Class> *)classesForProtocols
+- (NSDictionary<NSString *,Class> *)classesForMapKeys
 {
-    return @{@"JC_firstLevel": NSClassFromString(@"JCFirstLevelViewController"),
-            @"JC_secondLevel": NSClassFromString(@"JCSecondLevelViewController"),
-            @"JC_thirdLevel": NSClassFromString(@"JCThirdLevelViewController"),
-            @"JC_contentDetail": NSClassFromString(@"JCContentDetailViewController"),
-            };
+    return @{JCFirstLevelMapKey: NSClassFromString(@"JCFirstLevelViewController"),
+             JCSecondLevelMapKey: NSClassFromString(@"JCSecondLevelViewController"),
+             JCThirdLevelMapKey: NSClassFromString(@"JCThirdLevelViewController"),
+             JCContentDetailMapKey: NSClassFromString(@"JCContentDetailViewController"),
+             };
 }
 
 - (BOOL)presentedForClass:(Class)viewControllerClass
@@ -82,10 +90,14 @@ JCTestModuleMap class
 @end
 ```
 
-JC_contentDetail protocol
+### Parameters passing between modules
+
+Parameters passing between modules is realized by properties assignment.
 * Properties are suggested to be declared as NSString class because openURL: method only supports this data type.
-* Properties also can be declared as NSArray / NSDictionary / NSSet / UIImage and so on data types, which can be used for openProtocol: method. For decoupling between modules, although you can use a custom object, it is not recommended.
+* Properties also can be declared as NSArray / NSDictionary / NSSet / UIImage and so on data types, which can be used for openWithMapKey:propertiesBlock: method. For decoupling between modules, although you can use a custom object, it is not recommended.
 ```objective-c
+//  JCContentDetailViewController.h
+
 @protocol JC_contentDetail <NSObject>
 
 @property (nonatomic, strong) NSString *currentIndex;
@@ -93,32 +105,78 @@ JC_contentDetail protocol
 @property (nonatomic, strong) NSArray *testArray;
 
 @end
+
+@interface JCContentDetailViewController : UIViewController<JC_contentDetail>
+
+@end
 ```
 
-### Jump operations with method openURL: or openProtocol:
+### Jump operations with method openURL: or openWithMapKey:
 
-Open URL between modules or apps
+Category of  JCNavigator which implemented interfaces for jumps between modules.
 ```objective-c
-[[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/secondlevel"]];
+//  JCNavigator+JCTestModuleInterface.h
 
-[[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.jcnavigatordemo/contentdetail?pageindex=1"];
+@interface JCNavigator (JCTestModuleInterface)
 
-[[JCNavigator sharedNavigator] openURLString:UIApplicationOpenSettingsURLString];
++ (void)openFirstLevelViewController;
+
++ (void)openSecondLevelViewController;
+
++ (void)openThirdLevelViewController;
+
++ (void)openContentDetailViewControllerWithCurrentIndex:(NSString *)currentIndex
+                                                 testId:(NSString *)testId
+                                              testArray:(NSArray *)testArray;
+
+@end
 ```
+```objective-c
+//  JCNavigator+JCTestModuleInterface.m
+
+@implementation JCNavigator (JCTestModuleInterface)
+
++ (void)openFirstLevelViewController
+{
+    [[JCNavigator sharedNavigator] openWithMapKey:JCFirstLevelMapKey];
+}
+
++ (void)openSecondLevelViewController
+{
+    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/secondlevel"]];
+}
+
++ (void)openThirdLevelViewController
+{
+    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/thirdlevel"];
+}
+
++ (void)openContentDetailViewControllerWithCurrentIndex:(NSString *)currentIndex testId:(NSString *)testId testArray:(NSArray           *)testArray
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:3];
+    if ([currentIndex isKindOfClass:[NSString class]]) {
+        params[@"currentIndex"] = currentIndex;
+    }
+    if ([testId isKindOfClass:[NSString class]]) {
+        params[@"testId"] = testId;
+    }
+    if ([testArray isKindOfClass:[NSArray class]]) {
+        params[@"testArray"] = testArray;
+    }
+    [[JCNavigator sharedNavigator] openWithMapKey:JCContentDetailMapKey propertiesBlock:^NSDictionary *{
+        return params;
+    } presented:YES];
+}
+
+@end
+```
+
+Open URL between apps or modules
 ```objective-c
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
 {
     return [[JCNavigator sharedNavigator] openURL:url options:options];
 }
-```
-
-Open protocol between modules
-```objective-c
-[[JCNavigator sharedNavigator] openProtocol:NSProtocolFromString(@"JC_firstLevel")];
-
-[[JCNavigator sharedNavigator] openProtocol:@protocol(JC_contentDetail) propertiesBlock:^NSDictionary *{
-    return @{@"currentIndex": @"3"};
-} presented:YES];
 ```
 
 ## CocoaPods
