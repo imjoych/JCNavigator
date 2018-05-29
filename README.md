@@ -161,7 +161,7 @@ Category of  JCNavigator implemented interfaces which are used for jumps between
 
 Parameters passing between modules is realized by properties assignment.
 * Properties are suggested to be declared as NSString class because openURL: method only supports this data type.
-* Properties also can be declared as NSArray / NSDictionary / NSSet / UIImage and so on data types, which can be used for openWithMapKey:propertiesBlock: method. For decoupling between modules, although you can use a custom object, it is not recommended.
+* Properties also can be declared as NSArray / NSDictionary / NSSet / UIImage and so on data types, which can be used with openWithMapKey:propertiesBlock: method. For decoupling between modules, although you can use a custom object, it is not recommended.
 ```objective-c
 //  JCContentDetailViewController.h
 
