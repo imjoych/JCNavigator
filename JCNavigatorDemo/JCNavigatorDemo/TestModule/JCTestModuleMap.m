@@ -32,7 +32,7 @@ NSString *const JCContentDetailMapKey = @"JC_contentDetail";
     return NO;
 }
 
-- (NSArray *)reuseViewControllerClasses
+- (NSArray<Class> *)reuseViewControllerClasses
 {
     return @[NSClassFromString(@"JCFirstLevelViewController")];
 }

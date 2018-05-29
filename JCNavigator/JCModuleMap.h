@@ -40,12 +40,12 @@
 - (NSDictionary<NSString *,Class> *)classesForMapKeys;
 
 /**
- * Presented or not settings while opening the view controllers, default NO.
+ * Presented or not settings while opening the view controllers through URL, default NO.
  */
 - (BOOL)presentedForClass:(Class)viewControllerClass;
 
 /**
- * Animated or not settings while opening the view controllers, default YES.
+ * Animated or not settings while opening the view controllers through URL, default YES.
  */
 - (BOOL)animatedForClass:(Class)viewControllerClass;
 
@@ -53,7 +53,7 @@
  * Returns array of reuse view controller classes.
  * @note The view controllers of classes will be reused if existed in window, otherwise new view controllers will be created.
  */
-- (NSArray *)reuseViewControllerClasses;
+- (NSArray<Class> *)reuseViewControllerClasses;
 
 /**
  * Returns dictionary with properties map of URL query for classes.

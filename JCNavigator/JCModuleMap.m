@@ -36,7 +36,7 @@
     return YES;
 }
 
-- (NSArray *)reuseViewControllerClasses
+- (NSArray<Class> *)reuseViewControllerClasses
 {
     return nil;
 }
