@@ -82,8 +82,8 @@
     if (![URL isKindOfClass:[NSURL class]]) {
         return nil;
     }
-    NSString *lowercaseKey = [NSString stringWithFormat:@"%@_%@", [self mapKeyPrefix], [URL lastPathComponent]];
-    return [self viewControllerClassForMapKey:lowercaseKey];
+    NSString *mapKey = [NSString stringWithFormat:@"%@_%@", [self mapKeyPrefix], [URL lastPathComponent]];
+    return [self viewControllerClassForMapKey:mapKey];
 }
 
 @end

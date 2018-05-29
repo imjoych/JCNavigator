@@ -167,7 +167,7 @@
     return parameters;
 }
 
-#pragma mark - Open with mayKey operation
+#pragma mark - Open with module map key operation
 
 - (void)openWithMapKey:(NSString *)mapKey
 {

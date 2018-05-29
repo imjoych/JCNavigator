@@ -75,7 +75,7 @@ typedef NSDictionary *(^JCNavigatorPropertiesBlock)(void);
 - (BOOL)openURL:(NSURL *)URL;
 - (BOOL)openURL:(NSURL *)URL options:(NSDictionary *)options;
 
-#pragma mark - Open with mayKey operation
+#pragma mark - Open with module map key operation
 
 - (void)openWithMapKey:(NSString *)mapKey;
 - (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block;
