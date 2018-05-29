@@ -39,14 +39,14 @@ typedef NSDictionary *(^JCNavigatorPropertiesBlock)(void);
 - (void)addModuleMap:(JCModuleMap *)moduleMap;
 
 /**
- * Set class of navigation controller which subclassing from UINavigationController.
- */
-- (void)setNavigationControllerClass:(Class)navigationControllerClass;
-
-/**
  * Set the root view controller for the window.
  */
 - (void)setRootViewController:(UIViewController *)rootViewController;
+
+/**
+ * Set class of navigation controller which subclassing from UINavigationController.
+ */
+- (void)setNavigationControllerClass:(Class)navigationControllerClass;
 
 /**
  * The root navigation controller for the window.

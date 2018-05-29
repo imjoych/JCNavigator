@@ -57,11 +57,6 @@
     [self.moduleMaps addObject:moduleMap];
 }
 
-- (void)setNavigationControllerClass:(Class)navigationControllerClass
-{
-    _navigationControllerClass = navigationControllerClass;
-}
-
 - (void)setRootViewController:(UIViewController *)rootViewController
 {
     _rootViewController = rootViewController;
@@ -71,6 +66,11 @@
         _rootNavigationController = [[self.navigationControllerClass alloc] initWithRootViewController:rootViewController];
     }
     [UIApplication sharedApplication].delegate.window.rootViewController = _rootNavigationController;
+}
+
+- (void)setNavigationControllerClass:(Class)navigationControllerClass
+{
+    _navigationControllerClass = navigationControllerClass;
 }
 
 - (UINavigationController *)rootNavigationController
