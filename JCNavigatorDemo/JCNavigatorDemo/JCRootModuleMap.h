@@ -8,6 +8,8 @@
 
 #import "JCModuleMap.h"
 
+FOUNDATION_EXPORT NSString *const JCRootMapKey;
+
 @interface JCRootModuleMap : JCModuleMap
 
 @end

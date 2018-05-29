@@ -8,11 +8,13 @@
 
 #import "JCRootModuleMap.h"
 
+NSString *const JCRootMapKey = @"JC_root";
+
 @implementation JCRootModuleMap
 
 - (NSDictionary<NSString *,Class> *)classesForMapKeys
 {
-    return @{@"JC_root": NSClassFromString(@"ViewController")};
+    return @{JCRootMapKey: NSClassFromString(@"ViewController")};
 }
 
 @end
