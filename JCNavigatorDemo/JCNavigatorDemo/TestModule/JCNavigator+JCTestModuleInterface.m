@@ -11,6 +11,11 @@
 
 @implementation JCNavigator (JCTestModuleInterface)
 
++ (void)load
+{
+    [[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
+}
+
 + (void)openFirstLevelViewController
 {
     [[JCNavigator sharedNavigator] openWithMapKey:JCFirstLevelMapKey];

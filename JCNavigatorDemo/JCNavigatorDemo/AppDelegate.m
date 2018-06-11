@@ -9,8 +9,6 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "JCNavigator.h"
-#import "JCRootModuleMap.h"
-#import "JCTestModuleMap.h"
 #import "JCNavigationController.h"
 
 @interface AppDelegate ()
@@ -24,8 +22,6 @@
 - (void)navigatorConfigs
 {
     [[JCNavigator sharedNavigator] addURLScheme:@"joych" hostList:@[@"com.joych.JCNavigatorDemo"]];
-    [[JCNavigator sharedNavigator] addModuleMap:[JCRootModuleMap new]];
-    [[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
     [[JCNavigator sharedNavigator] setNavigationControllerClass:[JCNavigationController class]];
 }
 
