@@ -16,7 +16,6 @@
 		23F2F54B2081B35400FC3ED4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F2F5472081B35400FC3ED4 /* Main.storyboard */; };
 		23F2F54C2081B35400FC3ED4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F2F5492081B35400FC3ED4 /* LaunchScreen.storyboard */; };
 		B6625DB520AC1C9B00A7D910 /* JCRootModuleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DB420AC1C9A00A7D910 /* JCRootModuleMap.m */; };
-		B6625DCF20AC1CB300A7D910 /* JCTestModuleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DBE20AC1CB300A7D910 /* JCTestModuleMap.m */; };
 		B6625DDA20AC1F6D00A7D910 /* UIViewController+JCNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DD620AC1F6C00A7D910 /* UIViewController+JCNavigationItem.m */; };
 		B6625DDB20AC1F6D00A7D910 /* JCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DD920AC1F6D00A7D910 /* JCNavigationController.m */; };
 		B69230AF20AD631900802608 /* JCRootView.m in Sources */ = {isa = PBXBuildFile; fileRef = B69230AE20AD631800802608 /* JCRootView.m */; };
@@ -27,6 +26,7 @@
 		B6C5EF5420BD3A8E00625506 /* JCFirstLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C5EF4E20BD3A8E00625506 /* JCFirstLevelViewController.m */; };
 		B6C5EF5520BD3A8E00625506 /* JCThirdLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C5EF4F20BD3A8E00625506 /* JCThirdLevelViewController.m */; };
 		B6D9C9D520CE0D1D006443DF /* JCNavigator+JCRootModuleInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D9C9D420CE0D1D006443DF /* JCNavigator+JCRootModuleInterface.m */; };
+		B6D9C9D820CE0EEF006443DF /* JCTestModuleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D9C9D620CE0EEE006443DF /* JCTestModuleMap.m */; };
 		B6F9A45220B6BEB900C6C821 /* JCNavigator+JCTestModuleInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F9A45120B6BEB900C6C821 /* JCNavigator+JCTestModuleInterface.m */; };
 /* End PBXBuildFile section */
 
@@ -47,8 +47,6 @@
 		23F2F54A2081B35400FC3ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6625DB220AC1C9A00A7D910 /* JCRootModuleMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCRootModuleMap.h; sourceTree = "<group>"; };
 		B6625DB420AC1C9A00A7D910 /* JCRootModuleMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCRootModuleMap.m; sourceTree = "<group>"; };
-		B6625DBE20AC1CB300A7D910 /* JCTestModuleMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTestModuleMap.m; sourceTree = "<group>"; };
-		B6625DCA20AC1CB300A7D910 /* JCTestModuleMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTestModuleMap.h; sourceTree = "<group>"; };
 		B6625DD620AC1F6C00A7D910 /* UIViewController+JCNavigationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JCNavigationItem.m"; sourceTree = "<group>"; };
 		B6625DD720AC1F6C00A7D910 /* JCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNavigationController.h; sourceTree = "<group>"; };
 		B6625DD820AC1F6C00A7D910 /* UIViewController+JCNavigationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JCNavigationItem.h"; sourceTree = "<group>"; };
@@ -70,6 +68,8 @@
 		B6C5EF4F20BD3A8E00625506 /* JCThirdLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCThirdLevelViewController.m; sourceTree = "<group>"; };
 		B6D9C9D320CE0D1D006443DF /* JCNavigator+JCRootModuleInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JCNavigator+JCRootModuleInterface.h"; sourceTree = "<group>"; };
 		B6D9C9D420CE0D1D006443DF /* JCNavigator+JCRootModuleInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JCNavigator+JCRootModuleInterface.m"; sourceTree = "<group>"; };
+		B6D9C9D620CE0EEE006443DF /* JCTestModuleMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTestModuleMap.m; sourceTree = "<group>"; };
+		B6D9C9D720CE0EEF006443DF /* JCTestModuleMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTestModuleMap.h; sourceTree = "<group>"; };
 		B6F9A45020B6BEB900C6C821 /* JCNavigator+JCTestModuleInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JCNavigator+JCTestModuleInterface.h"; sourceTree = "<group>"; };
 		B6F9A45120B6BEB900C6C821 /* JCNavigator+JCTestModuleInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JCNavigator+JCTestModuleInterface.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,8 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				B6C5EF2F20BD3A7500625506 /* Private */,
-				B6625DCA20AC1CB300A7D910 /* JCTestModuleMap.h */,
-				B6625DBE20AC1CB300A7D910 /* JCTestModuleMap.m */,
 				B6F9A45020B6BEB900C6C821 /* JCNavigator+JCTestModuleInterface.h */,
 				B6F9A45120B6BEB900C6C821 /* JCNavigator+JCTestModuleInterface.m */,
 			);
@@ -164,6 +162,8 @@
 		B6C5EF2F20BD3A7500625506 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				B6D9C9D720CE0EEF006443DF /* JCTestModuleMap.h */,
+				B6D9C9D620CE0EEE006443DF /* JCTestModuleMap.m */,
 				B6C5EF4520BD3A8D00625506 /* JCContentDetailViewController.h */,
 				B6C5EF4B20BD3A8E00625506 /* JCContentDetailViewController.m */,
 				B6C5EF4320BD3A8D00625506 /* JCFirstLevelViewController.h */,
@@ -269,7 +269,7 @@
 				23F2F5432081B33800FC3ED4 /* main.m in Sources */,
 				B6F9A45220B6BEB900C6C821 /* JCNavigator+JCTestModuleInterface.m in Sources */,
 				23F2F50E2081919B00FC3ED4 /* AppDelegate.m in Sources */,
-				B6625DCF20AC1CB300A7D910 /* JCTestModuleMap.m in Sources */,
+				B6D9C9D820CE0EEF006443DF /* JCTestModuleMap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
