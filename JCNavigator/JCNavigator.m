@@ -239,9 +239,8 @@
 
 - (void)openViewControllerWithClass:(Class)viewControllerClass moduleMap:(JCModuleMap *)moduleMap params:(NSDictionary *)params presented:(BOOL)presented animated:(BOOL)animated
 {
-    UIViewController *viewController = nil;
     if ([[moduleMap reuseViewControllerClasses] containsObject:viewControllerClass]) {
-        viewController = [self existedViewControllerForClass:viewControllerClass];
+        UIViewController *viewController = [self existedViewControllerForClass:viewControllerClass];
         if (viewController) {
             [self setViewController:viewController moduleMap:moduleMap params:params];
             [self openPreviousVCOfWillOpenedVC:viewController completion:^(BOOL success) {
@@ -253,7 +252,7 @@
         }
     }
     
-    viewController = [[viewControllerClass alloc] init];
+    UIViewController *viewController = [[viewControllerClass alloc] init];
     [self setViewController:viewController moduleMap:moduleMap params:params];
     [self openViewController:viewController presented:presented animated:animated];
 }
