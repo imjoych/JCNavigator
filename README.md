@@ -16,12 +16,6 @@ Set URL jump rules with hostList for scheme
 [[JCNavigator sharedNavigator] addURLScheme:@"joych" hostList:@[@"com.joych.JCNavigatorDemo"]];
 ```
 
-Module maps configs
-```objective-c
-[[JCNavigator sharedNavigator] addModuleMap:[JCRootModuleMap new]];
-[[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
-```
-
 Set rootViewController
 ```objective-c
 ViewController *vc = [[ViewController alloc] init];
@@ -122,6 +116,11 @@ Category of  JCNavigator implemented interfaces which are used for jumps between
 
 @implementation JCNavigator (JCTestModuleInterface)
 
++ (void)load
+{
+    [[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
+}
+
 + (void)openFirstLevelViewController
 {
     [[JCNavigator sharedNavigator] openWithMapKey:JCFirstLevelMapKey];
@@ -191,4 +190,3 @@ E-mail: imjoych@gmail.com
 
 ## License
 JCNavigator is released under the [MIT License](https://github.com/imjoych/JCNavigator/blob/master/LICENSE).
-
