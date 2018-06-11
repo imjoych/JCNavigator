@@ -8,9 +8,9 @@
 
 #import "JCModuleMap.h"
 
-@interface JCModuleMap ()
-
-@property (nonatomic, strong) NSDictionary *lowercaseStringMaps;
+@interface JCModuleMap () {
+    NSDictionary *_lowercaseStringMaps;
+}
 
 @end
 
@@ -45,6 +45,8 @@
 {
     return nil;
 }
+
+#pragma mark - Private
 
 - (NSDictionary *)lowercaseStringMaps
 {
