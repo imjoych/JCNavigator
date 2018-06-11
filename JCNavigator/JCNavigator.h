@@ -27,7 +27,7 @@ typedef NSDictionary *(^JCNavigatorPropertiesBlock)(void);
 + (instancetype)sharedNavigator;
 
 /**
- * Add customized NSURL scheme with host list which can be used for pages jump.
+ * Add customized NSURL scheme with host list which can be used for pages jump with open URL methods.
  * @param scheme customized NSURL scheme.
  * @param hostList customized list of NSURL host.
  */
