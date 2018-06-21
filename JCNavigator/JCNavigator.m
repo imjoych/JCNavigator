@@ -249,7 +249,7 @@
 
 - (UIViewController *)existedViewControllerForClass:(Class)class
 {
-    return [self existedViewControllerForClass:class navigationController:self.rootNavigationController];
+    return [self existedViewControllerForClass:class navigationController:_rootNavigationController];
 }
 
 - (UIViewController *)existedViewControllerForClass:(Class)class navigationController:(UINavigationController *)navigationController
