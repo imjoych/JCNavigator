@@ -206,17 +206,17 @@
 
 - (void)popViewControllerAnimated:(BOOL)animated
 {
-    [self.visibleViewController.navigationController popViewControllerAnimated:animated];
+    [[self visibleViewController].navigationController popViewControllerAnimated:animated];
 }
 
 - (void)popToRootViewControllerAnimated:(BOOL)animated
 {
-    [self.visibleViewController.navigationController popToRootViewControllerAnimated:animated];
+    [[self visibleViewController].navigationController popToRootViewControllerAnimated:animated];
 }
 
 - (void)popToViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    [self.visibleViewController.navigationController popToViewController:viewController animated:animated];
+    [[self visibleViewController].navigationController popToViewController:viewController animated:animated];
 }
 
 #pragma mark - Dismiss view controller operation
@@ -228,7 +228,7 @@
 
 - (void)dismissViewControllerAnimated:(BOOL)animated completion:(void (^)(void))completion
 {
-    [self.visibleViewController dismissViewControllerAnimated:animated completion:^{
+    [[self visibleViewController] dismissViewControllerAnimated:animated completion:^{
         if (completion) {
             completion();
         }
@@ -313,7 +313,7 @@
         }
         return;
     }
-    NSArray *viewControllers = self.visibleViewController.navigationController.viewControllers;
+    NSArray *viewControllers = [self visibleViewController].navigationController.viewControllers;
     if ([viewControllers containsObject:viewController]) {
         NSUInteger vcIndex = [viewControllers indexOfObject:viewController];
         if (vcIndex > 0) {
@@ -337,7 +337,7 @@
         }
         return;
     }
-    if (self.visibleViewController != _rootViewController) {
+    if ([self visibleViewController] != _rootViewController) {
         // dismiss to the previous navigation level to find viewController.
         [self dismissViewControllerAnimated:NO completion:^{
             [self openPreviousVCOfWillOpenedVC:viewController completion:completion];
@@ -354,11 +354,11 @@
 {
     if (presented) {
         UINavigationController *navigationController = [[_navigationControllerClass alloc] initWithRootViewController:viewController];
-        UIViewController *vc = self.visibleViewController.parentViewController ?: self.visibleViewController;
+        UIViewController *vc = [self visibleViewController].parentViewController ?: [self visibleViewController];
         [vc presentViewController:navigationController animated:animated completion:nil];
         return;
     }
-    [self.visibleViewController.navigationController pushViewController:viewController animated:animated];
+    [[self visibleViewController].navigationController pushViewController:viewController animated:animated];
 }
 
 #pragma mark - ModuleMap
