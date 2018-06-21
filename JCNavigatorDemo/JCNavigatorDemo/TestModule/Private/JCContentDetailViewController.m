@@ -28,7 +28,7 @@
     JCTestView *view = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
         [[JCNavigator sharedNavigator] openWithMapKey:mapKey];
     } presentBlock:^{
-        [[JCNavigator sharedNavigator] openWithMapKey:mapKey propertiesBlock:nil presented:YES];
+        [[JCNavigator sharedNavigator] openWithMapKey:mapKey propertiesBlock:nil presented:YES animated:YES];
     }];
     [view setTestObject:[self testObject]];
     [self.view addSubview:view];

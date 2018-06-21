@@ -51,7 +51,7 @@
     }
     [[JCNavigator sharedNavigator] openWithMapKey:JCContentDetailMapKey propertiesBlock:^NSDictionary *{
         return params;
-    } presented:YES];
+    } presented:YES animated:YES];
 }
 
 @end

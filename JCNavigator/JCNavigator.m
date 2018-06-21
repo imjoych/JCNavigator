@@ -176,12 +176,7 @@
 
 - (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block
 {
-    [self openWithMapKey:mapKey propertiesBlock:block presented:NO];
-}
-
-- (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented
-{
-    [self openWithMapKey:mapKey propertiesBlock:block presented:presented animated:YES];
+    [self openWithMapKey:mapKey propertiesBlock:block presented:NO animated:YES];
 }
 
 - (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented animated:(BOOL)animated

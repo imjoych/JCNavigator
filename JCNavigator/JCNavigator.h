@@ -77,9 +77,12 @@ typedef NSDictionary *(^JCNavigatorPropertiesBlock)(void);
 
 #pragma mark - Open with module map key operation
 
+/**
+ * Open with module map key methods.
+ * @note Params presented defaults NO, animated defaults YES.
+ */
 - (void)openWithMapKey:(NSString *)mapKey;
 - (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block;
-- (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented;
 - (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented animated:(BOOL)animated;
 
 #pragma mark - Pop view controller operation
