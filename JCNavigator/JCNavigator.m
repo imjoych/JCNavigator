@@ -9,13 +9,13 @@
 #import "JCNavigator.h"
 #import "JCModuleMap.h"
 
-@interface JCNavigator ()
-
-@property (nonatomic, strong) NSMutableSet *moduleMaps;
-@property (nonatomic, strong) NSMutableDictionary *hostListForScheme;
-@property (nonatomic, strong) Class navigationControllerClass;
-@property (nonatomic, strong) UIViewController *rootViewController;
-@property (nonatomic, strong) UINavigationController *rootNavigationController;
+@interface JCNavigator () {
+    NSMutableSet *_moduleMaps;
+    NSMutableDictionary *_hostListForScheme;
+    Class _navigationControllerClass;
+    UIViewController *_rootViewController;
+    UINavigationController *_rootNavigationController;
+}
 
 @end
 
@@ -49,21 +49,21 @@
     for (NSString *host in hostList) {
         [lowercaseHostList addObject:[host lowercaseString]];
     }
-    self.hostListForScheme[[scheme lowercaseString]] = [lowercaseHostList copy];
+    _hostListForScheme[[scheme lowercaseString]] = [lowercaseHostList copy];
 }
 
 - (void)addModuleMap:(JCModuleMap *)moduleMap
 {
-    [self.moduleMaps addObject:moduleMap];
+    [_moduleMaps addObject:moduleMap];
 }
 
 - (void)setRootViewController:(UIViewController *)rootViewController
 {
     _rootViewController = rootViewController;
-    if ([rootViewController isKindOfClass:self.navigationControllerClass]) {
+    if ([rootViewController isKindOfClass:_navigationControllerClass]) {
         _rootNavigationController = (UINavigationController *)rootViewController;
     } else {
-        _rootNavigationController = [[self.navigationControllerClass alloc] initWithRootViewController:rootViewController];
+        _rootNavigationController = [[_navigationControllerClass alloc] initWithRootViewController:rootViewController];
     }
     [UIApplication sharedApplication].delegate.window.rootViewController = _rootNavigationController;
 }
@@ -80,12 +80,12 @@
 
 - (UIViewController *)topViewController
 {
-    return self.rootNavigationController.topViewController;
+    return _rootNavigationController.topViewController;
 }
 
 - (UIViewController *)visibleViewController
 {
-    return self.rootNavigationController.visibleViewController;
+    return _rootNavigationController.visibleViewController;
 }
 
 #pragma mark - Open URL operation
@@ -110,11 +110,11 @@
     }
     
     NSString *lowercaseScheme = [URL.scheme lowercaseString];
-    if (![self.hostListForScheme.allKeys containsObject:lowercaseScheme] || !URL.host) { // URL scheme not found or URL host not exist.
+    if (![_hostListForScheme.allKeys containsObject:lowercaseScheme] || !URL.host) { // URL scheme not found or URL host not exist.
         return [self openSpecifiedURL:URL options:options];
     }
     
-    NSArray *hostList = self.hostListForScheme[lowercaseScheme];
+    NSArray *hostList = _hostListForScheme[lowercaseScheme];
     NSString *lowercaseHost = [URL.host lowercaseString];
     if (![hostList containsObject:lowercaseHost]) { // URL host not found.
         return [self openSpecifiedURL:URL options:options];
@@ -323,7 +323,7 @@
                 completion(YES);
             }
             return;
-        } else if (viewController != self.rootViewController) {
+        } else if (viewController != _rootViewController) {
             // dismiss to the previous navigation level of viewController.
             [self dismissViewControllerAnimated:NO completion:^{
                 if (completion) {
@@ -337,7 +337,7 @@
         }
         return;
     }
-    if (self.visibleViewController != self.rootViewController) {
+    if (self.visibleViewController != _rootViewController) {
         // dismiss to the previous navigation level to find viewController.
         [self dismissViewControllerAnimated:NO completion:^{
             [self openPreviousVCOfWillOpenedVC:viewController completion:completion];
@@ -353,7 +353,7 @@
 - (void)openViewController:(UIViewController *)viewController presented:(BOOL)presented animated:(BOOL)animated
 {
     if (presented) {
-        UINavigationController *navigationController = [[self.navigationControllerClass alloc] initWithRootViewController:viewController];
+        UINavigationController *navigationController = [[_navigationControllerClass alloc] initWithRootViewController:viewController];
         UIViewController *vc = self.visibleViewController.parentViewController ?: self.visibleViewController;
         [vc presentViewController:navigationController animated:animated completion:nil];
         return;
@@ -366,7 +366,7 @@
 - (JCModuleMap *)moduleMapForMapKey:(NSString *)mapKey
 {
     __block JCModuleMap *moduleMap = nil;
-    [self.moduleMaps enumerateObjectsUsingBlock:^(JCModuleMap *map, BOOL *stop) {
+    [_moduleMaps enumerateObjectsUsingBlock:^(JCModuleMap *map, BOOL *stop) {
         if ([map viewControllerClassForMapKey:mapKey]) {
             moduleMap = map;
             *stop = YES;
@@ -378,7 +378,7 @@
 - (JCModuleMap *)moduleMapForURL:(NSURL *)URL
 {
     __block JCModuleMap *moduleMap = nil;
-    [self.moduleMaps enumerateObjectsUsingBlock:^(JCModuleMap *map, BOOL *stop) {
+    [_moduleMaps enumerateObjectsUsingBlock:^(JCModuleMap *map, BOOL *stop) {
         if ([map viewControllerClassForURL:URL]) {
             moduleMap = map;
             *stop = YES;
