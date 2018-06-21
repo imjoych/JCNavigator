@@ -221,11 +221,6 @@
 
 #pragma mark - Dismiss view controller operation
 
-- (void)dismissViewController
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (void)dismissViewControllerAnimated:(BOOL)animated completion:(void (^)(void))completion
 {
     [[self visibleViewController] dismissViewControllerAnimated:animated completion:^{

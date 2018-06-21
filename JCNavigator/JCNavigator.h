@@ -90,7 +90,6 @@ typedef NSDictionary *(^JCNavigatorPropertiesBlock)(void);
 
 #pragma mark - Dismiss view controller operation
 
-- (void)dismissViewController;
 - (void)dismissViewControllerAnimated:(BOOL)animated completion:(void (^)(void))completion;
 
 @end

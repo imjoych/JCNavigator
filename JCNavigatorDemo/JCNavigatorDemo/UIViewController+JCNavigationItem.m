@@ -44,7 +44,7 @@
 
 - (void)jc_leftCloseButtonPressed:(id)sender
 {
-    [[JCNavigator sharedNavigator] dismissViewController];
+    [[JCNavigator sharedNavigator] dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark -
