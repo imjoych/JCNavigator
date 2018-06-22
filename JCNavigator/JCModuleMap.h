@@ -35,17 +35,17 @@
 - (NSString *)mapKeyPrefix;
 
 /**
- * Returns dictionary with the map of classes for mapKeys.
+ * Returns dictionary with the map of the view controllers classes for mapKeys.
  */
 - (NSDictionary<NSString *,Class> *)classesForMapKeys;
 
 /**
- * Presented or not settings while opening the view controllers through URL, default NO.
+ * Presented or not settings while opening the view controller through URL, default NO.
  */
 - (BOOL)presentedForClass:(Class)viewControllerClass;
 
 /**
- * Animated or not settings while opening the view controllers through URL, default YES.
+ * Animated or not settings while opening the view controller through URL, default YES.
  */
 - (BOOL)animatedForClass:(Class)viewControllerClass;
 
@@ -56,7 +56,8 @@
 - (NSArray<Class> *)reuseViewControllerClasses;
 
 /**
- * Returns dictionary with properties map of URL query for classes.
+ * Returns dictionary with properties map of URL query for the view controllers classes.
+ * @note If all of the URL query items names are equal to the properties names, there is no need to implement this method.
  */
 - (NSDictionary<NSString *,NSDictionary *> *)propertiesMapOfURLQueryForClasses;
 
