@@ -150,7 +150,7 @@ Category of  JCNavigator implemented interfaces which are used for jumps between
     }
     [[JCNavigator sharedNavigator] openWithMapKey:JCContentDetailMapKey propertiesBlock:^NSDictionary *{
         return params;
-    } presented:YES];
+    } presented:YES animated:YES];
 }
 
 @end
