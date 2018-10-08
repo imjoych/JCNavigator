@@ -181,11 +181,10 @@
 
 - (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented animated:(BOOL)animated
 {
+    NSParameterAssert([mapKey isKindOfClass:[NSString class]]);
     JCModuleMap *moduleMap = [self moduleMapForMapKey:mapKey];
     if (!moduleMap) {
-#ifdef DEBUG
-        NSLog(@"%@ not found! Please implement the classesForMapKeys: method in the subclass of JCModuleMap, and add it's instance to JCNavigator with addModuleMap: method.", mapKey);
-#endif
+        NSAssert(moduleMap, @"The subclass of JCModuleMap for %@ not found! Please create it and implement the classesForMapKeys: method, next add it's instance to JCNavigator with addModuleMap: method.", mapKey);
         return;
     }
     Class viewControllerClass = [moduleMap viewControllerClassForMapKey:mapKey];
@@ -229,6 +228,7 @@
 
 - (void)openViewControllerWithClass:(Class)viewControllerClass moduleMap:(JCModuleMap *)moduleMap params:(NSDictionary *)params presented:(BOOL)presented animated:(BOOL)animated
 {
+    NSParameterAssert([viewControllerClass isSubclassOfClass:[UIViewController class]]);
     if ([[moduleMap reuseViewControllerClasses] containsObject:viewControllerClass]) {
         UIViewController *viewController = [self existedViewControllerForClass:viewControllerClass];
         if (viewController) {
