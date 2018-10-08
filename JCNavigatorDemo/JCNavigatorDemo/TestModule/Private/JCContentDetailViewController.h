@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol JC_contentDetail <NSObject>
+@protocol JCContentDetailDelegate <NSObject>
 
 @property (nonatomic, strong) NSString *currentIndex;
 @property (nonatomic, strong) NSString *testId;
@@ -16,6 +16,6 @@
 
 @end
 
-@interface JCContentDetailViewController : UIViewController<JC_contentDetail>
+@interface JCContentDetailViewController : UIViewController<JCContentDetailDelegate>
 
 @end
