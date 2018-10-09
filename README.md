@@ -164,7 +164,7 @@ Parameters passing between modules is realized by properties assignment.
 ```objective-c
 //  JCContentDetailViewController.h
 
-@protocol JC_contentDetail <NSObject>
+@protocol JCContentDetailDelegate <NSObject>
 
 @property (nonatomic, strong) NSString *currentIndex;
 @property (nonatomic, strong) NSString *testId;
@@ -172,7 +172,7 @@ Parameters passing between modules is realized by properties assignment.
 
 @end
 
-@interface JCContentDetailViewController : UIViewController<JC_contentDetail>
+@interface JCContentDetailViewController : UIViewController<JCContentDetailDelegates>
 
 @end
 ```
