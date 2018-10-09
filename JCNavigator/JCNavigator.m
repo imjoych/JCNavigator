@@ -280,15 +280,19 @@
     NSDictionary *mapForClasses = [moduleMap propertiesMapOfURLQueryForClasses];
     NSDictionary *propertiesMap = mapForClasses[NSStringFromClass([viewController class])];
     [params enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        NSString *realKey = nil;
+        NSString *propertyName = nil;
         if (propertiesMap) {
-            realKey = propertiesMap[key];
+            propertyName = propertiesMap[key];
         }
-        if (!realKey) {
-            realKey = key;
+        if (!propertyName) {
+            propertyName = key;
         }
-        if (![obj isKindOfClass:[NSNull class]] && [viewController respondsToSelector:NSSelectorFromString(realKey)]) {
-            [viewController setValue:obj forKey:realKey];
+        NSString *propertySetterName = [NSString stringWithFormat:@"set%@%@:", [[propertyName substringToIndex:1] uppercaseString], [propertyName substringFromIndex:1]];
+        
+        if (![obj isKindOfClass:[NSNull class]]
+            && [viewController respondsToSelector:NSSelectorFromString(propertyName)]
+            && [viewController respondsToSelector:NSSelectorFromString(propertySetterName)]) {
+            [viewController setValue:obj forKey:propertyName];
         }
     }];
 }
