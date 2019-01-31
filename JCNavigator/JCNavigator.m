@@ -196,6 +196,19 @@
                              animated:animated];
 }
 
+#pragma mark - Open with view controller
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [[self visibleViewController].navigationController pushViewController:viewController animated:animated];
+}
+
+- (void)presentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^)(void))completion
+{
+    UIViewController *vc = [self visibleViewController].parentViewController ?: [self visibleViewController];
+    [vc presentViewController:viewController animated:animated completion:completion];
+}
+
 #pragma mark - Pop view controller operation
 
 - (void)popViewControllerAnimated:(BOOL)animated
@@ -348,11 +361,10 @@
 {
     if (presented) {
         UINavigationController *navigationController = [[_navigationControllerClass alloc] initWithRootViewController:viewController];
-        UIViewController *vc = [self visibleViewController].parentViewController ?: [self visibleViewController];
-        [vc presentViewController:navigationController animated:animated completion:nil];
+        [self presentViewController:navigationController animated:animated completion:nil];
         return;
     }
-    [[self visibleViewController].navigationController pushViewController:viewController animated:animated];
+    [self pushViewController:viewController animated:animated];
 }
 
 #pragma mark - ModuleMap

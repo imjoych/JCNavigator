@@ -85,6 +85,11 @@ typedef NSDictionary *(^JCNavigatorPropertiesBlock)(void);
 - (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block;
 - (void)openWithMapKey:(NSString *)mapKey propertiesBlock:(JCNavigatorPropertiesBlock)block presented:(BOOL)presented animated:(BOOL)animated;
 
+#pragma mark - Open with view controller
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated;
+- (void)presentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^)(void))completion;
+
 #pragma mark - Pop view controller operation
 
 - (void)popViewControllerAnimated:(BOOL)animated;
