@@ -61,7 +61,8 @@
     }];
     [alertController addAction:cancelAction];
     [alertController addAction:confirmAction];
-    [self.parentViewController presentViewController:alertController animated:YES completion:nil];
+    [[JCNavigator sharedNavigator] presentViewController:alertController animated:YES completion:nil];
+//    [self.parentViewController presentViewController:alertController animated:YES completion:nil];
 }
 
 - (UIImage *)createImageWithColor:(UIColor *)color
