@@ -237,6 +237,15 @@
     }];
 }
 
+- (void)dismissAndPopToRootViewControllerCompletion:(void (^)(void))completion
+{
+    [self openPreviousVCOfWillOpenedVC:_rootViewController completion:^(BOOL success) {
+        if (completion) {
+            completion();
+        }
+    }];
+}
+
 #pragma mark - Open view controller
 
 - (void)openViewControllerWithClass:(Class)viewControllerClass moduleMap:(JCModuleMap *)moduleMap params:(NSDictionary *)params presented:(BOOL)presented animated:(BOOL)animated
@@ -338,6 +347,9 @@
                 }
             }];
             return;
+        }
+        if (viewControllers.count > 1 && viewController == _rootViewController) {
+            [self popToRootViewControllerAnimated:NO];
         }
         if (completion) {
             completion(NO);

@@ -100,4 +100,6 @@ typedef NSDictionary *(^JCNavigatorPropertiesBlock)(void);
 
 - (void)dismissViewControllerAnimated:(BOOL)animated completion:(void (^)(void))completion;
 
+- (void)dismissAndPopToRootViewControllerCompletion:(void (^)(void))completion;
+
 @end
