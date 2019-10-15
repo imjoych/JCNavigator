@@ -26,6 +26,10 @@
     
     NSString *mapKey = [self nextOpenMapKeyWithIndex:self.currentIndex];
     JCTestView *view = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
+        if ([self.currentIndex integerValue] == 3) {
+            [[JCNavigator sharedNavigator] dismissAndPopToRootViewControllerCompletion:nil];
+            return;
+        }
         [[JCNavigator sharedNavigator] openWithMapKey:mapKey];
     } presentBlock:^{
         [[JCNavigator sharedNavigator] openWithMapKey:mapKey propertiesBlock:nil presented:YES animated:YES];
