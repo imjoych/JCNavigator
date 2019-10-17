@@ -10,11 +10,11 @@
 
 @interface JCNavigator (JCTestModuleInterface)
 
-+ (void)openFirstLevelViewController;
++ (void)openFirstLevelVCPresented:(BOOL)presented;
 
-+ (void)openSecondLevelViewController;
++ (void)openSecondLevelVCPresented:(BOOL)presented;
 
-+ (void)openThirdLevelViewController;
++ (void)openThirdLevelVCPresented:(BOOL)presented;
 
 + (void)openContentDetailViewControllerWithCurrentIndex:(NSString *)currentIndex
                                                  testId:(NSString *)testId

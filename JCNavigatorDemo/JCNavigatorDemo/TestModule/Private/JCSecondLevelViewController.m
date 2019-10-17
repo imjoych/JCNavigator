@@ -24,7 +24,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     JCTestView *view = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
-        [JCNavigator openThirdLevelViewController];
+        [JCNavigator openThirdLevelVCPresented:NO];
     } presentBlock:^{
         [self showAlert];
     }];

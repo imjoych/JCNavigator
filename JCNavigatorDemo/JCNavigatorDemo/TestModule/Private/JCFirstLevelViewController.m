@@ -22,7 +22,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     JCTestView *view = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
-        [JCNavigator openSecondLevelViewController];
+        [JCNavigator openSecondLevelVCPresented:NO];
     } presentBlock:^{
         [JCNavigator openContentDetailViewControllerWithCurrentIndex:@"1" testId:nil testArray:nil];
 //        [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.jcnavigatordemo/contentdetail?pageindex=1"];

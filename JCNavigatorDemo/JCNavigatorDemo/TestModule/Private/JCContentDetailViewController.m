@@ -9,7 +9,6 @@
 #import "JCContentDetailViewController.h"
 #import "JCTestHeader.h"
 #import "JCTestClass.h"
-#import "JCTestModuleMap.h"
 
 @interface JCContentDetailViewController ()
 
@@ -24,15 +23,14 @@
     self.title = [NSString stringWithFormat:@"%@_%@", NSStringFromClass([self class]), self.currentIndex];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    NSString *mapKey = [self nextOpenMapKeyWithIndex:self.currentIndex];
     JCTestView *view = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
         if ([self.currentIndex integerValue] == 3) {
             [[JCNavigator sharedNavigator] dismissAndPopToRootViewControllerCompletion:nil];
             return;
         }
-        [[JCNavigator sharedNavigator] openWithMapKey:mapKey];
+        [self openViewControllerPresented:NO];
     } presentBlock:^{
-        [[JCNavigator sharedNavigator] openWithMapKey:mapKey propertiesBlock:nil presented:YES animated:YES];
+        [self openViewControllerPresented:YES];
     }];
     [view setTestObject:[self testObject]];
     [self.view addSubview:view];
@@ -43,18 +41,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSString *)nextOpenMapKeyWithIndex:(NSString *)index
+- (void)openViewControllerPresented:(BOOL)presented
 {
-    switch ([index integerValue]) {
+    switch ([self.currentIndex integerValue]) {
         case 0:
-            return JCFirstLevelMapKey;
+            [JCNavigator openFirstLevelVCPresented:presented];
+            break;
         case 1:
-            return JCSecondLevelMapKey;
+            [JCNavigator openSecondLevelVCPresented:presented];
+            break;
         case 2:
-            return JCThirdLevelMapKey;
+            [JCNavigator openThirdLevelVCPresented:presented];
+            break;
         case 3:
         default:
-            return JCFirstLevelMapKey;
+            [JCNavigator openFirstLevelVCPresented:presented];
+            break;
     }
 }
 
