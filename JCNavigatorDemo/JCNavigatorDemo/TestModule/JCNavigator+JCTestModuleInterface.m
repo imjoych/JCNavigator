@@ -16,13 +16,17 @@
     [[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
 }
 
-+ (void)openFirstLevelVCPresented:(BOOL)presented
++ (void)openFirstLevelVCPresented:(BOOL)presented propertiesDict:(NSDictionary *)propertiesDict
 {
     if (presented) {
-        [[JCNavigator sharedNavigator] openWithMapKey:JCFirstLevelMapKey propertiesBlock:nil presented:YES animated:YES];
+        [[JCNavigator sharedNavigator] openWithMapKey:JCFirstLevelMapKey propertiesBlock:^NSDictionary *{
+            return propertiesDict;
+        } presented:YES animated:YES];
         return;
     }
-    [[JCNavigator sharedNavigator] openWithMapKey:JCFirstLevelMapKey];
+    [[JCNavigator sharedNavigator] openWithMapKey:JCFirstLevelMapKey propertiesBlock:^NSDictionary *{
+        return propertiesDict;
+    }];
 //    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/firstlevel"]];
 //    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/firstlevel"];
 }

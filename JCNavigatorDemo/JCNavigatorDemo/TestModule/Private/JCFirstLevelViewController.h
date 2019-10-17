@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JCFirstLevelViewController : UIViewController
+@protocol JCFirstLevelVCDelegate <NSObject>
+
+@property (nonatomic, strong) NSString *comeFrom;
+
+@end
+
+@interface JCFirstLevelViewController : UIViewController<JCFirstLevelVCDelegate>
 
 @end

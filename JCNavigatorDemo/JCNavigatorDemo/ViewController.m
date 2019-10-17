@@ -23,7 +23,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     JCRootView *view = [[JCRootView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
-        [JCNavigator openFirstLevelVCPresented:NO];
+        [JCNavigator openFirstLevelVCPresented:NO propertiesDict:@{@"comeFrom": @"Root"}];
     } presentBlock:^{
         [JCNavigator openContentDetailViewControllerWithCurrentIndex:@"0" testId:nil testArray:nil];
     }];

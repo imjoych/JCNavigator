@@ -10,7 +10,8 @@
 
 @interface JCNavigator (JCTestModuleInterface)
 
-+ (void)openFirstLevelVCPresented:(BOOL)presented;
++ (void)openFirstLevelVCPresented:(BOOL)presented
+                   propertiesDict:(NSDictionary *)propertiesDict;
 
 + (void)openSecondLevelVCPresented:(BOOL)presented;
 

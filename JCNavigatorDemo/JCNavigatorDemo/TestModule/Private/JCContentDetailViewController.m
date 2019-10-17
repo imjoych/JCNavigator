@@ -24,10 +24,10 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     JCTestView *view = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
-        if ([self.currentIndex integerValue] == 3) {
-            [[JCNavigator sharedNavigator] dismissAndPopToRootViewControllerCompletion:nil];
-            return;
-        }
+//        if ([self.currentIndex integerValue] == 3) {
+//            [[JCNavigator sharedNavigator] dismissAndPopToRootViewControllerCompletion:nil];
+//            return;
+//        }
         [self openViewControllerPresented:NO];
     } presentBlock:^{
         [self openViewControllerPresented:YES];
@@ -45,7 +45,7 @@
 {
     switch ([self.currentIndex integerValue]) {
         case 0:
-            [JCNavigator openFirstLevelVCPresented:presented];
+            [JCNavigator openFirstLevelVCPresented:presented propertiesDict:@{@"comeFrom": @"Root Detail"}];
             break;
         case 1:
             [JCNavigator openSecondLevelVCPresented:presented];
@@ -54,8 +54,10 @@
             [JCNavigator openThirdLevelVCPresented:presented];
             break;
         case 3:
+            [JCNavigator openFirstLevelVCPresented:presented propertiesDict:@{@"comeFrom": @"Third Level Detail"}];
+            break;
         default:
-            [JCNavigator openFirstLevelVCPresented:presented];
+            [JCNavigator openFirstLevelVCPresented:presented propertiesDict:@{}];
             break;
     }
 }

@@ -92,6 +92,7 @@
         _testLabel.textColor = [[UIColor blueColor] colorWithAlphaComponent:0.9];
         _testLabel.font = [UIFont boldSystemFontOfSize:18];
         _testLabel.textAlignment = NSTextAlignmentCenter;
+        _testLabel.numberOfLines = 2;
         [self addSubview:_testLabel];
     }
     return _testLabel;
