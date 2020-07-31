@@ -27,6 +27,7 @@ ViewController *vc = [[ViewController alloc] init];
 JCTestModuleMap class is declared as the subclass of JCModuleMap.
 * Map key should be defined with the same prefix and appended with "_".
 * Map key will be used in the category of JCNavigator which associated with this module.
+* Implemented interfaces which are used for jumps between modules.
 ```objective-c
 //  JCTestModuleMap.h
 
@@ -37,6 +38,16 @@ FOUNDATION_EXPORT NSString *const JCContentDetailMapKey;
 
 @interface JCTestModuleMap : JCModuleMap
 
++ (void)openFirstLevelVCPresented:(BOOL)presented
+                   propertiesDict:(NSDictionary *)propertiesDict;
+
++ (void)openSecondLevelVCPresented:(BOOL)presented;
+
++ (void)openThirdLevelVCPresented:(BOOL)presented;
+
++ (void)openContentDetailViewControllerWithCurrentIndex:(NSString *)currentIndex
+                                                 testId:(NSString *)testId
+                                              testArray:(NSArray *)testArray;
 @end
 ```
 ```objective-c
@@ -48,6 +59,65 @@ NSString *const JCThirdLevelMapKey = @"JC_thirdLevel";
 NSString *const JCContentDetailMapKey = @"JC_contentDetail";
 
 @implementation JCTestModuleMap
+
++ (void)initialize
+{
+    [[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
+}
+
++ (void)openFirstLevelVCPresented:(BOOL)presented propertiesDict:(NSDictionary *)propertiesDict
+{
+    if (presented) {
+        [[JCNavigator sharedNavigator] openWithMapKey:JCFirstLevelMapKey propertiesBlock:^NSDictionary *{
+            return propertiesDict;
+        } presented:YES animated:YES];
+        return;
+    }
+    [[JCNavigator sharedNavigator] openWithMapKey:JCFirstLevelMapKey propertiesBlock:^NSDictionary *{
+        return propertiesDict;
+    }];
+//    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/firstlevel"]];
+//    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/firstlevel"];
+}
+
++ (void)openSecondLevelVCPresented:(BOOL)presented
+{
+    if (presented) {
+        [[JCNavigator sharedNavigator] openWithMapKey:JCSecondLevelMapKey propertiesBlock:nil presented:YES animated:YES];
+        return;
+    }
+    [[JCNavigator sharedNavigator] openWithMapKey:JCSecondLevelMapKey];
+//    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/secondlevel"]];
+//    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/secondlevel"];
+}
+
++ (void)openThirdLevelVCPresented:(BOOL)presented
+{
+    if (presented) {
+        [[JCNavigator sharedNavigator] openWithMapKey:JCThirdLevelMapKey propertiesBlock:nil presented:YES animated:YES];
+        return;
+    }
+    [[JCNavigator sharedNavigator] openWithMapKey:JCThirdLevelMapKey];
+//    [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/thirdlevel"]];
+//    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/thirdlevel"];
+}
+
++ (void)openContentDetailViewControllerWithCurrentIndex:(NSString *)currentIndex testId:(NSString *)testId testArray:(NSArray *)testArray
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:3];
+    if ([currentIndex isKindOfClass:[NSString class]]) {
+        params[@"currentIndex"] = currentIndex;
+    }
+    if ([testId isKindOfClass:[NSString class]]) {
+        params[@"testId"] = testId;
+    }
+    if ([testArray isKindOfClass:[NSArray class]]) {
+        params[@"testArray"] = testArray;
+    }
+    [[JCNavigator sharedNavigator] openWithMapKey:JCContentDetailMapKey propertiesBlock:^NSDictionary *{
+        return params;
+    } presented:YES animated:YES];
+}
 
 - (NSDictionary<NSString *,Class> *)classesForMapKeys
 {
@@ -91,69 +161,6 @@ Open URL between apps or modules.
 ```objective-c
 [[JCNavigator sharedNavigator] openURL:[NSURL URLWithString:@"joych://com.joych.JCNavigatorDemo/firstlevel"]];
 [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.jcnavigatordemo/contentdetail?pageindex=1"];
-```
-
-Category of  JCNavigator implemented interfaces which are used for jumps between modules.
-```objective-c
-//  JCNavigator+JCTestModuleInterface.h
-
-@interface JCNavigator (JCTestModuleInterface)
-
-+ (void)openFirstLevelViewController;
-
-+ (void)openSecondLevelViewController;
-
-+ (void)openThirdLevelViewController;
-
-+ (void)openContentDetailViewControllerWithCurrentIndex:(NSString *)currentIndex
-                                                 testId:(NSString *)testId
-                                              testArray:(NSArray *)testArray;
-
-@end
-```
-```objective-c
-//  JCNavigator+JCTestModuleInterface.m
-
-@implementation JCNavigator (JCTestModuleInterface)
-
-+ (void)load
-{
-    [[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
-}
-
-+ (void)openFirstLevelViewController
-{
-    [[JCNavigator sharedNavigator] openWithMapKey:JCFirstLevelMapKey];
-}
-
-+ (void)openSecondLevelViewController
-{
-    [[JCNavigator sharedNavigator] openWithMapKey:JCSecondLevelMapKey];
-}
-
-+ (void)openThirdLevelViewController
-{
-    [[JCNavigator sharedNavigator] openWithMapKey:JCThirdLevelMapKey];
-}
-
-+ (void)openContentDetailViewControllerWithCurrentIndex:(NSString *)currentIndex testId:(NSString *)testId testArray:(NSArray           *)testArray
-{
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:3];
-    if ([currentIndex isKindOfClass:[NSString class]]) {
-        params[@"currentIndex"] = currentIndex;
-    }
-    if ([testId isKindOfClass:[NSString class]]) {
-        params[@"testId"] = testId;
-    }
-    if ([testArray isKindOfClass:[NSArray class]]) {
-        params[@"testArray"] = testArray;
-    }
-    [[JCNavigator sharedNavigator] openWithMapKey:JCContentDetailMapKey propertiesBlock:^NSDictionary *{
-        return params;
-    } presented:YES animated:YES];
-}
-
-@end
 ```
 
 ### Parameters passing between modules
