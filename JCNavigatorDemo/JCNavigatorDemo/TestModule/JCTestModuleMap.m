@@ -1,17 +1,22 @@
 //
-//  JCNavigator+JCTestModuleInterface.m
+//  JCTestModuleMap.m
 //  JCNavigatorDemo
 //
-//  Created by jianjun16 on 2018/5/24.
-//  Copyright © 2018年 Joych<https://github.com/imjoych>. All rights reserved.
+//  Created by ChenJianjun on 2018/5/5.
+//  Copyright © 2018 Joych<https://github.com/imjoych>. All rights reserved.
 //
 
-#import "JCNavigator+JCTestModuleInterface.h"
 #import "JCTestModuleMap.h"
+#import "JCNavigator.h"
 
-@implementation JCNavigator (JCTestModuleInterface)
+static NSString *const JCFirstLevelMapKey = @"JC_firstLevel";
+static NSString *const JCSecondLevelMapKey = @"JC_secondLevel";
+static NSString *const JCThirdLevelMapKey = @"JC_thirdLevel";
+static NSString *const JCContentDetailMapKey = @"JC_contentDetail";
 
-+ (void)load
+@implementation JCTestModuleMap
+
++ (void)initialize
 {
     [[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
 }
@@ -68,6 +73,33 @@
     [[JCNavigator sharedNavigator] openWithMapKey:JCContentDetailMapKey propertiesBlock:^NSDictionary *{
         return params;
     } presented:YES animated:YES];
+}
+
+- (NSDictionary<NSString *,Class> *)classesForMapKeys
+{
+    return @{JCFirstLevelMapKey: NSClassFromString(@"JCFirstLevelViewController"),
+             JCSecondLevelMapKey: NSClassFromString(@"JCSecondLevelViewController"),
+             JCThirdLevelMapKey: NSClassFromString(@"JCThirdLevelViewController"),
+             JCContentDetailMapKey: NSClassFromString(@"JCContentDetailViewController"),
+             };
+}
+
+- (BOOL)presentedForClass:(Class)viewControllerClass
+{
+    if ([viewControllerClass isEqual:NSClassFromString(@"JCContentDetailViewController")]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (NSArray<Class> *)reuseViewControllerClasses
+{
+    return @[NSClassFromString(@"JCFirstLevelViewController")];
+}
+
+- (NSDictionary<NSString *,NSDictionary *> *)propertiesMapOfURLQueryForClasses
+{
+    return @{@"JCContentDetailViewController": @{@"pageindex": @"currentIndex"}};
 }
 
 @end

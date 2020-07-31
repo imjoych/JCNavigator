@@ -25,9 +25,7 @@
 		B6C5EF5320BD3A8E00625506 /* JCTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C5EF4D20BD3A8E00625506 /* JCTestClass.m */; };
 		B6C5EF5420BD3A8E00625506 /* JCFirstLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C5EF4E20BD3A8E00625506 /* JCFirstLevelViewController.m */; };
 		B6C5EF5520BD3A8E00625506 /* JCThirdLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C5EF4F20BD3A8E00625506 /* JCThirdLevelViewController.m */; };
-		B6D9C9D520CE0D1D006443DF /* JCNavigator+JCRootModuleInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D9C9D420CE0D1D006443DF /* JCNavigator+JCRootModuleInterface.m */; };
 		B6D9C9D820CE0EEF006443DF /* JCTestModuleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D9C9D620CE0EEE006443DF /* JCTestModuleMap.m */; };
-		B6F9A45220B6BEB900C6C821 /* JCNavigator+JCTestModuleInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F9A45120B6BEB900C6C821 /* JCNavigator+JCTestModuleInterface.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,12 +64,8 @@
 		B6C5EF4D20BD3A8E00625506 /* JCTestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTestClass.m; sourceTree = "<group>"; };
 		B6C5EF4E20BD3A8E00625506 /* JCFirstLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCFirstLevelViewController.m; sourceTree = "<group>"; };
 		B6C5EF4F20BD3A8E00625506 /* JCThirdLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCThirdLevelViewController.m; sourceTree = "<group>"; };
-		B6D9C9D320CE0D1D006443DF /* JCNavigator+JCRootModuleInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JCNavigator+JCRootModuleInterface.h"; sourceTree = "<group>"; };
-		B6D9C9D420CE0D1D006443DF /* JCNavigator+JCRootModuleInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JCNavigator+JCRootModuleInterface.m"; sourceTree = "<group>"; };
 		B6D9C9D620CE0EEE006443DF /* JCTestModuleMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTestModuleMap.m; sourceTree = "<group>"; };
 		B6D9C9D720CE0EEF006443DF /* JCTestModuleMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTestModuleMap.h; sourceTree = "<group>"; };
-		B6F9A45020B6BEB900C6C821 /* JCNavigator+JCTestModuleInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JCNavigator+JCTestModuleInterface.h"; sourceTree = "<group>"; };
-		B6F9A45120B6BEB900C6C821 /* JCNavigator+JCTestModuleInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JCNavigator+JCTestModuleInterface.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +109,6 @@
 				B69230AE20AD631800802608 /* JCRootView.m */,
 				B6625DB220AC1C9A00A7D910 /* JCRootModuleMap.h */,
 				B6625DB420AC1C9A00A7D910 /* JCRootModuleMap.m */,
-				B6D9C9D320CE0D1D006443DF /* JCNavigator+JCRootModuleInterface.h */,
-				B6D9C9D420CE0D1D006443DF /* JCNavigator+JCRootModuleInterface.m */,
 				B6625DD720AC1F6C00A7D910 /* JCNavigationController.h */,
 				B6625DD920AC1F6D00A7D910 /* JCNavigationController.m */,
 				B6625DD820AC1F6C00A7D910 /* UIViewController+JCNavigationItem.h */,
@@ -152,9 +144,9 @@
 		B6625D9120AC1C8600A7D910 /* TestModule */ = {
 			isa = PBXGroup;
 			children = (
+				B6D9C9D720CE0EEF006443DF /* JCTestModuleMap.h */,
+				B6D9C9D620CE0EEE006443DF /* JCTestModuleMap.m */,
 				B6C5EF2F20BD3A7500625506 /* Private */,
-				B6F9A45020B6BEB900C6C821 /* JCNavigator+JCTestModuleInterface.h */,
-				B6F9A45120B6BEB900C6C821 /* JCNavigator+JCTestModuleInterface.m */,
 			);
 			path = TestModule;
 			sourceTree = "<group>";
@@ -162,8 +154,6 @@
 		B6C5EF2F20BD3A7500625506 /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				B6D9C9D720CE0EEF006443DF /* JCTestModuleMap.h */,
-				B6D9C9D620CE0EEE006443DF /* JCTestModuleMap.m */,
 				B6C5EF4520BD3A8D00625506 /* JCContentDetailViewController.h */,
 				B6C5EF4B20BD3A8E00625506 /* JCContentDetailViewController.m */,
 				B6C5EF4320BD3A8D00625506 /* JCFirstLevelViewController.h */,
@@ -255,7 +245,6 @@
 				B6625DDA20AC1F6D00A7D910 /* UIViewController+JCNavigationItem.m in Sources */,
 				B69230AF20AD631900802608 /* JCRootView.m in Sources */,
 				B6C5EF5320BD3A8E00625506 /* JCTestClass.m in Sources */,
-				B6D9C9D520CE0D1D006443DF /* JCNavigator+JCRootModuleInterface.m in Sources */,
 				B6C5EF5420BD3A8E00625506 /* JCFirstLevelViewController.m in Sources */,
 				B6625DDB20AC1F6D00A7D910 /* JCNavigationController.m in Sources */,
 				B6C5EF5120BD3A8E00625506 /* JCSecondLevelViewController.m in Sources */,
@@ -267,7 +256,6 @@
 				B6C5EF5220BD3A8E00625506 /* JCContentDetailViewController.m in Sources */,
 				23F2F52C2081A8BD00FC3ED4 /* JCModuleMap.m in Sources */,
 				23F2F5432081B33800FC3ED4 /* main.m in Sources */,
-				B6F9A45220B6BEB900C6C821 /* JCNavigator+JCTestModuleInterface.m in Sources */,
 				23F2F50E2081919B00FC3ED4 /* AppDelegate.m in Sources */,
 				B6D9C9D820CE0EEF006443DF /* JCTestModuleMap.m in Sources */,
 			);

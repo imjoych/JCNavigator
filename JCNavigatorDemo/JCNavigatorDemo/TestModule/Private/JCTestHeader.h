@@ -9,7 +9,8 @@
 #ifndef JCTestHeader_h
 #define JCTestHeader_h
 
-#import "JCNavigator+JCTestModuleInterface.h"
+#import "JCNavigator.h"
+#import "JCTestModuleMap.h"
 #import "JCTestView.h"
 
 #endif /* JCTestHeader_h */

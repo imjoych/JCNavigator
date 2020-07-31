@@ -7,10 +7,16 @@
 //
 
 #import "JCRootModuleMap.h"
+#import "JCNavigator.h"
 
 NSString *const JCRootMapKey = @"JC_root";
 
 @implementation JCRootModuleMap
+
++ (void)initialize
+{
+    [[JCNavigator sharedNavigator] addModuleMap:[JCRootModuleMap new]];
+}
 
 - (NSDictionary<NSString *,Class> *)classesForMapKeys
 {

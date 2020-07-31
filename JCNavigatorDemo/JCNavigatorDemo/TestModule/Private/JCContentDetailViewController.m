@@ -45,19 +45,19 @@
 {
     switch ([self.currentIndex integerValue]) {
         case 0:
-            [JCNavigator openFirstLevelVCPresented:presented propertiesDict:@{@"comeFrom": @"Root Detail"}];
+            [JCTestModuleMap openFirstLevelVCPresented:presented propertiesDict:@{@"comeFrom": @"Root Detail"}];
             break;
         case 1:
-            [JCNavigator openSecondLevelVCPresented:presented];
+            [JCTestModuleMap openSecondLevelVCPresented:presented];
             break;
         case 2:
-            [JCNavigator openThirdLevelVCPresented:presented];
+            [JCTestModuleMap openThirdLevelVCPresented:presented];
             break;
         case 3:
-            [JCNavigator openFirstLevelVCPresented:presented propertiesDict:@{@"comeFrom": @"Third Level Detail"}];
+            [JCTestModuleMap openFirstLevelVCPresented:presented propertiesDict:@{@"comeFrom": @"Third Level Detail"}];
             break;
         default:
-            [JCNavigator openFirstLevelVCPresented:presented propertiesDict:@{}];
+            [JCTestModuleMap openFirstLevelVCPresented:presented propertiesDict:@{}];
             break;
     }
 }

@@ -22,9 +22,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     JCTestView *view = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
-        [JCNavigator openFirstLevelVCPresented:NO propertiesDict:@{@"comeFrom": @"Third Level"}];
+        [JCTestModuleMap openFirstLevelVCPresented:NO propertiesDict:@{@"comeFrom": @"Third Level"}];
     } presentBlock:^{
-        [JCNavigator openContentDetailViewControllerWithCurrentIndex:@"3" testId:@"hahaha666" testArray:@[@"hello", @"world", @"!"]];
+        [JCTestModuleMap openContentDetailViewControllerWithCurrentIndex:@"3" testId:@"hahaha666" testArray:@[@"hello", @"world", @"!"]];
     }];
     [self.view addSubview:view];
 }

@@ -1,14 +1,14 @@
 //
-//  JCNavigator+JCTestModuleInterface.h
+//  JCTestModuleMap.h
 //  JCNavigatorDemo
 //
-//  Created by jianjun16 on 2018/5/24.
-//  Copyright © 2018年 Joych<https://github.com/imjoych>. All rights reserved.
+//  Created by ChenJianjun on 2018/5/5.
+//  Copyright © 2018 Joych<https://github.com/imjoych>. All rights reserved.
 //
 
-#import "JCNavigator.h"
+#import "JCModuleMap.h"
 
-@interface JCNavigator (JCTestModuleInterface)
+@interface JCTestModuleMap : JCModuleMap
 
 + (void)openFirstLevelVCPresented:(BOOL)presented
                    propertiesDict:(NSDictionary *)propertiesDict;

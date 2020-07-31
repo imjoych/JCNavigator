@@ -25,9 +25,9 @@
     self.title = NSStringFromClass([self class]);
     self.view.backgroundColor = [UIColor whiteColor];
     _testView = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
-        [JCNavigator openSecondLevelVCPresented:NO];
+        [JCTestModuleMap openSecondLevelVCPresented:NO];
     } presentBlock:^{
-        [JCNavigator openContentDetailViewControllerWithCurrentIndex:@"1" testId:nil testArray:nil];
+        [JCTestModuleMap openContentDetailViewControllerWithCurrentIndex:@"1" testId:nil testArray:nil];
 //        [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.jcnavigatordemo/contentdetail?pageindex=1"];
     }];
     [_testView setTestObject:[self testObject]];
