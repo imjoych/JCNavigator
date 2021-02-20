@@ -25,7 +25,7 @@
     JCRootView *view = [[JCRootView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
         [JCTestModuleMap openFirstLevelVCPresented:NO propertiesDict:@{@"comeFrom": @"Root"}];
     } presentBlock:^{
-        [JCTestModuleMap openContentDetailViewControllerWithCurrentIndex:@"0" testId:nil testArray:nil];
+        [JCTestModuleMap openContentDetailVCWithCurrentIndex:@"0" testId:nil testArray:nil];
     }];
     [self.view addSubview:view];
 }

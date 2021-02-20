@@ -58,7 +58,7 @@ static NSString *const JCContentDetailMapKey = @"JC_contentDetail";
 //    [[JCNavigator sharedNavigator] openURLString:@"joych://com.joych.JCNavigatorDemo/thirdlevel"];
 }
 
-+ (void)openContentDetailViewControllerWithCurrentIndex:(NSString *)currentIndex testId:(NSString *)testId testArray:(NSArray *)testArray
++ (void)openContentDetailVCWithCurrentIndex:(NSString *)currentIndex testId:(NSString *)testId testArray:(NSArray *)testArray
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:3];
     if ([currentIndex isKindOfClass:[NSString class]]) {

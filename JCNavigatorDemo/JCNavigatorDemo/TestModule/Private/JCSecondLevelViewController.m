@@ -57,7 +57,7 @@
         [[JCNavigator sharedNavigator] openURLString:UIApplicationOpenSettingsURLString];
     }];
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Detail" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [JCTestModuleMap openContentDetailViewControllerWithCurrentIndex:@"2" testId:nil testArray:nil];
+        [JCTestModuleMap openContentDetailVCWithCurrentIndex:@"2" testId:nil testArray:nil];
     }];
     [alertController addAction:cancelAction];
     [alertController addAction:confirmAction];

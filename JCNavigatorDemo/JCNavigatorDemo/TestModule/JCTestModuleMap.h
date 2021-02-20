@@ -17,8 +17,8 @@
 
 + (void)openThirdLevelVCPresented:(BOOL)presented;
 
-+ (void)openContentDetailViewControllerWithCurrentIndex:(NSString *)currentIndex
-                                                 testId:(NSString *)testId
-                                              testArray:(NSArray *)testArray;
++ (void)openContentDetailVCWithCurrentIndex:(NSString *)currentIndex
+                                     testId:(NSString *)testId
+                                  testArray:(NSArray *)testArray;
 
 @end

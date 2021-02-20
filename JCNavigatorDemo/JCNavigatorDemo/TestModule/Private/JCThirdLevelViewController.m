@@ -24,7 +24,7 @@
     JCTestView *view = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
         [JCTestModuleMap openFirstLevelVCPresented:NO propertiesDict:@{@"comeFrom": @"Third Level"}];
     } presentBlock:^{
-        [JCTestModuleMap openContentDetailViewControllerWithCurrentIndex:@"3" testId:@"hahaha666" testArray:@[@"hello", @"world", @"!"]];
+        [JCTestModuleMap openContentDetailVCWithCurrentIndex:@"3" testId:@"hahaha666" testArray:@[@"Hello", @"world", @"!"]];
     }];
     [self.view addSubview:view];
 }
