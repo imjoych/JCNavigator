@@ -12,6 +12,8 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) JCRootView *rootView;
+
 @end
 
 @implementation ViewController
@@ -22,14 +24,19 @@
     self.title = NSStringFromClass([self class]);
     self.view.backgroundColor = [UIColor whiteColor];
     
-    JCRootView *view = [[JCRootView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
+    _rootView = [[JCRootView alloc] initWithFrame:CGRectZero pushBlock:^{
         [JCTestModuleMap openFirstLevelVCPresented:NO propertiesDict:@{@"comeFrom": @"Root"}];
     } presentBlock:^{
         [JCTestModuleMap openContentDetailVCWithCurrentIndex:@"0" testId:nil testArray:nil];
     }];
-    [self.view addSubview:view];
+    [self.view addSubview:_rootView];
 }
 
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    self.rootView.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64);
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

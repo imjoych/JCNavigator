@@ -24,7 +24,7 @@
     // Do any additional setup after loading the view.
     self.title = NSStringFromClass([self class]);
     self.view.backgroundColor = [UIColor whiteColor];
-    _testView = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
+    _testView = [[JCTestView alloc] initWithFrame:CGRectZero pushBlock:^{
         [JCTestModuleMap openSecondLevelVCPresented:NO];
     } presentBlock:^{
         [JCTestModuleMap openContentDetailVCWithCurrentIndex:@"1" testId:nil testArray:nil];
@@ -32,6 +32,12 @@
     }];
     [_testView setTestObject:[self testObject]];
     [self.view addSubview:_testView];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    self.testView.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64);
 }
 
 - (void)didReceiveMemoryWarning {

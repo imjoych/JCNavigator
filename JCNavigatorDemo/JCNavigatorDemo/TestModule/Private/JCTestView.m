@@ -57,6 +57,7 @@
     _pushButton.center = CGPointMake(width / 2, height / 2 - 64);
     _presentButton.bounds = _pushButton.bounds;
     _presentButton.center = CGPointMake(width / 2, height / 2 + 64);
+    _testLabel.frame = CGRectMake(16, CGRectGetMinY(_pushButton.frame) - 96, CGRectGetWidth(self.bounds) - 32, 96);
 }
 
 - (void)pushAction:(id)sender
@@ -88,7 +89,7 @@
 - (UILabel *)testLabel
 {
     if (!_testLabel) {
-        _testLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 32, CGRectGetWidth(self.bounds) - 32, 64)];
+        _testLabel = [UILabel new];
         _testLabel.textColor = [[UIColor blueColor] colorWithAlphaComponent:0.9];
         _testLabel.font = [UIFont boldSystemFontOfSize:18];
         _testLabel.textAlignment = NSTextAlignmentCenter;

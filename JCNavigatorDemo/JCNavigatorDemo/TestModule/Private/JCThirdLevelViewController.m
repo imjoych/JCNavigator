@@ -11,6 +11,8 @@
 
 @interface JCThirdLevelViewController ()
 
+@property (nonatomic, strong) JCTestView *testView;
+
 @end
 
 @implementation JCThirdLevelViewController
@@ -21,12 +23,18 @@
     self.title = NSStringFromClass([self class]);
     self.view.backgroundColor = [UIColor whiteColor];
     
-    JCTestView *view = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
+    _testView = [[JCTestView alloc] initWithFrame:CGRectZero pushBlock:^{
         [JCTestModuleMap openFirstLevelVCPresented:NO propertiesDict:@{@"comeFrom": @"Third Level"}];
     } presentBlock:^{
         [JCTestModuleMap openContentDetailVCWithCurrentIndex:@"3" testId:@"hahaha666" testArray:@[@"Hello", @"world", @"!"]];
     }];
-    [self.view addSubview:view];
+    [self.view addSubview:_testView];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    self.testView.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64);
 }
 
 - (void)didReceiveMemoryWarning {

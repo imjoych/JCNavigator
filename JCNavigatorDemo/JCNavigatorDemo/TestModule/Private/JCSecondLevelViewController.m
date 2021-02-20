@@ -11,6 +11,7 @@
 
 @interface JCSecondLevelViewController ()
 
+@property (nonatomic, strong) JCTestView *testView;
 @property (nonatomic, strong) UIImage *navigationBarBGImage;
 
 @end
@@ -23,12 +24,18 @@
     self.title = NSStringFromClass([self class]);
     self.view.backgroundColor = [UIColor whiteColor];
     
-    JCTestView *view = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
+    _testView = [[JCTestView alloc] initWithFrame:CGRectZero pushBlock:^{
         [JCTestModuleMap openThirdLevelVCPresented:NO];
     } presentBlock:^{
         [self showAlert];
     }];
-    [self.view addSubview:view];
+    [self.view addSubview:_testView];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    self.testView.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64);
 }
 
 - (void)didReceiveMemoryWarning {

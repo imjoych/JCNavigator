@@ -12,6 +12,8 @@
 
 @interface JCContentDetailViewController ()
 
+@property (nonatomic, strong) JCTestView *testView;
+
 @end
 
 @implementation JCContentDetailViewController
@@ -23,7 +25,7 @@
     self.title = [NSString stringWithFormat:@"%@_%@", NSStringFromClass([self class]), self.currentIndex];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    JCTestView *view = [[JCTestView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64) pushBlock:^{
+    _testView = [[JCTestView alloc] initWithFrame:CGRectZero pushBlock:^{
         if ([self.currentIndex integerValue] == 3) {
             [[JCNavigator sharedNavigator] dismissAndPopToRootViewControllerCompletion:nil];
             return;
@@ -32,8 +34,14 @@
     } presentBlock:^{
         [self openViewControllerPresented:YES];
     }];
-    [view setTestObject:[self testObject]];
-    [self.view addSubview:view];
+    [_testView setTestObject:[self testObject]];
+    [self.view addSubview:_testView];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    self.testView.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64);
 }
 
 - (void)didReceiveMemoryWarning {
