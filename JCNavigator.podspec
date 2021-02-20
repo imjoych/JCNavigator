@@ -9,7 +9,7 @@ s.source       = { :git => 'https://github.com/imjoych/JCNavigator.git', :tag =>
 s.source_files = 'JCNavigator/*.{h,m}'
 s.requires_arc = true
 
-s.ios.deployment_target = '8.0'
+s.ios.deployment_target = '9.0'
 
 end
 
