@@ -24,8 +24,8 @@
 - (instancetype)initWithFrame:(CGRect)frame pushBlock:(void (^)(void))pushBlock presentBlock:(void (^)(void))presentBlock
 {
     if (self = [super initWithFrame:frame]) {
-        _pushBlock = pushBlock;
-        _presentBlock = presentBlock;
+        _pushBlock = [pushBlock copy];
+        _presentBlock = [presentBlock copy];
         
         _pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_pushButton addTarget:self action:@selector(pushAction:) forControlEvents:UIControlEventTouchUpInside];
