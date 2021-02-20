@@ -13,7 +13,6 @@
 		23F2F52C2081A8BD00FC3ED4 /* JCModuleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F2F52B2081A8BD00FC3ED4 /* JCModuleMap.m */; };
 		23F2F5432081B33800FC3ED4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F2F53A2081B33800FC3ED4 /* main.m */; };
 		23F2F5462081B33800FC3ED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F2F5402081B33800FC3ED4 /* Assets.xcassets */; };
-		23F2F54B2081B35400FC3ED4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F2F5472081B35400FC3ED4 /* Main.storyboard */; };
 		23F2F54C2081B35400FC3ED4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F2F5492081B35400FC3ED4 /* LaunchScreen.storyboard */; };
 		B6625DB520AC1C9B00A7D910 /* JCRootModuleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DB420AC1C9A00A7D910 /* JCRootModuleMap.m */; };
 		B6625DDA20AC1F6D00A7D910 /* UIViewController+JCNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B6625DD620AC1F6C00A7D910 /* UIViewController+JCNavigationItem.m */; };
@@ -41,7 +40,6 @@
 		23F2F5392081B33800FC3ED4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23F2F53A2081B33800FC3ED4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		23F2F5402081B33800FC3ED4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		23F2F5482081B35400FC3ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23F2F54A2081B35400FC3ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6625DB220AC1C9A00A7D910 /* JCRootModuleMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCRootModuleMap.h; sourceTree = "<group>"; };
 		B6625DB420AC1C9A00A7D910 /* JCRootModuleMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCRootModuleMap.m; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 			children = (
 				23F2F5402081B33800FC3ED4 /* Assets.xcassets */,
 				23F2F5492081B35400FC3ED4 /* LaunchScreen.storyboard */,
-				23F2F5472081B35400FC3ED4 /* Main.storyboard */,
 				23F2F5392081B33800FC3ED4 /* Info.plist */,
 				23F2F53A2081B33800FC3ED4 /* main.m */,
 			);
@@ -229,7 +226,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23F2F54B2081B35400FC3ED4 /* Main.storyboard in Resources */,
 				23F2F54C2081B35400FC3ED4 /* LaunchScreen.storyboard in Resources */,
 				23F2F5462081B33800FC3ED4 /* Assets.xcassets in Resources */,
 			);
@@ -264,14 +260,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		23F2F5472081B35400FC3ED4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				23F2F5482081B35400FC3ED4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		23F2F5492081B35400FC3ED4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
