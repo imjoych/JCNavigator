@@ -91,7 +91,11 @@
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
 {
-    return [[JCNavigator sharedNavigator] openURL:url options:options];
+    __block BOOL opened = NO;
+    [[JCNavigator sharedNavigator] openURL:url options:options completionHandler:^(BOOL success) {
+        opened = success;
+    }];
+    return opened;
 }
 
 @end

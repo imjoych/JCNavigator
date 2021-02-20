@@ -100,29 +100,51 @@
 
 - (BOOL)openURL:(NSURL *)URL
 {
-    return [self openURL:URL options:nil];
+    __block BOOL opened = NO;
+    [self openURL:URL options:nil completionHandler:^(BOOL success) {
+        opened = success;
+    }];
+    return opened;
 }
 
-- (BOOL)openURL:(NSURL *)URL options:(NSDictionary *)options
+- (void)openURL:(NSURL *)URL options:(NSDictionary *)options completionHandler:(void (^)(BOOL))completion
 {
     if (![URL isKindOfClass:[NSURL class]] || !URL.scheme) { // Invalid URL.
-        return NO;
+        if (completion) {
+            completion(NO);
+        }
+        return;
     }
     
     NSString *lowercaseScheme = [URL.scheme lowercaseString];
     if (![_hostListForScheme.allKeys containsObject:lowercaseScheme] || !URL.host) { // URL scheme not found or URL host not exist.
-        return [self openSpecifiedURL:URL options:options];
+        [self openSpecifiedURL:URL options:options completionHandler:^(BOOL success) {
+            if (completion) {
+                completion(success);
+            }
+        }];
+        return;
     }
     
     NSArray *hostList = _hostListForScheme[lowercaseScheme];
     NSString *lowercaseHost = [URL.host lowercaseString];
     if (![hostList containsObject:lowercaseHost]) { // URL host not found.
-        return [self openSpecifiedURL:URL options:options];
+        [self openSpecifiedURL:URL options:options completionHandler:^(BOOL success) {
+            if (completion) {
+                completion(success);
+            }
+        }];
+        return;
     }
     
     JCModuleMap *moduleMap = [self moduleMapForURL:URL];
     if (!moduleMap) { // The corresponding moduleMap not found.
-        return [self openSpecifiedURL:URL options:options];
+        [self openSpecifiedURL:URL options:options completionHandler:^(BOOL success) {
+            if (completion) {
+                completion(success);
+            }
+        }];
+        return;
     }
     
     Class viewControllerClass = [moduleMap viewControllerClassForURL:URL];
@@ -134,19 +156,27 @@
                                params:parameters
                             presented:presented
                              animated:animated];
-    return YES;
+    if (completion) {
+        completion(YES);
+    }
 }
 
-- (BOOL)openSpecifiedURL:(NSURL *)URL options:(NSDictionary *)options
+- (void)openSpecifiedURL:(NSURL *)URL options:(NSDictionary *)options completionHandler:(void (^)(BOOL success))completion
 {
-    if (![URL isKindOfClass:[NSURL class]] || ![[UIApplication sharedApplication] canOpenURL:URL]) {
-        return NO;
-    }
     if (@available(iOS 10.0, *)) {
-        [[UIApplication sharedApplication] openURL:URL options:options completionHandler:nil];
-        return YES;
+        /// If options is a valid dictionary, use the async method of openURL, otherwise use the sync method.
+        if ([options isKindOfClass:[NSDictionary class]]) {
+            [[UIApplication sharedApplication] openURL:URL options:options completionHandler:completion];
+            return;
+        }
     }
-    return [[UIApplication sharedApplication] openURL:URL];
+    BOOL success = NO;
+    if ([[UIApplication sharedApplication] canOpenURL:URL]) {
+        success = [[UIApplication sharedApplication] openURL:URL];
+    }
+    if (completion) {
+        completion(success);
+    }
 }
 
 - (NSDictionary *)parseURLQuery:(NSString *)query
