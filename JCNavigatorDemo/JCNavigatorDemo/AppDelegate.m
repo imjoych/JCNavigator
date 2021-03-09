@@ -56,8 +56,8 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-    ViewController *vc = [[ViewController alloc] init];
-    [[JCNavigator sharedNavigator] setRootViewController:vc];
+//    [[JCNavigator sharedNavigator] setRootViewController:[ViewController new]];
+    [[JCNavigator sharedNavigator] setRootViewController:[[JCNavigationController alloc] initWithRootViewController:[ViewController new]]];
     [self.window makeKeyAndVisible];
     return YES;
 }
