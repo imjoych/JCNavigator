@@ -59,13 +59,35 @@
 
 - (void)setRootViewController:(UIViewController *)rootViewController
 {
-    _rootViewController = rootViewController;
-    if ([rootViewController isKindOfClass:_navigationControllerClass]) {
+    NSParameterAssert([rootViewController isKindOfClass:[UIViewController class]]);
+    if ([rootViewController isKindOfClass:[UINavigationController class]]) {
         _rootNavigationController = (UINavigationController *)rootViewController;
+        _rootViewController = _rootNavigationController.viewControllers.firstObject;
     } else {
-        _rootNavigationController = [[_navigationControllerClass alloc] initWithRootViewController:rootViewController];
+        _rootViewController = rootViewController;
+        _rootNavigationController = rootViewController.navigationController;
     }
-    [UIApplication sharedApplication].delegate.window.rootViewController = _rootNavigationController;
+    UIViewController *windowRootVC = rootViewController;
+    if (!_rootNavigationController) {
+        if ([rootViewController isKindOfClass:[UITabBarController class]]
+            || [rootViewController isKindOfClass:[UISplitViewController class]]
+            || [rootViewController isKindOfClass:[UIPageViewController class]]) {
+            NSArray *viewControllers = [rootViewController performSelector:@selector(viewControllers)];
+            for (UIViewController *vc in viewControllers) {
+                if ([vc isKindOfClass:[UINavigationController class]]) {
+                    _rootNavigationController = (UINavigationController *)vc;
+                    break;
+                } else if (vc.navigationController) {
+                    _rootNavigationController = vc.navigationController;
+                    break;
+                }
+            }
+        } else {
+            _rootNavigationController = [[_navigationControllerClass alloc] initWithRootViewController:rootViewController];
+            windowRootVC = _rootNavigationController;
+        }
+    }
+    [UIApplication sharedApplication].delegate.window.rootViewController = windowRootVC;
 }
 
 - (void)setNavigationControllerClass:(Class)navigationControllerClass
