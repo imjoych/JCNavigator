@@ -291,7 +291,8 @@
 
 - (void)presentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^)(void))completion
 {
-    UIViewController *vc = [self visibleViewController].parentViewController ?: [self visibleViewController];
+    UIViewController *vc = [self visibleViewController];
+    vc = vc.parentViewController ?: vc;
     [vc presentViewController:viewController animated:animated completion:completion];
 }
 
@@ -415,7 +416,8 @@
         }
         return;
     }
-    NSArray *viewControllers = [self visibleViewController].navigationController.viewControllers;
+    UIViewController *visibleViewController = [self visibleViewController];
+    NSArray *viewControllers = visibleViewController.navigationController.viewControllers;
     if ([viewControllers containsObject:viewController]) {
         NSUInteger vcIndex = [viewControllers indexOfObject:viewController];
         if (vcIndex > 0) {
@@ -442,7 +444,7 @@
         }
         return;
     }
-    if ([self visibleViewController] != _rootViewController) {
+    if (visibleViewController != _rootViewController) {
         // dismiss to the previous navigation level to find viewController.
         [self dismissViewControllerAnimated:NO completion:^{
             [self openPreviousVCOfWillOpenedVC:viewController completion:completion];
