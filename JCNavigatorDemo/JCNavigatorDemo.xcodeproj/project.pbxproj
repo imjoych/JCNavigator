@@ -25,6 +25,7 @@
 		B6C5EF5420BD3A8E00625506 /* JCFirstLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C5EF4E20BD3A8E00625506 /* JCFirstLevelViewController.m */; };
 		B6C5EF5520BD3A8E00625506 /* JCThirdLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C5EF4F20BD3A8E00625506 /* JCThirdLevelViewController.m */; };
 		B6D9C9D820CE0EEF006443DF /* JCTestModuleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D9C9D620CE0EEE006443DF /* JCTestModuleMap.m */; };
+		B6E2873C25F8647A009DE419 /* JCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2873B25F8647A009DE419 /* JCTabBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,8 @@
 		B6C5EF4F20BD3A8E00625506 /* JCThirdLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCThirdLevelViewController.m; sourceTree = "<group>"; };
 		B6D9C9D620CE0EEE006443DF /* JCTestModuleMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTestModuleMap.m; sourceTree = "<group>"; };
 		B6D9C9D720CE0EEF006443DF /* JCTestModuleMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTestModuleMap.h; sourceTree = "<group>"; };
+		B6E2873A25F8647A009DE419 /* JCTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCTabBarController.h; sourceTree = "<group>"; };
+		B6E2873B25F8647A009DE419 /* JCTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCTabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,8 @@
 				B69230AE20AD631800802608 /* JCRootView.m */,
 				B6625DB220AC1C9A00A7D910 /* JCRootModuleMap.h */,
 				B6625DB420AC1C9A00A7D910 /* JCRootModuleMap.m */,
+				B6E2873A25F8647A009DE419 /* JCTabBarController.h */,
+				B6E2873B25F8647A009DE419 /* JCTabBarController.m */,
 				B6625DD720AC1F6C00A7D910 /* JCNavigationController.h */,
 				B6625DD920AC1F6D00A7D910 /* JCNavigationController.m */,
 				B6625DD820AC1F6C00A7D910 /* UIViewController+JCNavigationItem.h */,
@@ -248,6 +253,7 @@
 				B6C5EF5520BD3A8E00625506 /* JCThirdLevelViewController.m in Sources */,
 				23F2F5262081921700FC3ED4 /* JCNavigator.m in Sources */,
 				23F2F5112081919B00FC3ED4 /* ViewController.m in Sources */,
+				B6E2873C25F8647A009DE419 /* JCTabBarController.m in Sources */,
 				B6625DB520AC1C9B00A7D910 /* JCRootModuleMap.m in Sources */,
 				B6C5EF5220BD3A8E00625506 /* JCContentDetailViewController.m in Sources */,
 				23F2F52C2081A8BD00FC3ED4 /* JCModuleMap.m in Sources */,

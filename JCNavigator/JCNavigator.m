@@ -13,6 +13,7 @@
     NSMutableSet *_moduleMaps;
     NSMutableDictionary *_hostListForScheme;
     Class _navigationControllerClass;
+    UIViewController *_windowRootVC;
     UIViewController *_rootViewController;
     UINavigationController *_rootNavigationController;
 }
@@ -60,34 +61,23 @@
 - (void)setRootViewController:(UIViewController *)rootViewController
 {
     NSParameterAssert([rootViewController isKindOfClass:[UIViewController class]]);
+    _windowRootVC = rootViewController;
     if ([rootViewController isKindOfClass:[UINavigationController class]]) {
         _rootNavigationController = (UINavigationController *)rootViewController;
-        _rootViewController = _rootNavigationController.viewControllers.firstObject;
     } else {
-        _rootViewController = rootViewController;
         _rootNavigationController = rootViewController.navigationController;
     }
-    UIViewController *windowRootVC = rootViewController;
     if (!_rootNavigationController) {
-        if ([rootViewController isKindOfClass:[UITabBarController class]]
-            || [rootViewController isKindOfClass:[UISplitViewController class]]
-            || [rootViewController isKindOfClass:[UIPageViewController class]]) {
-            NSArray *viewControllers = [rootViewController performSelector:@selector(viewControllers)];
-            for (UIViewController *vc in viewControllers) {
-                if ([vc isKindOfClass:[UINavigationController class]]) {
-                    _rootNavigationController = (UINavigationController *)vc;
-                    break;
-                } else if (vc.navigationController) {
-                    _rootNavigationController = vc.navigationController;
-                    break;
-                }
-            }
-        } else {
+        NSArray *viewControllers = [self childViewControllers:rootViewController];
+        if (viewControllers.count == 0) {
             _rootNavigationController = [[_navigationControllerClass alloc] initWithRootViewController:rootViewController];
-            windowRootVC = _rootNavigationController;
+            _windowRootVC = _rootNavigationController;
         }
     }
-    [UIApplication sharedApplication].delegate.window.rootViewController = windowRootVC;
+    if (_rootNavigationController) {
+        _rootViewController = _rootNavigationController.viewControllers.firstObject;
+    }
+    [UIApplication sharedApplication].delegate.window.rootViewController = _windowRootVC;
 }
 
 - (void)setNavigationControllerClass:(Class)navigationControllerClass
@@ -97,17 +87,61 @@
 
 - (UINavigationController *)rootNavigationController
 {
-    return _rootNavigationController;
+    return _rootNavigationController ?: [self childNavigationController];
 }
 
 - (UIViewController *)topViewController
 {
-    return _rootNavigationController.topViewController;
+    return [self rootNavigationController].topViewController;
 }
 
 - (UIViewController *)visibleViewController
 {
-    return _rootNavigationController.visibleViewController;
+    return [self rootNavigationController].visibleViewController;
+}
+
+#pragma mark - Container Navigation Controller
+
+- (NSArray *)childViewControllers:(UIViewController *)viewController
+{
+    if ([viewController isKindOfClass:[UITabBarController class]]
+        || [viewController isKindOfClass:[UISplitViewController class]]
+        || [viewController isKindOfClass:[UIPageViewController class]]) {
+        return viewController.childViewControllers;
+    }
+    return nil;
+}
+
+- (UINavigationController *)childNavigationController
+{
+    if ([_windowRootVC isKindOfClass:[UITabBarController class]]) {
+        UITabBarController *tabBarController = (UITabBarController *)_windowRootVC;
+        UINavigationController *navigationController = [self navigationControllerOfVC:tabBarController.selectedViewController];
+        if (navigationController) {
+            _rootViewController = navigationController.viewControllers.firstObject;
+            return navigationController;
+        }
+    }
+    
+    NSArray *viewControllers = [self childViewControllers:_windowRootVC];
+    for (UIViewController *vc in viewControllers) {
+        UINavigationController *navigationController = [self navigationControllerOfVC:vc];
+        if (navigationController) {
+            _rootViewController = navigationController.viewControllers.firstObject;
+            return navigationController;
+        }
+    }
+    return nil;
+}
+
+- (UINavigationController *)navigationControllerOfVC:(UIViewController *)vc
+{
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        return (UINavigationController *)vc;
+    } else if (vc.navigationController) {
+        return vc.navigationController;
+    }
+    return nil;
 }
 
 #pragma mark - Open URL operation
@@ -323,7 +357,7 @@
 
 - (UIViewController *)existedViewControllerForClass:(Class)class
 {
-    return [self existedViewControllerForClass:class navigationController:_rootNavigationController];
+    return [self existedViewControllerForClass:class navigationController:[self rootNavigationController]];
 }
 
 - (UIViewController *)existedViewControllerForClass:(Class)class navigationController:(UINavigationController *)navigationController

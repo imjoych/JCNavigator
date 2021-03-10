@@ -10,6 +10,7 @@
 #import "ViewController.h"
 #import "JCNavigator.h"
 #import "JCNavigationController.h"
+#import "JCTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -57,7 +58,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
 //    [[JCNavigator sharedNavigator] setRootViewController:[ViewController new]];
-    [[JCNavigator sharedNavigator] setRootViewController:[[JCNavigationController alloc] initWithRootViewController:[ViewController new]]];
+//    [[JCNavigator sharedNavigator] setRootViewController:[[JCNavigationController alloc] initWithRootViewController:[ViewController new]]];
+    [[JCNavigator sharedNavigator] setRootViewController:[JCTabBarController new]];
     [self.window makeKeyAndVisible];
     return YES;
 }
