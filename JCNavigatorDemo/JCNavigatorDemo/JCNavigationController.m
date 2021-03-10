@@ -45,6 +45,16 @@
     [super presentViewController:viewControllerToPresent animated:flag completion:completion];
 }
 
+- (BOOL)canPopViewController
+{
+    return self.viewControllers.count > 1;
+}
+
+- (BOOL)popGestureEnabled
+{
+    return !self.popGestureDisabled && [self canPopViewController];
+}
+
 //- (BOOL)shouldAutorotate
 //{
 //    return NO;
@@ -64,14 +74,18 @@
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    if (self.noPopGestureRecognizer || navigationController.viewControllers.count <= 1) {
-        self.interactivePopGestureRecognizer.enabled = NO;
-        return;
-    }
-    self.interactivePopGestureRecognizer.enabled = YES;
+    self.interactivePopGestureRecognizer.enabled = [self popGestureEnabled];
 }
 
 #pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer == self.interactivePopGestureRecognizer) {
+        return [self popGestureEnabled];
+    }
+    return YES;
+}
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {

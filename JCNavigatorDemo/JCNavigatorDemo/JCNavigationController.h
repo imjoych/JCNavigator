@@ -10,6 +10,6 @@
 
 @interface JCNavigationController : UINavigationController
 
-@property (nonatomic) BOOL noPopGestureRecognizer;
+@property (nonatomic) BOOL popGestureDisabled; ///< Pop gesture recognizer is disabled. Default NO.
 
 @end
