@@ -100,7 +100,7 @@
     return [self rootNavigationController].visibleViewController;
 }
 
-#pragma mark - Container Navigation Controller
+#pragma mark - Container View Controllers
 
 - (NSArray *)childViewControllers:(UIViewController *)viewController
 {
