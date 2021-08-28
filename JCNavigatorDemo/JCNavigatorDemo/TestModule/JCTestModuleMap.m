@@ -18,7 +18,9 @@ static NSString *const JCContentDetailMapKey = @"JC_contentDetail";
 
 + (void)initialize
 {
-    [[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
+    if (self == [JCTestModuleMap self]) {
+        [[JCNavigator sharedNavigator] addModuleMap:[JCTestModuleMap new]];
+    }
 }
 
 + (void)openFirstLevelVCPresented:(BOOL)presented propertiesDict:(NSDictionary *)propertiesDict

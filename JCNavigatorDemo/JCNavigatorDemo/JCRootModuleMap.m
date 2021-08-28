@@ -15,7 +15,9 @@ NSString *const JCRootMapKey = @"JC_root";
 
 + (void)initialize
 {
-    [[JCNavigator sharedNavigator] addModuleMap:[JCRootModuleMap new]];
+    if (self == [JCRootModuleMap self]) {
+        [[JCNavigator sharedNavigator] addModuleMap:[JCRootModuleMap new]];
+    }
 }
 
 - (NSDictionary<NSString *,Class> *)classesForMapKeys
